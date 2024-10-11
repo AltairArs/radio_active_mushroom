@@ -3,11 +3,6 @@ $radius: 20px;
 $workspace-grid-thickness: 2px;
 $workspace-grid-size: 25px;
 
-@font-face {
-    font-family: Vag;
-    src: url('../fonts/vag_world_bold.ttf');
-}
-
 body {
     font-family: Vag;
     background-color: var(--c-background);

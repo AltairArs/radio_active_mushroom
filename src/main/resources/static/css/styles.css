@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Vag;
+  src: url("../fonts/vag_world_bold.ttf");
+}
 /*
 EXAMPLE:
 $c- : (
@@ -878,10 +882,6 @@ body.red.dark.part_colorization {
   */
 }
 
-@font-face {
-  font-family: Vag;
-  src: url("../fonts/vag_world_bold.ttf");
-}
 body {
   font-family: Vag;
   background-color: var(--c-background);
@@ -903,10 +903,6 @@ input[type=checkbox], textarea[type=checkbox], select[type=checkbox] {
   box-shadow: none;
 }
 
-@font-face {
-  font-family: Vag;
-  src: url("../fonts/vag_world_bold.ttf");
-}
 body {
   font-family: Vag;
   background-color: var(--c-background);
@@ -928,10 +924,6 @@ body {
   display: inline-block;
 }
 
-@font-face {
-  font-family: Vag;
-  src: url("../fonts/vag_world_bold.ttf");
-}
 body {
   font-family: Vag;
   background-color: var(--c-background);
@@ -987,10 +979,6 @@ body {
   text-align: center;
 }
 
-@font-face {
-  font-family: Vag;
-  src: url("../fonts/vag_world_bold.ttf");
-}
 body {
   font-family: Vag;
   background-color: var(--c-background);
@@ -1084,10 +1072,6 @@ body {
   color: var(--c-nav-auth-hover-text);
 }
 
-@font-face {
-  font-family: Vag;
-  src: url("../fonts/vag_world_bold.ttf");
-}
 body {
   font-family: Vag;
   background-color: var(--c-background);
