@@ -1,0 +1,52 @@
+@import "./vars.scss";
+
+.container-1 {
+    border-radius: $radius;
+    padding: $pad;
+    background-color: var(--c-container-background);
+    color: var(--c-container-text);
+    width: fit-content;
+    margin: $pad * 1.2;
+    & .info-field-1 {
+        background-color: var(--c-container-info-field-background);
+        color: var(--c-container-info-field-text);
+        border-radius: $radius;
+        padding: 0 $pad;
+    }
+}
+
+.container-2 {
+    border-radius: $radius;
+    padding: $pad;
+    background-color: var(--c-container-text);
+    color: var(--c-container-background);
+    width: fit-content;
+    margin: $pad * 1.2;
+    & .info-field-2 {
+        background-color: var(--c-container-info-field-text);
+        color: var(--c-container-info-field-background);
+        border-radius: $radius;
+        padding: 0 $pad;
+    }
+}
+
+.row {
+    & .cell {
+        display: inline-table;
+        margin: auto;
+    }
+}
+
+.help-text {
+    font-size: small;
+}
+
+.container-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-center {
+    width: 100%;
+    text-align: center;
+}

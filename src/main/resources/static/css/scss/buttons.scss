@@ -1,0 +1,93 @@
+@import "./vars.scss";
+
+.btn-nav {
+    border-radius: $radius;
+    color: var(--c-nav-btn-text);
+    transition: .2s linear;
+    background: var(--c-nav-btn-background);
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: $pad;
+    margin: $pad;
+    border: none;
+    text-decoration: none;
+    &.active {
+        background-color: var(--c-nav-btn-active-background);
+        color: var(--c-nav-btn-active-text);
+    }
+    &:hover {
+        box-shadow: 2px 2px var(--c-nav-btn-shadow), 4px 4px var(--c-nav-btn-shadow);
+        top: -4px;
+        left: -4px;
+        &.active {
+            box-shadow: 2px 2px var(--c-nav-btn-active-shadow), 4px 4px var(--c-nav-btn-active-shadow);
+        }
+    }
+}
+
+.btn-action {
+    border: none;
+    border-radius: $radius;
+    text-decoration: none;
+    color: var(--c-btn-action-text);
+    background: var(--c-btn-action-background);
+    box-shadow: 0 5px 0 var(--c-btn-action-shadow);
+    padding: $pad;
+    margin: $pad;
+    font-family: Vag;
+    font-size: medium;
+    border: none;
+    &:hover {
+        background: var(--c-btn-action-background);
+        box-shadow: none;
+        position: relative;
+        top: 5px;
+        color: var(--c-btn-action-text);
+    }
+}
+
+.btn-action-on-1 {
+    border: none;
+    border-radius: $radius;
+    text-decoration: none;
+    color: var(--c-btn-action-background);
+    background: var(--c-btn-action-text);
+    box-shadow: 0 5px 0 var(--c-btn-action-shadow);
+    padding: $pad;
+    margin: $pad;
+    font-family: Vag;
+    font-size: medium;
+    border: none;
+    &:hover {
+        background: var(--c-btn-action-text);
+        box-shadow: none;
+        position: relative;
+        top: 5px;
+        color: var(--c-btn-action-background);
+    }
+}
+
+.btn-auth {  
+    box-shadow: 
+        0.3em 0.3em 0 0 var(--c-nav-auth-shadow),
+        inset 0.3em 0.3em 0 0 var(--c-nav-auth-shadow);
+    color: var(--c-nav-auth-text);
+    transition: 0.25s;
+    padding: $pad $pad * 1.5 $pad $pad * 1.5;
+    margin: $pad / 2;
+    border-radius: $radius;
+    text-decoration: none;
+    font-family: Vag;
+    font-size: medium;
+    border: none;
+    background-color: transparent;
+    
+    &:hover{
+        box-shadow: 
+            0 0 0 0 var(--c-nav-auth-hover-shadow),
+            inset 6em 3.5em 0 0 var(--c-nav-auth-hover-shadow);
+        border-color: var(--c-nav-auth-hover-shadow);
+        color: var(--c-nav-auth-hover-text);
+    }
+}

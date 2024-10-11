@@ -1,0 +1,30 @@
+@import "./vars.scss";
+
+.workspace {
+    border-radius: $radius;
+    padding: $pad / 2;
+    height: 70vh;
+    box-shadow: 0px 0px 6px 6px var(--c-container-background);
+    background-size: $workspace-grid-size $workspace-grid-size;
+    background-image: linear-gradient(
+        var(--c-workspace-grid) $workspace-grid-thickness / 2,
+        transparent $workspace-grid-thickness / 2,
+        transparent calc(100% - #{$workspace-grid-thickness / 2}),
+        var(--c-workspace-grid) calc(100% - #{$workspace-grid-thickness / 2})
+    ),
+    linear-gradient(
+        90deg,
+        var(--c-workspace-grid) $workspace-grid-thickness / 2,
+        transparent $workspace-grid-thickness / 2,
+        transparent calc(100% - #{$workspace-grid-thickness / 2}),
+        var(--c-workspace-grid) calc(100% - #{$workspace-grid-thickness / 2})
+    );
+    & .workspace-menu {
+        position: absolute;
+        display: none;
+        background-color: var(--c-container-background);
+        color: var(--c-container-text);
+        padding: $pad;
+        border-radius: $radius;
+    }
+}

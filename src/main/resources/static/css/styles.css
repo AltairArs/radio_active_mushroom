@@ -1,0 +1,1112 @@
+/*
+EXAMPLE:
+$c- : (
+    'default': get_color_map('default',         $lpc: white,                                            $dpc: black),
+    'red': get_color_map('red',                 $lpc: white,                $lfc: white,                $dpc: black,                $dfc: black),
+    'green': get_color_map('green',             $lpc: white,                $lfc: white,                $dpc: black,                $dfc: black),
+    'orange': get_color_map('orange',           $lpc: white,                $lfc: white,                $dpc: black,                $dfc: black),
+    'light-blue': get_color_map('light-blue',   $lpc: white,                $lfc: white,                $dpc: black,                $dfc: black),
+    'yellow': get_color_map('yellow',           $lpc: white,                $lfc: white,                $dpc: black,                $dfc: black),
+    'purple': get_color_map('purple',           $lpc: white,                $lfc: white,                $dpc: black,                $dfc: black) 
+)
+*/
+body {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(87, 87, 87);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: black;
+  --c-container-text: white;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: black;
+  --c-btn-action-text: white;
+  --c-btn-action-shadow: rgb(136, 136, 136);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(176, 176, 176);
+  --c-workspace-grid: rgb(176, 176, 176);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(87, 87, 87);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: black;
+  --c-container-text: white;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: black;
+  --c-btn-action-text: white;
+  --c-btn-action-shadow: rgb(136, 136, 136);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(176, 176, 176);
+  --c-workspace-grid: rgb(176, 176, 176);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.dark {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(187, 187, 187);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: white;
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: white;
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(129, 129, 129);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(125, 125, 125);
+  --c-workspace-grid: rgb(125, 125, 125);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(187, 187, 187);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: white;
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: white;
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(129, 129, 129);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(125, 125, 125);
+  --c-workspace-grid: rgb(125, 125, 125);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+body.green {
+  --c-background: rgb(23, 197, 0);
+  --c-text: rgb(14, 48, 0);
+  --c-nav-background: rgb(16, 99, 0);
+  --c-nav-btn-text: rgb(14, 48, 0);
+  --c-nav-btn-background: rgb(98, 255, 93);
+  --c-nav-btn-shadow: rgb(0, 155, 8);
+  --c-nav-btn-active-text: rgb(98, 255, 93);
+  --c-nav-btn-active-background: rgb(14, 48, 0);
+  --c-nav-btn-active-shadow: rgb(0, 155, 8);
+  --c-nav-auth-text: rgb(98, 255, 93);
+  --c-nav-auth-shadow: rgb(98, 255, 93);
+  --c-nav-auth-hover-text: rgb(14, 48, 0);
+  --c-nav-auth-hover-shadow: rgb(98, 255, 93);
+  --c-container-background: rgb(0, 48, 2);
+  --c-container-text: rgb(86, 255, 52);
+  --c-container-info-field-background: rgb(80, 255, 64);
+  --c-container-info-field-text: rgb(14, 48, 0);
+  --c-btn-action-background: rgb(0, 131, 28);
+  --c-btn-action-text: rgb(35, 252, 28);
+  --c-btn-action-shadow: rgb(0, 59, 5);
+  --c-input-background: rgb(80, 255, 64);
+  --c-input-text: rgb(14, 48, 0);
+  --c-input-shadow: rgb(29, 168, 0);
+  --c-workspace-grid: rgb(29, 168, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.green.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(22, 134, 0);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: rgb(0, 163, 22);
+  --c-container-text: black;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: rgb(0, 180, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: green;
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(0, 230, 0);
+  --c-workspace-grid: rgb(0, 230, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.green.dark {
+  --c-background: rgb(0, 48, 4);
+  --c-text: rgb(82, 255, 91);
+  --c-nav-background: rgb(0, 199, 17);
+  --c-nav-btn-text: rgb(82, 255, 91);
+  --c-nav-btn-background: rgb(2, 59, 0);
+  --c-nav-btn-shadow: green;
+  --c-nav-btn-active-text: rgb(2, 59, 0);
+  --c-nav-btn-active-background: rgb(82, 255, 91);
+  --c-nav-btn-active-shadow: green;
+  --c-nav-auth-text: rgb(2, 59, 0);
+  --c-nav-auth-shadow: rgb(2, 59, 0);
+  --c-nav-auth-hover-text: rgb(82, 255, 91);
+  --c-nav-auth-hover-shadow: rgb(2, 59, 0);
+  --c-container-background: rgb(0, 199, 43);
+  --c-container-text: rgb(0, 54, 5);
+  --c-container-info-field-background: rgb(2, 41, 0);
+  --c-container-info-field-text: rgb(82, 255, 91);
+  --c-btn-action-background: rgb(21, 255, 0);
+  --c-btn-action-text: rgb(1, 43, 0);
+  --c-btn-action-shadow: green;
+  --c-input-background: rgb(2, 41, 0);
+  --c-input-text: rgb(82, 255, 91);
+  --c-input-shadow: green;
+  --c-workspace-grid: green;
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.green.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(0, 199, 17);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: rgb(0, 199, 43);
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: rgb(21, 255, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: green;
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(100, 100, 100);
+  --c-workspace-grid: rgb(100, 100, 100);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+body.orange {
+  --c-background: rgb(202, 131, 0);
+  --c-text: rgb(54, 31, 0);
+  --c-nav-background: rgb(133, 86, 0);
+  --c-nav-btn-text: rgb(54, 31, 0);
+  --c-nav-btn-background: rgb(255, 157, 45);
+  --c-nav-btn-shadow: rgb(185, 105, 0);
+  --c-nav-btn-active-text: rgb(255, 157, 45);
+  --c-nav-btn-active-background: rgb(54, 31, 0);
+  --c-nav-btn-active-shadow: rgb(185, 105, 0);
+  --c-nav-auth-text: rgb(255, 157, 45);
+  --c-nav-auth-shadow: rgb(255, 157, 45);
+  --c-nav-auth-hover-text: rgb(54, 31, 0);
+  --c-nav-auth-hover-shadow: rgb(255, 157, 45);
+  --c-container-background: rgb(63, 30, 0);
+  --c-container-text: rgb(255, 136, 57);
+  --c-container-info-field-background: rgb(255, 162, 56);
+  --c-container-info-field-text: rgb(54, 31, 0);
+  --c-btn-action-background: rgb(255, 174, 69);
+  --c-btn-action-text: rgb(75, 30, 0);
+  --c-btn-action-shadow: rgb(122, 65, 0);
+  --c-input-background: rgb(255, 162, 56);
+  --c-input-text: rgb(54, 31, 0);
+  --c-input-shadow: rgb(172, 97, 0);
+  --c-workspace-grid: rgb(172, 97, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.orange.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(214, 139, 0);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: rgb(214, 139, 0);
+  --c-container-text: black;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: rgb(253, 135, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(122, 65, 0);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(119, 67, 0);
+  --c-workspace-grid: rgb(119, 67, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.orange.dark {
+  --c-background: rgb(63, 34, 0);
+  --c-text: rgb(255, 166, 1);
+  --c-nav-background: rgb(199, 129, 0);
+  --c-nav-btn-text: rgb(255, 166, 1);
+  --c-nav-btn-background: rgb(70, 37, 0);
+  --c-nav-btn-shadow: rgb(138, 67, 0);
+  --c-nav-btn-active-text: rgb(70, 37, 0);
+  --c-nav-btn-active-background: rgb(255, 166, 1);
+  --c-nav-btn-active-shadow: rgb(138, 67, 0);
+  --c-nav-auth-text: rgb(70, 37, 0);
+  --c-nav-auth-shadow: rgb(70, 37, 0);
+  --c-nav-auth-hover-text: rgb(255, 166, 1);
+  --c-nav-auth-hover-shadow: rgb(70, 37, 0);
+  --c-container-background: rgb(255, 136, 0);
+  --c-container-text: rgb(53, 24, 0);
+  --c-container-info-field-background: rgb(54, 26, 0);
+  --c-container-info-field-text: rgb(255, 166, 1);
+  --c-btn-action-background: rgb(255, 136, 0);
+  --c-btn-action-text: rgb(68, 31, 0);
+  --c-btn-action-shadow: rgb(146, 58, 0);
+  --c-input-background: rgb(54, 26, 0);
+  --c-input-text: rgb(255, 166, 1);
+  --c-input-shadow: rgb(146, 58, 0);
+  --c-workspace-grid: rgb(146, 58, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.orange.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(199, 129, 0);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: rgb(255, 136, 0);
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: rgb(255, 136, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(146, 58, 0);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(100, 100, 100);
+  --c-workspace-grid: rgb(100, 100, 100);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+body.light-blue {
+  --c-background: rgb(0, 207, 207);
+  --c-text: rgb(0, 63, 63);
+  --c-nav-background: rgb(0, 117, 126);
+  --c-nav-btn-text: rgb(0, 63, 63);
+  --c-nav-btn-background: rgb(91, 236, 255);
+  --c-nav-btn-shadow: rgb(0, 156, 148);
+  --c-nav-btn-active-text: rgb(91, 236, 255);
+  --c-nav-btn-active-background: rgb(0, 63, 63);
+  --c-nav-btn-active-shadow: rgb(0, 156, 148);
+  --c-nav-auth-text: rgb(91, 236, 255);
+  --c-nav-auth-shadow: rgb(91, 236, 255);
+  --c-nav-auth-hover-text: rgb(0, 63, 63);
+  --c-nav-auth-hover-shadow: rgb(91, 236, 255);
+  --c-container-background: rgb(0, 61, 63);
+  --c-container-text: rgb(0, 255, 255);
+  --c-container-info-field-background: rgb(0, 255, 255);
+  --c-container-info-field-text: rgb(0, 63, 63);
+  --c-btn-action-background: rgb(0, 57, 61);
+  --c-btn-action-text: rgb(0, 217, 255);
+  --c-btn-action-shadow: rgb(0, 122, 126);
+  --c-input-background: rgb(0, 255, 255);
+  --c-input-text: rgb(0, 63, 63);
+  --c-input-shadow: rgb(0, 138, 156);
+  --c-workspace-grid: rgb(0, 138, 156);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.light-blue.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(0, 135, 168);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: rgb(0, 172, 172);
+  --c-container-text: black;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: rgb(0, 187, 178);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(0, 122, 126);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(0, 92, 104);
+  --c-workspace-grid: rgb(0, 92, 104);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.light-blue.dark {
+  --c-background: rgb(0, 55, 59);
+  --c-text: rgb(0, 247, 255);
+  --c-nav-background: rgb(0, 177, 168);
+  --c-nav-btn-text: rgb(0, 247, 255);
+  --c-nav-btn-background: rgb(0, 49, 51);
+  --c-nav-btn-shadow: rgb(0, 133, 133);
+  --c-nav-btn-active-text: rgb(0, 49, 51);
+  --c-nav-btn-active-background: rgb(0, 247, 255);
+  --c-nav-btn-active-shadow: rgb(0, 133, 133);
+  --c-nav-auth-text: rgb(0, 49, 51);
+  --c-nav-auth-shadow: rgb(0, 49, 51);
+  --c-nav-auth-hover-text: rgb(0, 247, 255);
+  --c-nav-auth-hover-shadow: rgb(0, 49, 51);
+  --c-container-background: rgb(0, 255, 234);
+  --c-container-text: rgb(0, 38, 41);
+  --c-container-info-field-background: rgb(0, 44, 38);
+  --c-container-info-field-text: rgb(0, 247, 255);
+  --c-btn-action-background: rgb(0, 247, 255);
+  --c-btn-action-text: rgb(0, 41, 41);
+  --c-btn-action-shadow: rgb(0, 111, 131);
+  --c-input-background: rgb(0, 44, 38);
+  --c-input-text: rgb(0, 247, 255);
+  --c-input-shadow: rgb(0, 119, 134);
+  --c-workspace-grid: rgb(0, 119, 134);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.light-blue.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(0, 177, 168);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: rgb(0, 255, 234);
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: rgb(0, 247, 255);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(0, 111, 131);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(100, 100, 100);
+  --c-workspace-grid: rgb(100, 100, 100);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+body.yellow {
+  --c-background: rgb(194, 191, 0);
+  --c-text: rgb(61, 55, 0);
+  --c-nav-background: rgb(122, 120, 0);
+  --c-nav-btn-text: rgb(61, 55, 0);
+  --c-nav-btn-background: rgb(212, 198, 0);
+  --c-nav-btn-shadow: rgb(158, 155, 0);
+  --c-nav-btn-active-text: rgb(212, 198, 0);
+  --c-nav-btn-active-background: rgb(61, 55, 0);
+  --c-nav-btn-active-shadow: rgb(158, 155, 0);
+  --c-nav-auth-text: rgb(212, 198, 0);
+  --c-nav-auth-shadow: rgb(212, 198, 0);
+  --c-nav-auth-hover-text: rgb(61, 55, 0);
+  --c-nav-auth-hover-shadow: rgb(212, 198, 0);
+  --c-container-background: rgb(60, 61, 0);
+  --c-container-text: rgb(255, 217, 0);
+  --c-container-info-field-background: rgb(252, 255, 74);
+  --c-container-info-field-text: rgb(61, 55, 0);
+  --c-btn-action-background: rgb(66, 60, 0);
+  --c-btn-action-text: rgb(251, 255, 0);
+  --c-btn-action-shadow: rgb(131, 122, 0);
+  --c-input-background: rgb(252, 255, 74);
+  --c-input-text: rgb(61, 55, 0);
+  --c-input-shadow: rgb(167, 164, 0);
+  --c-workspace-grid: rgb(167, 164, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.yellow.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(155, 152, 0);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: rgb(176, 189, 0);
+  --c-container-text: black;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: rgb(212, 195, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(131, 122, 0);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(110, 101, 0);
+  --c-workspace-grid: rgb(110, 101, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.yellow.dark {
+  --c-background: rgb(68, 67, 0);
+  --c-text: rgb(255, 238, 0);
+  --c-nav-background: rgb(168, 180, 0);
+  --c-nav-btn-text: rgb(255, 238, 0);
+  --c-nav-btn-background: rgb(57, 58, 0);
+  --c-nav-btn-shadow: rgb(139, 130, 0);
+  --c-nav-btn-active-text: rgb(57, 58, 0);
+  --c-nav-btn-active-background: rgb(255, 238, 0);
+  --c-nav-btn-active-shadow: rgb(139, 130, 0);
+  --c-nav-auth-text: rgb(57, 58, 0);
+  --c-nav-auth-shadow: rgb(57, 58, 0);
+  --c-nav-auth-hover-text: rgb(255, 238, 0);
+  --c-nav-auth-hover-shadow: rgb(57, 58, 0);
+  --c-container-background: rgb(187, 190, 0);
+  --c-container-text: rgb(47, 48, 0);
+  --c-container-info-field-background: rgb(58, 52, 0);
+  --c-container-info-field-text: rgb(255, 238, 0);
+  --c-btn-action-background: rgb(192, 196, 0);
+  --c-btn-action-text: rgb(61, 60, 0);
+  --c-btn-action-shadow: rgb(139, 141, 0);
+  --c-input-background: rgb(58, 52, 0);
+  --c-input-text: rgb(255, 238, 0);
+  --c-input-shadow: rgb(145, 130, 0);
+  --c-workspace-grid: rgb(145, 130, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.yellow.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(168, 180, 0);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: rgb(187, 190, 0);
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: rgb(192, 196, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(139, 141, 0);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(100, 100, 100);
+  --c-workspace-grid: rgb(100, 100, 100);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+body.purple {
+  --c-background: rgb(175, 76, 255);
+  --c-text: rgb(70, 0, 92);
+  --c-nav-background: rgb(60, 0, 100);
+  --c-nav-btn-text: rgb(70, 0, 92);
+  --c-nav-btn-background: rgb(194, 38, 255);
+  --c-nav-btn-shadow: rgb(135, 0, 177);
+  --c-nav-btn-active-text: rgb(194, 38, 255);
+  --c-nav-btn-active-background: rgb(70, 0, 92);
+  --c-nav-btn-active-shadow: rgb(135, 0, 177);
+  --c-nav-auth-text: rgb(194, 38, 255);
+  --c-nav-auth-shadow: rgb(194, 38, 255);
+  --c-nav-auth-hover-text: rgb(70, 0, 92);
+  --c-nav-auth-hover-shadow: rgb(194, 38, 255);
+  --c-container-background: rgb(49, 0, 61);
+  --c-container-text: rgb(195, 0, 255);
+  --c-container-info-field-background: rgb(210, 61, 255);
+  --c-container-info-field-text: rgb(70, 0, 92);
+  --c-btn-action-background: rgb(71, 0, 73);
+  --c-btn-action-text: rgb(204, 0, 255);
+  --c-btn-action-shadow: rgb(121, 0, 151);
+  --c-input-background: rgb(210, 61, 255);
+  --c-input-text: rgb(70, 0, 92);
+  --c-input-shadow: rgb(133, 0, 185);
+  --c-workspace-grid: rgb(133, 0, 185);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.purple.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(124, 0, 196);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: rgb(199, 103, 255);
+  --c-container-text: black;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: rgb(228, 95, 255);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(121, 0, 151);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(87, 0, 114);
+  --c-workspace-grid: rgb(87, 0, 114);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.purple.dark {
+  --c-background: rgb(61, 0, 85);
+  --c-text: rgb(241, 89, 255);
+  --c-nav-background: rgb(163, 0, 204);
+  --c-nav-btn-text: rgb(241, 89, 255);
+  --c-nav-btn-background: rgb(52, 0, 65);
+  --c-nav-btn-shadow: rgb(113, 0, 136);
+  --c-nav-btn-active-text: rgb(52, 0, 65);
+  --c-nav-btn-active-background: rgb(241, 89, 255);
+  --c-nav-btn-active-shadow: rgb(113, 0, 136);
+  --c-nav-auth-text: rgb(52, 0, 65);
+  --c-nav-auth-shadow: rgb(52, 0, 65);
+  --c-nav-auth-hover-text: rgb(241, 89, 255);
+  --c-nav-auth-hover-shadow: rgb(52, 0, 65);
+  --c-container-background: rgb(212, 0, 255);
+  --c-container-text: rgb(51, 0, 71);
+  --c-container-info-field-background: rgb(30, 0, 65);
+  --c-container-info-field-text: rgb(241, 89, 255);
+  --c-btn-action-background: rgb(222, 88, 255);
+  --c-btn-action-text: rgb(49, 0, 65);
+  --c-btn-action-shadow: rgb(128, 0, 145);
+  --c-input-background: rgb(30, 0, 65);
+  --c-input-text: rgb(241, 89, 255);
+  --c-input-shadow: rgb(118, 0, 148);
+  --c-workspace-grid: rgb(118, 0, 148);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.purple.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(163, 0, 204);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: rgb(212, 0, 255);
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: rgb(222, 88, 255);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(128, 0, 145);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(100, 100, 100);
+  --c-workspace-grid: rgb(100, 100, 100);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+body.red {
+  --c-background: rgb(255, 0, 0);
+  --c-text: rgb(66, 0, 0);
+  --c-nav-background: rgb(102, 0, 0);
+  --c-nav-btn-text: rgb(66, 0, 0);
+  --c-nav-btn-background: rgb(255, 139, 139);
+  --c-nav-btn-shadow: rgb(187, 0, 0);
+  --c-nav-btn-active-text: rgb(255, 139, 139);
+  --c-nav-btn-active-background: rgb(66, 0, 0);
+  --c-nav-btn-active-shadow: rgb(187, 0, 0);
+  --c-nav-auth-text: rgb(255, 139, 139);
+  --c-nav-auth-shadow: rgb(255, 139, 139);
+  --c-nav-auth-hover-text: rgb(66, 0, 0);
+  --c-nav-auth-hover-shadow: rgb(255, 139, 139);
+  --c-container-background: rgb(80, 0, 0);
+  --c-container-text: rgb(255, 74, 74);
+  --c-container-info-field-background: rgb(255, 133, 133);
+  --c-container-info-field-text: rgb(66, 0, 0);
+  --c-btn-action-background: rgb(255, 125, 125);
+  --c-btn-action-text: rgb(80, 0, 0);
+  --c-btn-action-shadow: rgb(126, 0, 0);
+  --c-input-background: rgb(255, 133, 133);
+  --c-input-text: rgb(66, 0, 0);
+  --c-input-shadow: red;
+  --c-workspace-grid: red;
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+body.red.part_colorization {
+  --c-background: white;
+  --c-text: black;
+  --c-nav-background: rgb(185, 0, 0);
+  --c-nav-btn-text: black;
+  --c-nav-btn-background: white;
+  --c-nav-btn-shadow: rgb(165, 165, 165);
+  --c-nav-btn-active-text: white;
+  --c-nav-btn-active-background: black;
+  --c-nav-btn-active-shadow: rgb(165, 165, 165);
+  --c-nav-auth-text: white;
+  --c-nav-auth-shadow: white;
+  --c-nav-auth-hover-text: black;
+  --c-nav-auth-hover-shadow: white;
+  --c-container-background: rgb(172, 0, 0);
+  --c-container-text: black;
+  --c-container-info-field-background: white;
+  --c-container-info-field-text: black;
+  --c-btn-action-background: red;
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(126, 0, 0);
+  --c-input-background: white;
+  --c-input-text: black;
+  --c-input-shadow: rgb(255, 151, 143);
+  --c-workspace-grid: rgb(255, 151, 143);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.red.dark {
+  --c-background: rgb(48, 0, 0);
+  --c-text: rgb(255, 93, 93);
+  --c-nav-background: rgb(201, 0, 0);
+  --c-nav-btn-text: rgb(255, 93, 93);
+  --c-nav-btn-background: rgb(61, 0, 0);
+  --c-nav-btn-shadow: rgb(128, 0, 0);
+  --c-nav-btn-active-text: rgb(61, 0, 0);
+  --c-nav-btn-active-background: rgb(255, 93, 93);
+  --c-nav-btn-active-shadow: rgb(128, 0, 0);
+  --c-nav-auth-text: rgb(61, 0, 0);
+  --c-nav-auth-shadow: rgb(61, 0, 0);
+  --c-nav-auth-hover-text: rgb(255, 93, 93);
+  --c-nav-auth-hover-shadow: rgb(61, 0, 0);
+  --c-container-background: rgb(211, 0, 0);
+  --c-container-text: rgb(43, 0, 0);
+  --c-container-info-field-background: rgb(59, 0, 0);
+  --c-container-info-field-text: rgb(255, 93, 93);
+  --c-btn-action-background: rgb(204, 0, 0);
+  --c-btn-action-text: rgb(80, 0, 0);
+  --c-btn-action-shadow: rgb(133, 0, 0);
+  --c-input-background: rgb(59, 0, 0);
+  --c-input-text: rgb(255, 93, 93);
+  --c-input-shadow: rgb(100, 9, 0);
+  --c-workspace-grid: rgb(100, 9, 0);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+body.red.dark.part_colorization {
+  --c-background: black;
+  --c-text: white;
+  --c-nav-background: rgb(201, 0, 0);
+  --c-nav-btn-text: white;
+  --c-nav-btn-background: black;
+  --c-nav-btn-shadow: rgb(131, 131, 131);
+  --c-nav-btn-active-text: black;
+  --c-nav-btn-active-background: white;
+  --c-nav-btn-active-shadow: rgb(131, 131, 131);
+  --c-nav-auth-text: black;
+  --c-nav-auth-shadow: black;
+  --c-nav-auth-hover-text: white;
+  --c-nav-auth-hover-shadow: black;
+  --c-container-background: rgb(211, 0, 0);
+  --c-container-text: black;
+  --c-container-info-field-background: black;
+  --c-container-info-field-text: white;
+  --c-btn-action-background: rgb(204, 0, 0);
+  --c-btn-action-text: black;
+  --c-btn-action-shadow: rgb(133, 0, 0);
+  --c-input-background: black;
+  --c-input-text: white;
+  --c-input-shadow: rgb(100, 100, 100);
+  --c-workspace-grid: rgb(100, 100, 100);
+  /*
+  EXAMPLE
+  --c- : {get_color(, $color_class, $mode, $colorization)};
+  */
+}
+
+@font-face {
+  font-family: Vag;
+  src: url("../fonts/vag_world_bold.ttf");
+}
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+input, textarea, select {
+  font-family: Vag;
+  font-size: medium;
+  border-radius: 20px;
+  padding: 0 10px;
+  box-shadow: 2px 3px 0 var(--c-input-shadow);
+  color: var(--c-input-text);
+  background-color: var(--c-input-background);
+}
+input[type=checkbox], textarea[type=checkbox], select[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  box-shadow: none;
+}
+
+@font-face {
+  font-family: Vag;
+  src: url("../fonts/vag_world_bold.ttf");
+}
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.nav {
+  padding: 20px 0;
+  list-style-type: none;
+  width: 100vw;
+  background-color: var(--c-nav-background);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0 0 20px 20px;
+}
+.nav .nav-item {
+  display: inline-block;
+}
+
+@font-face {
+  font-family: Vag;
+  src: url("../fonts/vag_world_bold.ttf");
+}
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.container-1 {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-background);
+  color: var(--c-container-text);
+  width: fit-content;
+  margin: 12px;
+}
+.container-1 .info-field-1 {
+  background-color: var(--c-container-info-field-background);
+  color: var(--c-container-info-field-text);
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.container-2 {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-text);
+  color: var(--c-container-background);
+  width: fit-content;
+  margin: 12px;
+}
+.container-2 .info-field-2 {
+  background-color: var(--c-container-info-field-text);
+  color: var(--c-container-info-field-background);
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.row .cell {
+  display: inline-table;
+  margin: auto;
+}
+
+.help-text {
+  font-size: small;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-center {
+  width: 100%;
+  text-align: center;
+}
+
+@font-face {
+  font-family: Vag;
+  src: url("../fonts/vag_world_bold.ttf");
+}
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.btn-nav {
+  border-radius: 20px;
+  color: var(--c-nav-btn-text);
+  transition: 0.2s linear;
+  background: var(--c-nav-btn-background);
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  text-decoration: none;
+}
+.btn-nav.active {
+  background-color: var(--c-nav-btn-active-background);
+  color: var(--c-nav-btn-active-text);
+}
+.btn-nav:hover {
+  box-shadow: 2px 2px var(--c-nav-btn-shadow), 4px 4px var(--c-nav-btn-shadow);
+  top: -4px;
+  left: -4px;
+}
+.btn-nav:hover.active {
+  box-shadow: 2px 2px var(--c-nav-btn-active-shadow), 4px 4px var(--c-nav-btn-active-shadow);
+}
+
+.btn-action {
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--c-btn-action-text);
+  background: var(--c-btn-action-background);
+  box-shadow: 0 5px 0 var(--c-btn-action-shadow);
+  padding: 10px;
+  margin: 10px;
+  font-family: Vag;
+  font-size: medium;
+  border: none;
+}
+.btn-action:hover {
+  background: var(--c-btn-action-background);
+  box-shadow: none;
+  position: relative;
+  top: 5px;
+  color: var(--c-btn-action-text);
+}
+
+.btn-action-on-1 {
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--c-btn-action-background);
+  background: var(--c-btn-action-text);
+  box-shadow: 0 5px 0 var(--c-btn-action-shadow);
+  padding: 10px;
+  margin: 10px;
+  font-family: Vag;
+  font-size: medium;
+  border: none;
+}
+.btn-action-on-1:hover {
+  background: var(--c-btn-action-text);
+  box-shadow: none;
+  position: relative;
+  top: 5px;
+  color: var(--c-btn-action-background);
+}
+
+.btn-auth {
+  box-shadow: 0.3em 0.3em 0 0 var(--c-nav-auth-shadow), inset 0.3em 0.3em 0 0 var(--c-nav-auth-shadow);
+  color: var(--c-nav-auth-text);
+  transition: 0.25s;
+  padding: 10px 15px 10px 15px;
+  margin: 5px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-family: Vag;
+  font-size: medium;
+  border: none;
+  background-color: transparent;
+}
+.btn-auth:hover {
+  box-shadow: 0 0 0 0 var(--c-nav-auth-hover-shadow), inset 6em 3.5em 0 0 var(--c-nav-auth-hover-shadow);
+  border-color: var(--c-nav-auth-hover-shadow);
+  color: var(--c-nav-auth-hover-text);
+}
+
+@font-face {
+  font-family: Vag;
+  src: url("../fonts/vag_world_bold.ttf");
+}
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.workspace {
+  border-radius: 20px;
+  padding: 5px;
+  height: 70vh;
+  box-shadow: 0px 0px 6px 6px var(--c-container-background);
+  background-size: 25px 25px;
+  background-image: linear-gradient(var(--c-workspace-grid) 1px, transparent 1px, transparent calc(100% - 1px), var(--c-workspace-grid) calc(100% - 1px)), linear-gradient(90deg, var(--c-workspace-grid) 1px, transparent 1px, transparent calc(100% - 1px), var(--c-workspace-grid) calc(100% - 1px));
+}
+.workspace .workspace-menu {
+  position: absolute;
+  display: none;
+  background-color: var(--c-container-background);
+  color: var(--c-container-text);
+  padding: 10px;
+  border-radius: 20px;
+}

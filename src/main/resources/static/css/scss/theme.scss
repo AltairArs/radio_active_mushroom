@@ -1,0 +1,84 @@
+@import "./colors.scss";
+
+@function get_color($color_map, $color, $mode, $colorization) {
+    $C: map-get($color_map, $color);
+    $M: map-get($C, $mode);
+    @if type-of($M) == color {
+        @return $M;
+    } @else {
+        @return map-get($M, $colorization);
+    }
+}
+
+@mixin full_theme($color_class, $mode, $colorization) {
+    --c-background: #{get_color($c-background, $color_class, $mode, $colorization)};
+    --c-text: #{get_color($c-text, $color_class, $mode, $colorization)};
+
+    --c-nav-background: #{get_color($c-nav-background, $color_class, $mode, $colorization)};
+
+    --c-nav-btn-text: #{get_color($c-nav-btn-text, $color_class, $mode, $colorization)};
+    --c-nav-btn-background: #{get_color($c-nav-btn-background, $color_class, $mode, $colorization)};
+    --c-nav-btn-shadow: #{get_color($c-nav-btn-shadow, $color_class, $mode, $colorization)};
+
+    --c-nav-btn-active-text: #{get_color($c-nav-btn-active-text, $color_class, $mode, $colorization)};
+    --c-nav-btn-active-background: #{get_color($c-nav-btn-active-background, $color_class, $mode, $colorization)};
+    --c-nav-btn-active-shadow: #{get_color($c-nav-btn-active-shadow, $color_class, $mode, $colorization)};
+
+    --c-nav-auth-text: #{get_color($c-nav-auth-text, $color_class, $mode, $colorization)};
+    --c-nav-auth-shadow: #{get_color($c-nav-auth-shadow, $color_class, $mode, $colorization)};
+
+    --c-nav-auth-hover-text: #{get_color($c-nav-auth-hover-text, $color_class, $mode, $colorization)};
+    --c-nav-auth-hover-shadow: #{get_color($c-nav-auth-hover-shadow, $color_class, $mode, $colorization)};
+
+    --c-container-background: #{get_color($c-container-background, $color_class, $mode, $colorization)};
+    --c-container-text: #{get_color($c-container-text, $color_class, $mode, $colorization)};
+
+    --c-container-info-field-background: #{get_color($c-container-info-field-background, $color_class, $mode, $colorization)};
+    --c-container-info-field-text: #{get_color($c-container-info-field-text, $color_class, $mode, $colorization)};
+
+    --c-btn-action-background: #{get_color($c-btn-action-background, $color_class, $mode, $colorization)};
+    --c-btn-action-text: #{get_color($c-btn-action-text, $color_class, $mode, $colorization)};
+    --c-btn-action-shadow: #{get_color($c-btn-action-shadow, $color_class, $mode, $colorization)};
+
+    --c-input-background: #{get_color($c-input-background, $color_class, $mode, $colorization)};
+    --c-input-text: #{get_color($c-input-text, $color_class, $mode, $colorization)};
+    --c-input-shadow: #{get_color($c-input-shadow, $color_class, $mode, $colorization)};
+
+    --c-workspace-grid: #{get_color($c-workspace-grid, $color_class, $mode, $colorization)};
+    /*
+    EXAMPLE
+    --c- : {get_color(, $color_class, $mode, $colorization)};
+    */
+}
+
+@mixin theme($color_class: false) {
+    $class_color: 'body';
+    @if $color_class != 'default' {
+        $class_color: 'body.' + $color_class;
+    }
+    #{$class_color} {
+        @include full_theme($color_class, 'light', 'full_colorization');
+
+        font-family: Vag;
+        background-color: var(--c-background);
+        color: var(--c-text);
+
+        &.part_colorization {
+            @include full_theme($color_class, 'light', 'part_colorization');
+        }
+
+        &.dark {
+            &.part_colorization {
+                @include full_theme($color_class, 'dark', 'part_colorization');
+            }
+            @include full_theme($color_class, 'dark', 'full_colorization');
+        }
+    }
+}
+@mixin themes($color_classes) {
+    @for $i from 0 to length($color_classes) {
+        @include theme(nth($color_classes, $i + 1))
+    }
+}
+
+@include themes('default' 'green' 'orange' 'light-blue' 'yellow' 'purple' 'red')

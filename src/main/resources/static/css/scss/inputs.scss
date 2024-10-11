@@ -1,0 +1,16 @@
+@import "./vars.scss";
+
+input, textarea, select {
+    font-family: Vag;
+    font-size: medium;
+    border-radius: $radius;
+    padding: 0 $pad;
+    box-shadow: 2px 3px 0 var(--c-input-shadow);
+    color: var(--c-input-text);
+    background-color: var(--c-input-background);
+    &[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        box-shadow: none;
+    }
+}
