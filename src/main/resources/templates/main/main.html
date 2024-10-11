@@ -2,11 +2,11 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="~{base :: head(page_title='Главная')}"></head>
   <body>
-  <div th:replace="~{base :: body_block(body_title='Главная', body_content=~{:: content})}"></div>
-  <div th:remove="all">
-    <div th:fragment="content">
+    <div th:replace="~{base :: body_block(body_title='Главная', body_content=~{:: content})}"></div>
+      <div th:remove="all">
+        <div th:fragment="content">
 
-    </div>
-  </div>
+        </div>
+      </div>
   </body>
 </html>
