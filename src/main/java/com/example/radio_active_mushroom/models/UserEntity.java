@@ -1,11 +1,10 @@
 package com.example.radio_active_mushroom.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -15,5 +14,32 @@ public class UserEntity {
     @Id
     @Column(name = "username", nullable = false)
     private String username;
+
+    @Column(name = "password", nullable = false, length = 256)
+    private String password;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "first_name", nullable = false)
+    private String first_name;
+
+    @Column(name = "last_name", nullable = false)
+    private String last_name;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean is_active = false;
+
+    @Column(name = "is_staff", nullable = false)
+    private Boolean is_staff = false;
+
+    @Column(name = "is_superuser", nullable = false)
+    private Boolean is_superuser = false;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime created_at = LocalDateTime.now();
+
+    @Column(name = "last_login", nullable = false)
+    private LocalDateTime last_login;
 
 }
