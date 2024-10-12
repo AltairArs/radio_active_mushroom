@@ -20,8 +20,15 @@ public class SpringSecurityConfiguration {
                                 "/accounts/verify/**",
                                 "/accounts/registration/done/**",
                                 "/accounts/verification/complete/**",
-                                "/accounts/verification/failed/**").permitAll()
-        )
+                                "/accounts/verification/failed/**",
+                                "/accounts/login/**"
+                        ).permitAll()
+        ).authorizeHttpRequests(
+                authorizeRequests -> authorizeRequests
+                        .requestMatchers(
+                                "/accounts/logout/**"
+                        ).authenticated()
+                )
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }
