@@ -20,7 +20,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     private UserRepository userRepository;
 
     @Autowired
-    private JavaMailSender mailSender;
+    private MailService mailService;
 
     @Override
     public UserRegistrationDto GetUserRegistrationForm() {
@@ -37,15 +37,14 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         user.setLast_name(userRegistrationDto.getLast_name());
         user.setVerification_token(UUID.randomUUID().toString());
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(userRegistrationDto.getEmail());
-        message.setSubject("Активация аккаунта Radio Active Mushroom");
-        message.setFrom("serzh.radchenko.2003@gmail.com");
-        message.setText("Перейдите по ссылке ниже, чтобы активировать ваш аккаунт Radio Active Mushroom\n"
-                + ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString()
-                + "/accounts/verify/"
-                + user.getVerification_token() + "/");
-        mailSender.send(message);
+        mailService.sendMail(
+                userRegistrationDto.getEmail(),
+                "Активация аккаунта Radio Active Mushroom",
+                "Перейдите по ссылке ниже, чтобы активировать ваш аккаунт Radio Active Mushroom\n"
+                        + ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString()
+                        + "/accounts/verify/"
+                        + user.getVerification_token() + "/"
+        );
         userRepository.save(user);
         return user;
     }
