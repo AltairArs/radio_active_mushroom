@@ -48,10 +48,7 @@
 
                 <tr th:if="${#fields.hasGlobalErrors()}" th:each="err : ${#fields.globalErrors()}"><td colspan="3" th:text="${err}" class="error-on-1"></td></tr>
 
-                <tr>
-                  <td class="btn-center"><input type="submit" value="Зарегистрироваться" class="btn-action-on-1"></td>
-                  <td class="btn-center"><input type="reset" value="Очистить" class="btn-action-on-1"></td>
-                </tr>
+                <div th:replace="~{fragments/forms :: form_buttons(submit_value='Зарегистрироваться')}"></div>
               </table>
             </form>
           </div>

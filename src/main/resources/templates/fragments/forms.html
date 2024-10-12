@@ -1,0 +1,7 @@
+<!--
+<div th:replace="~{fragments/forms :: form_buttons(submit_value='Войти')}"></div>
+-->
+<tr th:fragment="form_buttons">
+  <td class="btn-center"><input type="submit" th:value="${submit_value}" class="btn-action-on-1"></td>
+  <td class="btn-center"><input type="reset" value="Очистить" class="btn-action-on-1"></td>
+</tr>

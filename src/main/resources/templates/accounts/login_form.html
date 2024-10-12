@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title='Вход')}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Вход', body_content=~{:: content})}"></div>
+<div th:remove="all">
+  <div th:fragment="content">
+    <form method="post" th:object="${form}">
+      <div th:replace="~{fragments/csrf :: token}"></div>
+      <table>
+        <tr>
+
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+
+        </tr>
+        <div th:replace="~{fragments/forms :: form_buttons(submit_value='Войти')}"></div>
+      </table>
+    </form>
+  </div>
+</div>
+</body>
+</html>

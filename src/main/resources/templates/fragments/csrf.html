@@ -1,1 +1,4 @@
+<!--
+<div th:replace="~{fragments/csrf :: token}"></div>
+-->
 <input th:fragment="token" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
