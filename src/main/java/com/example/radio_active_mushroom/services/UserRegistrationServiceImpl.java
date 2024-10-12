@@ -4,8 +4,6 @@ import com.example.radio_active_mushroom.dto.UserRegistrationDto;
 import com.example.radio_active_mushroom.models.UserEntity;
 import com.example.radio_active_mushroom.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -28,7 +26,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     }
 
     @Override
-    public UserEntity RegisterNewUser(UserRegistrationDto userRegistrationDto) {
+    public void RegisterNewUser(UserRegistrationDto userRegistrationDto) {
         UserEntity user = new UserEntity();
         user.setUsername(userRegistrationDto.getUsername());
         user.setPassword(new BCryptPasswordEncoder().encode(userRegistrationDto.getPassword()));
@@ -46,7 +44,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
                         + user.getVerification_token() + "/"
         );
         userRepository.save(user);
-        return user;
     }
 
     @Override
@@ -56,6 +53,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
             return false;
         } else {
             user.get().setIs_active(true);
+            user.get().setVerification_token(null);
             userRepository.save(user.get());
             return true;
         }
