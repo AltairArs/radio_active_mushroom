@@ -14,7 +14,10 @@ public class SpringSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
-                        .requestMatchers("/**", "/accounts/registration/**").permitAll()
+                        .requestMatchers(
+                                "/**",
+                                "/accounts/registration/**",
+                                "/accounts/verify/**").permitAll()
         )
                 .httpBasic(Customizer.withDefaults());
         return http.build();

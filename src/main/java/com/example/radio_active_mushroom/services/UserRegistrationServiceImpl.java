@@ -8,6 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -41,7 +42,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         message.setSubject("Активация аккаунта Radio Active Mushroom");
         message.setFrom("serzh.radchenko.2003@gmail.com");
         message.setText("Перейдите по ссылке ниже, чтобы активировать ваш аккаунт Radio Active Mushroom\n"
-            + "http://localhost:8080/accounts/verify/" + user.getVerification_token() + "/");
+                + ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString()
+                + "/accounts/verify/"
+                + user.getVerification_token() + "/");
         mailSender.send(message);
         return user;
     }
