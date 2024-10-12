@@ -12,29 +12,42 @@
               <table>
                 <tr>
                   <td>Ник</td>
-                  <td><input th:field="*{username}" type="text" maxlength="255" required></td>
+                  <td><input th:field="*{username}" type="text"></td>
                 </tr>
-                <tr><td class="help-text">Вводите только английские символы и "_", "-"</td></tr>
+                <tr><td th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td></tr>
+
                 <tr>
                   <td>Email</td>
-                  <td><input th:field="*{email}" type="text" maxlength="255" required></td>
+                  <td><input th:field="*{email}" type="text"></td>
                 </tr>
+                <tr><td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td></tr>
+
                 <tr>
                   <td>Имя</td>
-                  <td><input th:field="*{first_name}" type="text" maxlength="255" required></td>
+                  <td><input th:field="*{first_name}" type="text"></td>
                 </tr>
+                <tr><td th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}"></td></tr>
+
                 <tr>
                   <td>Фамилия</td>
-                  <td><input th:field="*{last_name}" type="text" maxlength="255" required></td>
+                  <td><input th:field="*{last_name}" type="text"></td>
                 </tr>
+                <tr><td th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></td></tr>
+
                 <tr>
                   <td>Пароль</td>
-                  <td><input th:field="*{password}" type="password" maxlength="255" required></td>
+                  <td><input th:field="*{password}" type="password"></td>
                 </tr>
+                <tr><td th:if="${#fields.hasErrors('password')}"><p th:errors="*{password}"></p></td></tr>
+
                 <tr>
                   <td>Повторите пароль еще раз</td>
-                  <td><input th:field="*{confirm_password}" type="password" maxlength="255" required></td>
+                  <td><input th:field="*{confirm_password}" type="password"></td>
                 </tr>
+                <tr><td th:if="${#fields.hasErrors('confirm_password')}" th:errors="*{confirm_password}"></td></tr>
+
+                <tr><td th:if="${#fields.hasGlobalErrors()}" th:errors="*{#fields.globalErrors()}"></td></tr>
+
                 <tr>
                   <td class="btn-center"><input type="submit" value="Зарегистрироваться" class="btn-action-on-1"></td>
                   <td class="btn-center"><input type="reset" value="Очистить" class="btn-action-on-1"></td>

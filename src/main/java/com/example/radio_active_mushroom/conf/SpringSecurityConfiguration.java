@@ -17,7 +17,10 @@ public class SpringSecurityConfiguration {
                         .requestMatchers(
                                 "/**",
                                 "/accounts/registration/**",
-                                "/accounts/verify/**").permitAll()
+                                "/accounts/verify/**",
+                                "/accounts/registration/done/**",
+                                "/accounts/verification/complete/**",
+                                "/accounts/verification/failed/**").permitAll()
         )
                 .httpBasic(Customizer.withDefaults());
         return http.build();

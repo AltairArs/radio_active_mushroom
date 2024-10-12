@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.dto;
 
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -12,11 +13,25 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class UserRegistrationDto implements Serializable {
+    @NotBlank
+    @Size(min = 3, max = 255)
     private String username;
+    @NotBlank
+    @Size(min = 8, max = 255)
     private String password;
+    @NotBlank
+    @Email
+    @Size(max = 255)
     private String email;
+    @NotBlank
+    @Size(max = 255)
     private String first_name;
+    @NotBlank
+    @Size(max = 255)
     private String last_name;
+    @NotBlank
+    @Size(max = 255)
     private String confirm_password;
 }

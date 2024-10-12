@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title='Верификация')}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Верификация не удачна', body_content=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+        <h2>Ваша ссылка не верна или вы еще не прошли регистрацию</h2>
+    </div>
+</div>
+</body>
+</html>
