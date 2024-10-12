@@ -5,6 +5,7 @@
 <div th:replace="~{base :: body_block(body_title='Вход', body_content=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
+    <h3>Вход возможен по нику или по Email</h3>
     <div class="container-center container-1" th:insert="~{fragments/forms :: form_block(
     form_action='',
     form_object='form',
