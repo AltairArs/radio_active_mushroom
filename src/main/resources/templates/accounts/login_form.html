@@ -5,21 +5,16 @@
 <div th:replace="~{base :: body_block(body_title='Вход', body_content=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
-    <form method="post" th:object="${form}">
-      <div th:replace="~{fragments/csrf :: token}"></div>
-      <table>
-        <tr>
-
-        </tr>
-        <tr>
-
-        </tr>
-        <tr>
-
-        </tr>
-        <div th:replace="~{fragments/forms :: form_buttons(submit_value='Войти')}"></div>
-      </table>
-    </form>
+    <div class="container-center container-1" th:insert="~{fragments/forms :: form_block(
+    form_action='',
+    form_object='form',
+    submit_value='Войти',
+    fields=${ {
+      {'Ник', 'username', 'row_text'},
+      {'Email', 'email', 'row_text'},
+      {'Пароль', 'password', 'row_pswd'}
+    } }
+    )}"></div>
   </div>
 </div>
 </body>

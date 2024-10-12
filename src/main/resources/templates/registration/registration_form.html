@@ -6,52 +6,19 @@
       <div th:remove="all">
         <div th:fragment="content">
 
-          <div class="container-1 container-center">
-            <form method="post" th:object="${form}">
-              <div th:replace="~{fragments/csrf :: token}"></div>
-              <table>
-                <tr>
-                  <td>Ник</td>
-                  <td><input th:field="*{username}" type="text"></td>
-                </tr>
-                <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></td></tr>
-
-                <tr>
-                  <td>Email</td>
-                  <td><input th:field="*{email}" type="text"></td>
-                </tr>
-                <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td></tr>
-
-                <tr>
-                  <td>Имя</td>
-                  <td><input th:field="*{first_name}" type="text"></td>
-                </tr>
-                <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors('first_name')}" th:errors="*{first_name}"></td></tr>
-
-                <tr>
-                  <td>Фамилия</td>
-                  <td><input th:field="*{last_name}" type="text"></td>
-                </tr>
-                <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}"></td></tr>
-
-                <tr>
-                  <td>Пароль</td>
-                  <td><input th:field="*{password}" type="password"></td>
-                </tr>
-                <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td></tr>
-
-                <tr>
-                  <td>Повторите пароль еще раз</td>
-                  <td><input th:field="*{confirm_password}" type="password"></td>
-                </tr>
-                <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors('confirm_password')}" th:errors="*{confirm_password}"></td></tr>
-
-                <tr th:if="${#fields.hasGlobalErrors()}" th:each="err : ${#fields.globalErrors()}"><td colspan="3" th:text="${err}" class="error-on-1"></td></tr>
-
-                <div th:replace="~{fragments/forms :: form_buttons(submit_value='Зарегистрироваться')}"></div>
-              </table>
-            </form>
-          </div>
+          <div class="container-1 container-center" th:insert="~{fragments/forms :: form_block(
+          form_action='',
+          form_object='form',
+          submit_value='Зарегистрироваться',
+          fields=${ {
+            {'Ник', 'username', 'row_text'},
+            {'Email', 'email', 'row_text'},
+            {'Имя', 'first_name', 'row_text'},
+            {'Фамилия', 'last_name', 'row_text'},
+            {'Пароль', 'password', 'row_pswd'},
+            {'Введите пароль еще раз', 'confirm_password', 'row_pswd'}
+          } }
+          )}"></div>
 
         </div>
       </div>
