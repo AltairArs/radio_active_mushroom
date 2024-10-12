@@ -1,13 +1,15 @@
 package com.example.radio_active_mushroom.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "user_entity")
 public class UserEntity {
@@ -39,7 +41,7 @@ public class UserEntity {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime created_at = LocalDateTime.now();
 
-    @Column(name = "last_login", nullable = false)
+    @Column(name = "last_login")
     private LocalDateTime last_login;
 
 }

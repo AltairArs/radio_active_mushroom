@@ -5,6 +5,8 @@ input, textarea, select {
     font-size: medium;
     border-radius: $radius;
     padding: 0 $pad;
+    margin-top: $pad;
+    margin-bottom: $pad;
     box-shadow: 2px 3px 0 var(--c-input-shadow);
     color: var(--c-input-text);
     background-color: var(--c-input-background);

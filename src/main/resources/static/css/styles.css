@@ -893,6 +893,8 @@ input, textarea, select {
   font-size: medium;
   border-radius: 20px;
   padding: 0 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   box-shadow: 2px 3px 0 var(--c-input-shadow);
   color: var(--c-input-text);
   background-color: var(--c-input-background);
@@ -975,8 +977,11 @@ body {
 }
 
 .btn-center {
-  width: 100%;
   text-align: center;
+}
+
+.w-full {
+  width: 100%;
 }
 
 body {

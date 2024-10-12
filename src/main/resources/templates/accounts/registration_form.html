@@ -6,6 +6,42 @@
       <div th:remove="all">
         <div th:fragment="content">
 
+          <div class="container-1 container-center">
+            <form method="post" th:object="${form}">
+              <div th:replace="~{fragments/csrf :: token}"></div>
+              <table>
+                <tr>
+                  <td>Ник</td>
+                  <td><input th:field="*{username}" type="text" maxlength="255" required></td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td><input th:field="*{email}" type="text" maxlength="255" required></td>
+                </tr>
+                <tr>
+                  <td>Имя</td>
+                  <td><input th:field="*{first_name}" type="text" maxlength="255" required></td>
+                </tr>
+                <tr>
+                  <td>Фамилия</td>
+                  <td><input th:field="*{last_name}" type="text" maxlength="255" required></td>
+                </tr>
+                <tr>
+                  <td>Пароль</td>
+                  <td><input th:field="*{password}" type="password" maxlength="255" required></td>
+                </tr>
+                <tr>
+                  <td>Повторите пароль еще раз</td>
+                  <td><input th:field="*{confirm_password}" type="password" maxlength="255" required></td>
+                </tr>
+                <tr>
+                  <td class="btn-center"><input type="submit" value="Зарегистрироваться" class="btn-action-on-1"></td>
+                  <td class="btn-center"><input type="reset" value="Очистить" class="btn-action-on-1"></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+
         </div>
       </div>
   </body>
