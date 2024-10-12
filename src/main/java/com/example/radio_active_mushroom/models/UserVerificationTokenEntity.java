@@ -1,18 +1,23 @@
 package com.example.radio_active_mushroom.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "user_verification_token_entity")
 public class UserVerificationTokenEntity {
     @Id
+    private String username;
+
     @OneToOne(cascade = CascadeType.ALL)
+    @MapsId
     @JoinColumn(name = "username", referencedColumnName = "username")
     private UserEntity user;
 
