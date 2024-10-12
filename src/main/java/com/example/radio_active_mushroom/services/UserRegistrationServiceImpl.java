@@ -3,6 +3,7 @@ package com.example.radio_active_mushroom.services;
 import com.example.radio_active_mushroom.dto.UserRegistrationDto;
 import com.example.radio_active_mushroom.models.UserEntity;
 import com.example.radio_active_mushroom.repo.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     @Autowired
     private MailService mailService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public UserRegistrationDto GetUserRegistrationForm() {
         return new UserRegistrationDto();
@@ -27,12 +31,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
     @Override
     public void RegisterNewUser(UserRegistrationDto userRegistrationDto) {
-        UserEntity user = new UserEntity();
-        user.setUsername(userRegistrationDto.getUsername());
-        user.setPassword(new BCryptPasswordEncoder().encode(userRegistrationDto.getPassword()));
-        user.setEmail(userRegistrationDto.getEmail());
-        user.setFirst_name(userRegistrationDto.getFirst_name());
-        user.setLast_name(userRegistrationDto.getLast_name());
+        UserEntity user = modelMapper.map(userRegistrationDto, UserEntity.class);
         user.setVerification_token(UUID.randomUUID().toString());
 
         mailService.sendMail(
