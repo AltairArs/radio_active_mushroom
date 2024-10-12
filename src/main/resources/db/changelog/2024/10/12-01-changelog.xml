@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1728711205359-2" author="Сергей">
+        <createTable tableName="user_verification_token_entity">
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_verification_token_entity"/>
+            </column>
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="verification_token" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1728711205359-3" author="Сергей">
+        <addForeignKeyConstraint baseColumnNames="username" baseTableName="user_verification_token_entity"
+                                 constraintName="FK_USER_VERIFICATION_TOKEN_ENTITY_ON_USERNAME"
+                                 referencedColumnNames="username" referencedTableName="user_entity"/>
+    </changeSet>
+    <changeSet id="1728711205359-1" author="Сергей">
+        <dropNotNullConstraint columnDataType="datetime" columnName="last_login" tableName="user_entity"/>
+    </changeSet>
+
+</databaseChangeLog>
