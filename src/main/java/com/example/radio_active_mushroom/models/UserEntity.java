@@ -44,4 +44,7 @@ public class UserEntity {
     @Column(name = "last_login")
     private LocalDateTime last_login;
 
+    @Column(name = "verification_token")
+    private String verification_token;
+
 }
