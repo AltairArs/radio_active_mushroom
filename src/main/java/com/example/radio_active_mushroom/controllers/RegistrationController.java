@@ -27,8 +27,11 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("form", form);
             return "registration/registration_form";
-        } else
+        } else {
+            userRegistrationService.RegisterNewUser(form);
             return "redirect:/accounts/registration/done/";
+        }
+
     }
 
     @GetMapping("registration/done/")

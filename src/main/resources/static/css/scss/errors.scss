@@ -1,0 +1,9 @@
+@import "./containers.scss";
+
+.error-on-1 {
+  @extend .container-2;
+}
+
+.error-on-2 {
+  @extend .container-1;
+}

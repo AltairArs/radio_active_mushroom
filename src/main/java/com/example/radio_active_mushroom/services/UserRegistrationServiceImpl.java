@@ -36,7 +36,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
         user.setFirst_name(userRegistrationDto.getFirst_name());
         user.setLast_name(userRegistrationDto.getLast_name());
         user.setVerification_token(UUID.randomUUID().toString());
-        userRepository.save(user);
+
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(userRegistrationDto.getEmail());
         message.setSubject("Активация аккаунта Radio Active Mushroom");
@@ -46,6 +46,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
                 + "/accounts/verify/"
                 + user.getVerification_token() + "/");
         mailSender.send(message);
+        userRepository.save(user);
         return user;
     }
 
