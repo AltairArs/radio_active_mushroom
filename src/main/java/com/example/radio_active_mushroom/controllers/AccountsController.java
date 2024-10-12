@@ -27,16 +27,23 @@ public class AccountsController {
 
     @PostMapping("login/")
     public String login_post(@Valid @ModelAttribute("form") UserLoginDto form, BindingResult bindingResult, Model model) {
-        return "accounts/login_form";
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("form", form);
+            return "accounts/login_form";
+        } else {
+            accountsService.Login(form);
+            return "redirect:/";
+        }
     }
 
     @GetMapping("logout/")
     public String logout() {
-        return "accounts/logout";
+        return "accounts/logout_form";
     }
 
     @PostMapping("logout/")
     public String logout_post() {
-        return "accounts/logout";
+        accountsService.Logout();
+        return "accounts/logout_form";
     }
 }

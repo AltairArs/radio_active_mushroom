@@ -9,4 +9,14 @@ public class AccountsServiceImpl implements AccountsService {
     public UserLoginDto GetUserLoginForm() {
         return new UserLoginDto();
     }
+
+    @Override
+    public void Login(UserLoginDto userLoginDto) {
+
+    }
+
+    @Override
+    public void Logout() {
+
+    }
 }

@@ -33,6 +33,16 @@
 -->
 <input th:fragment="csrf_token" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 <!--
+
+--
+  form_action
+  submit_value
+-->
+<form method="post" th:fragment="button_form" th:action="${form_action}">
+  <div th:replace="~{:: csrf_token}"></div>
+  <input type="submit" th:value="${submit_value}" class="btn-action">
+</form>
+<!--
 <div class="container-1 container-center" th:insert="~{fragments/forms :: form_block(
 form_action='',
 form_object='form',
