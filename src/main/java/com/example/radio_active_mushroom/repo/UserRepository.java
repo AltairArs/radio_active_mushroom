@@ -9,4 +9,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity, String> {
     @Query("select u from UserEntity u where u.verification_token = ?1")
     Optional<UserEntity> findByVerification_token(String verification_token);
+
+    Optional<UserEntity> findByUsername(String username);
+
+    Optional<UserEntity> findByEmail(String email);
 }

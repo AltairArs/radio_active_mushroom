@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static org.springframework.beans.factory.support.InstanceSupplier.using;
-
 @Configuration
 public class ModelMapperConfiguration {
     @Bean
@@ -18,7 +16,7 @@ public class ModelMapperConfiguration {
         modelmapper.getConfiguration()
                 .setFieldMatchingEnabled(true)
                 .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE);
-        Converter<String, String> passwordEncode = src -> new BCryptPasswordEncoder().encode(src.getSource());
+        Converter<String, String> passwordEncode = src -> new BCryptPasswordEncoder(5).encode(src.getSource());
         modelmapper.createTypeMap(UserRegistrationDto.class, UserEntity.class)
                 .addMappings(mapper -> mapper
                                 .using(passwordEncode)

@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.models;
 
+import com.example.radio_active_mushroom.enums.UserRoleEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,12 +33,6 @@ public class UserEntity {
     @Column(name = "is_active", nullable = false)
     private Boolean is_active = false;
 
-    @Column(name = "is_staff", nullable = false)
-    private Boolean is_staff = false;
-
-    @Column(name = "is_superuser", nullable = false)
-    private Boolean is_superuser = false;
-
     @Column(name = "created_at", nullable = false)
     private LocalDateTime created_at = LocalDateTime.now();
 
@@ -46,5 +41,9 @@ public class UserEntity {
 
     @Column(name = "verification_token")
     private String verification_token;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role", nullable = false, length = 10)
+    private UserRoleEnum userRoleEnum = UserRoleEnum.ROLE_USER;
 
 }

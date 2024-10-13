@@ -1,23 +1,27 @@
-<nav th:fragment="header" class="nav">
+<nav th:fragment="header" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
     <li class="nav-item">
         <a class="btn-nav" th:href="@{/}">Главная</a>
     </li>
     <li class="nav-item">
         <a class="btn-nav" href="">Версии</a>
     </li>
-    <li class="nav-item">
-        <a class="btn-nav" href="">Проекты</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn-nav" href="">Профиль</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn-auth" th:href="@{/accounts/logout/}">Выход</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn-auth" th:href="@{/accounts/login/}">Вход</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn-auth" th:href="@{/accounts/registration/}">Регистрация</a>
-    </li>
+    <th:block sec:authorize="isAuthenticated()">
+        <li class="nav-item">
+            <a class="btn-nav" href="">Проекты</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn-nav" href="">Профиль</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn-auth" th:href="@{/accounts/logout/}">Выход</a>
+        </li>
+    </th:block>
+    <th:block sec:authorize="!isAuthenticated()">
+        <li class="nav-item">
+            <a class="btn-auth" th:href="@{/accounts/login/}">Вход</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn-auth" th:href="@{/accounts/registration/}">Регистрация</a>
+        </li>
+    </th:block>
 </nav>

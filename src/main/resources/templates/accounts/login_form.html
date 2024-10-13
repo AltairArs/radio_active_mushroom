@@ -6,6 +6,7 @@
 <div th:remove="all">
   <div th:fragment="content">
     <h3>Вход возможен по нику или по Email</h3>
+    <p th:if="${param.error}">Неверные данные или вы неактивировали аккаунт</p>
     <div class="container-center container-1" th:insert="~{fragments/forms :: form_block(
     form_action='',
     form_object='form',
