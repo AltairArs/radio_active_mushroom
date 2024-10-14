@@ -44,6 +44,6 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role", nullable = false, length = 10)
-    private UserRoleEnum userRoleEnum = UserRoleEnum.ROLE_USER;
+    private UserRoleEnum role = UserRoleEnum.ROLE_USER;
 
 }

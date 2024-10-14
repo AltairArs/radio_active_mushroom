@@ -16,7 +16,7 @@
 <th:block th:fragment="row_text">
   <tr>
     <td>[[${field_label}]]</td>
-    <td><input th:field="*{__${field_name}__}" type="text"></td>
+    <td><input th:field="*{__${field_name}__}" type="text" th:placeholder="${field_label}"></td>
   </tr>
   <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
@@ -24,7 +24,7 @@
 <th:block th:fragment="row_pswd">
   <tr>
     <td>[[${field_label}]]</td>
-    <td><input th:field="*{__${field_name}__}" type="password"></td>
+    <td><input th:field="*{__${field_name}__}" type="password" th:placeholder="${field_label}"></td>
   </tr>
   <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
