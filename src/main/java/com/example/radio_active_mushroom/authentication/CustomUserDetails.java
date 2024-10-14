@@ -3,6 +3,7 @@ package com.example.radio_active_mushroom.authentication;
 import com.example.radio_active_mushroom.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
     private String username;

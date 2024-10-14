@@ -5,7 +5,6 @@ import com.example.radio_active_mushroom.models.UserEntity;
 import com.example.radio_active_mushroom.repo.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

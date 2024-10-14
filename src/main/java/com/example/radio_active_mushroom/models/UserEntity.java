@@ -43,7 +43,7 @@ public class UserEntity {
     private String verification_token;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_role", nullable = false, length = 10)
+    @Column(name = "user_role", nullable = false, length = 30)
     private UserRoleEnum role = UserRoleEnum.ROLE_USER;
 
 }
