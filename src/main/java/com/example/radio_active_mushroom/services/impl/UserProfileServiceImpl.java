@@ -58,9 +58,9 @@ public class UserProfileServiceImpl implements UserProfileService {
             userEntity.setFirst_name(userSettings.getFirst_name());
             userEntity.setLast_name(userSettings.getLast_name());
 
-            themeEntity.setColorization(themeEntity.getColorization());
-            themeEntity.setMode(themeEntity.getMode());
-            themeEntity.setColor(themeEntity.getColor());
+            themeEntity.setColorization(userSettings.getColorization());
+            themeEntity.setMode(userSettings.getMode());
+            themeEntity.setColor(userSettings.getColor());
 
             userRepository.save(userEntity);
             themeRepository.save(themeEntity);
@@ -71,7 +71,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserSettingsDto GetUserSettings(String username) {
-        UserSettingsDto userSettings = modelMapper.map(themeRepository.findByUsername(username), UserSettingsDto.class);
+        UserSettingsDto userSettings = modelMapper.map(GetUserTheme(username), UserSettingsDto.class);
         UserEntity user = userRepository.findByUsername(username).get();
         userSettings.setFirst_name(user.getFirst_name());
         userSettings.setLast_name(user.getLast_name());

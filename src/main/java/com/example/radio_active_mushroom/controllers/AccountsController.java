@@ -4,6 +4,7 @@ import com.example.radio_active_mushroom.authentication.CustomAuthenticationServ
 import com.example.radio_active_mushroom.dto.UserLoginDto;
 import com.example.radio_active_mushroom.dto.UserSettingsDto;
 import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.services.UserProfileService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,6 +28,9 @@ public class AccountsController {
 
     @Autowired
     private CustomAuthenticationService authenticationService;
+
+    @Autowired
+    private UserProfileService userProfileService;
 
     @GetMapping("login/")
     public String login(Model model) {
@@ -82,12 +86,15 @@ public class AccountsController {
 
     @GetMapping("profile/settings/")
     public String profileSettings(Model model) {
-        model.addAttribute("form", new UserSettingsDto());
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("form", userProfileService.GetUserSettings(user.getUsername()));
         return "accounts/profile_settings";
     }
 
     @PostMapping("profile/settings/")
     public String profileSettingsPost(@ModelAttribute("form") UserSettingsDto form) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        userProfileService.SaveUserSettings(form, user.getUsername());
         return "redirect:/accounts/profile/";
     }
 }

@@ -16,7 +16,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("theme_entity")
 public class ThemeEntity {
     @Id
-    @Column(name = "username", nullable = false)
+    private String id;
+
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Enumerated(EnumType.STRING)
