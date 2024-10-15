@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,5 +47,8 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role", nullable = false, length = 30)
     private UserRoleEnum role = UserRoleEnum.ROLE_USER;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProjectEntity> projects_as_owner = new LinkedHashSet<>();
 
 }

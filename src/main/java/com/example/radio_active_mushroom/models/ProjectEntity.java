@@ -20,16 +20,17 @@ public class ProjectEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Id
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "owner_username")
+    private UserEntity owner;
+
     @Column(name = "friendly_name")
     private String friendly_name;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
-
-    @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "owner_username", nullable = false)
-    private UserEntity userEntity;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime created_at = LocalDateTime.now();
@@ -39,24 +40,17 @@ public class ProjectEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "can_see", nullable = false, length = 12)
-    private ProjectPermissionsEnum can_see;
+    private ProjectPermissionsEnum can_see = ProjectPermissionsEnum.ONLY_OWNER;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "can_edit", nullable = false, length = 12)
-    private ProjectPermissionsEnum can_edit;
+    private ProjectPermissionsEnum can_edit = ProjectPermissionsEnum.ONLY_OWNER;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "can_download", nullable = false, length = 12)
-    private ProjectPermissionsEnum can_download;
+    private ProjectPermissionsEnum can_download = ProjectPermissionsEnum.ONLY_OWNER;
 
     @Column(name = "members_can_add_others", nullable = false)
     private Boolean members_can_add_others = false;
-
-    @ToString.Exclude
-    @ManyToMany
-    @JoinTable(name = "project_members",
-            joinColumns = @JoinColumn(name = "project_name"),
-            inverseJoinColumns = @JoinColumn(name = "username"))
-    private Set<UserEntity> members = new LinkedHashSet<>();
 
 }
