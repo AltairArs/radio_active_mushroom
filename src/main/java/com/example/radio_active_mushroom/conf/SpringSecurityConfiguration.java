@@ -45,9 +45,11 @@ public class SpringSecurityConfiguration {
                                 "/accounts/registration/done/",
                                 "/accounts/verification/complete/",
                                 "/accounts/verification/failed/",
-                                "/accounts/login/",
-                                "/accounts/logout/"
+                                "/accounts/login/"
                         ).permitAll()
+                        .requestMatchers(
+                                "/accounts/logout/"
+                        ).hasAuthority("LOGOUT")
                 );
         return http.build();
     }
