@@ -85,4 +85,9 @@ public class AccountsController {
         model.addAttribute("form", new UserSettingsDto());
         return "accounts/profile_settings";
     }
+
+    @PostMapping("profile/settings/")
+    public String profileSettingsPost(@ModelAttribute("form") UserSettingsDto form) {
+        return "redirect:/accounts/profile/";
+    }
 }
