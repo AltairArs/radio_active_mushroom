@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(page_title='Главная')}"></head>
+<head th:replace="~{base :: head(page_title='Настройки')}"></head>
 <body>
-<div th:replace="~{base :: body_block(body_title='Главная', body_content=~{:: content})}"></div>
+<div th:replace="~{base :: body_block(body_title='Настройки', body_content=~{:: content})}"></div>
 <div th:remove="all">
     <div th:fragment="content">
-
+        <form method="post" th:object="${form}">
+            <div th:replace="~{fragments/forms :: csrf_token}"></div>
+            <div class="row">
+                <div class="container-1 cell">
+                    <h3>Персональная информация</h3>
+                    <table>
+                        <div th:replace="~{fragments/forms :: row_text(field_label='Имя', field_name='first_name', level=1)}"></div>
+                        <div th:replace="~{fragments/forms :: row_text(field_label='Фамилия', field_name='last_name', level=1)}"></div>
+                    </table>
+                </div>
+                <div class="container-1 cell">
+                    <h3>Тема</h3>
+                    <table>
+                        <div th:replace="~{fragments/forms :: row_select(field_label='Цвет', field_name='color', level=1, options=${ {
+                        {'DEFAULT', 'По умолчанию'},
+                        {'GREEN', 'Зеленый'},
+                        {'YELLOW', 'Желтый'},
+                        {'LIGHT_BLUE', 'Голубой'},
+                        {'RED', 'Красный'},
+                        {'PURPLE', 'Фиолетовый'},
+                        {'ORANGE', 'Оранжевый'}
+                        } })}"></div>
+                        <div th:replace="~{fragments/forms :: row_select(field_label='Мод', field_name='mode', level=1, options=${ {
+                        {'LIGHT', 'Светлая'},
+                        {'DARK', 'Темная'}
+                        } })}"></div>
+                        <div th:replace="~{fragments/forms :: row_select(field_label='Колоризация', field_name='colorization', level=1, options=${ {
+                        {'FULL', 'Полная'},
+                        {'PART', 'Частичная'}
+                        } })}"></div>
+                    </table>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms :: form_buttons(submit_value='Сохранить')}"></div>
+        </form>
     </div>
 </div>
 </body>

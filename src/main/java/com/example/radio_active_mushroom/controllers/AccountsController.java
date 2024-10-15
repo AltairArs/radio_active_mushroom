@@ -2,6 +2,7 @@ package com.example.radio_active_mushroom.controllers;
 
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
 import com.example.radio_active_mushroom.dto.UserLoginDto;
+import com.example.radio_active_mushroom.dto.UserSettingsDto;
 import com.example.radio_active_mushroom.models.UserEntity;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -77,5 +78,11 @@ public class AccountsController {
         model.addAttribute("first_name", user.getFirst_name());
         model.addAttribute("last_name", user.getLast_name());
         return "accounts/profile";
+    }
+
+    @GetMapping("profile/settings/")
+    public String profileSettings(Model model) {
+        model.addAttribute("form", new UserSettingsDto());
+        return "accounts/profile_settings";
     }
 }

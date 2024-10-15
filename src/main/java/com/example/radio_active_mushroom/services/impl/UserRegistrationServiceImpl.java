@@ -26,11 +26,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     private ModelMapper modelMapper;
 
     @Override
-    public UserRegistrationDto GetUserRegistrationForm() {
-        return new UserRegistrationDto();
-    }
-
-    @Override
     public void RegisterNewUser(UserRegistrationDto userRegistrationDto) {
         UserEntity user = modelMapper.map(userRegistrationDto, UserEntity.class);
         user.setVerification_token(UUID.randomUUID().toString());

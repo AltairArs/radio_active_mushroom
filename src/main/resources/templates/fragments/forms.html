@@ -25,6 +25,16 @@
   </tr>
   <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
+
+<th:block th:fragment="row_select">
+  <tr>
+    <td th:text="${field_label}"></td>
+    <td><select th:field="*{__${field_name}__}">
+      <option th:each="option : ${options}" th:text="${option[1]}" th:value="${option[0]}"></option>
+    </select></td>
+  </tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+</th:block>
 <!--
 
 -->

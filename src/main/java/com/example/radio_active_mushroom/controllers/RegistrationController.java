@@ -17,7 +17,7 @@ public class RegistrationController {
 
     @GetMapping("registration/")
     public String registration_form(Model model) {
-        model.addAttribute("form", userRegistrationService.GetUserRegistrationForm());
+        model.addAttribute("form", new UserRegistrationDto());
         return "registration/registration_form";
     }
 
