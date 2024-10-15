@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(page_title=username)}"></head>
+<head th:replace="~{base :: head(page_title=${username})}"></head>
 <body>
 <div th:replace="~{base :: body_block(body_title='Профиль', body_content=~{:: content})}"></div>
 <div th:remove="all">

@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Slf4j
@@ -26,6 +27,15 @@ public class CustomAuthenticationService {
 
     @Autowired
     private UserProfileService userProfileService;
+
+    public void Login(String username) {
+        Optional<UserEntity> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            UserEntity userEntity = user.get();
+            userEntity.setLast_login(LocalDateTime.now());
+            userRepository.save(userEntity);
+        }
+    }
 
     private PasswordEncoder passwordEncoder() {return new BCryptPasswordEncoder(5);};
 

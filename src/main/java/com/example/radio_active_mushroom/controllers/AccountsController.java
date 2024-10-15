@@ -50,6 +50,7 @@ public class AccountsController {
                 model.addAttribute("form", form);
                 return "accounts/login_form";
             } else {
+                authenticationService.Login(authenticationService.GetCurrentUser(auth).getUsername());
                 return "redirect:/";
             }
         }
