@@ -1,8 +1,10 @@
-package com.example.radio_active_mushroom.services;
+package com.example.radio_active_mushroom.services.impl;
 
 import com.example.radio_active_mushroom.dto.UserRegistrationDto;
 import com.example.radio_active_mushroom.models.UserEntity;
 import com.example.radio_active_mushroom.repo.UserRepository;
+import com.example.radio_active_mushroom.services.MailService;
+import com.example.radio_active_mushroom.services.UserRegistrationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

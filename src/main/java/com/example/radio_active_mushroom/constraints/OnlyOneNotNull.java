@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.constraints;
 
+import com.example.radio_active_mushroom.constraints.validators.OnlyOneNotNullValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
