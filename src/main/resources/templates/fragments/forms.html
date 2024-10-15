@@ -1,75 +1,43 @@
 <!--
-<div th:replace="~{fragments/forms :: form_buttons(submit_value='Войти')}"></div>
---
-  submit_value
+  submit_value: String
+  level: int
 -->
 <tr th:fragment="form_buttons">
-  <td class="btn-center"><input type="submit" th:value="${submit_value}" class="btn-action-on-1"></td>
-  <td class="btn-center"><input type="reset" value="Очистить" class="btn-action-on-1"></td>
+  <td class="btn-center"><input type="submit" th:value="${submit_value}" th:classappend="${level} == 1 ? 'btn-action-on-1' : 'btn-action'"></td>
+  <td class="btn-center"><input type="reset" value="Очистить" th:classappend="${level} == 1 ? 'btn-action-on-1' : 'btn-action'"></td>
 </tr>
 <!--
-<tr th:replace="~{fragments/forms :: row_text(field_label='Ник', field_name='username')}"></tr>
---
-  field_name
-  field_label
+  field_name: String
+  field_label: String
 -->
 <th:block th:fragment="row_text">
   <tr>
-    <td>[[${field_label}]]</td>
+    <td th:text="${field_label}"></td>
     <td><input th:field="*{__${field_name}__}" type="text" th:placeholder="${field_label}"></td>
   </tr>
-  <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
 
 <th:block th:fragment="row_pswd">
   <tr>
-    <td>[[${field_label}]]</td>
+    <td th:text="${field_label}"></td>
     <td><input th:field="*{__${field_name}__}" type="password" th:placeholder="${field_label}"></td>
   </tr>
-  <tr><td colspan="3" class="error-on-1" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
 <!--
-<div th:replace="~{fragments/forms :: csrf_token}"></div>
+
 -->
 <input th:fragment="csrf_token" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 <!--
-
---
-  form_action
-  submit_value
+  form_action: Optional<String>
+  submit_value: String
 -->
 <form method="post" th:fragment="button_form" th:action="${form_action}">
   <div th:replace="~{:: csrf_token}"></div>
   <input type="submit" th:value="${submit_value}" class="btn-action">
 </form>
 <!--
-<div class="container-1 container-center" th:insert="~{fragments/forms :: form_block(
-form_action='',
-form_object='form',
-submit_value='Зарегистрироваться',
-fields=${ {
-  {'Ник', 'username', 'row_text'},
-  {'Email', 'email', 'row_text'}
-} }
-)}"></div>
---
-  form_action
-  form_object
-  submit_value
-  fields
-    label, name, type(row_text, row_pswd)
+  level: int
 -->
-<th:block th:fragment="form_block">
-  <form th:action="${form_action}" method="post" th:object="${__${form_object}__}">
-    <div th:replace="~{:: csrf_token}"></div>
-    <table>
-      <th:block th:each="field : ${fields}">
-        <div th:replace="~{:: __${field[2]}__(field_label=${field[0]}, field_name=${field[1]})}"></div>
-      </th:block>
-
-      <tr th:if="${#fields.hasGlobalErrors()}" th:each="err : ${#fields.globalErrors()}"><td colspan="3" th:text="${err}" class="error-on-1"></td></tr>
-
-      <div th:replace="~{:: form_buttons(submit_value=${submit_value})}"></div>
-    </table>
-  </form>
-</th:block>
+<tr th:if="${#fields.hasGlobalErrors()}" th:fragment="all_errors" th:each="err : ${#fields.globalErrors()}"><td colspan="2" th:text="${err}" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'"></td></tr>
