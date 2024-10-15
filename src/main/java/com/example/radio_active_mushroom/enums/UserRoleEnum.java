@@ -26,9 +26,10 @@ public enum UserRoleEnum {
     };
 
     private Collection<SimpleGrantedAuthority> getPermissions(String id) {
+        String permission_separator = "__";
         return Arrays.stream(permissions)
             .filter(authority -> authority.contains(id))
-            .map(permission -> new SimpleGrantedAuthority(permission.substring(permission.lastIndexOf("__") + 2)))
+            .map(permission -> new SimpleGrantedAuthority(permission.substring(permission.lastIndexOf(permission_separator) + permission_separator.length())))
             .toList();
     }
 

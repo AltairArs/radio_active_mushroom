@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title='Необработанная ошибка')}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Произошла непредвиденная ошибка', body_content=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+
+    </div>
+</div>
+</body>
+</html>

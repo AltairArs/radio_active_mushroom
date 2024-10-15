@@ -34,22 +34,11 @@ public class SpringSecurityConfiguration {
         http.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(
-                                "/css/**",
-                                "/js/**",
-                                "/img/**",
-                                "/fonts/**",
-                                "/favicon.ico",
-                                "/",
-                                "/accounts/registration/",
-                                "/accounts/verify/**",
-                                "/accounts/registration/done/",
-                                "/accounts/verification/complete/",
-                                "/accounts/verification/failed/",
-                                "/accounts/login/"
-                        ).permitAll()
-                        .requestMatchers(
                                 "/accounts/logout/"
                         ).hasAuthority("LOGOUT")
+                        .requestMatchers(
+                                "/**"
+                        ).permitAll()
                 );
         return http.build();
     }
