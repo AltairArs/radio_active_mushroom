@@ -1,9 +1,13 @@
 package com.example.radio_active_mushroom.authentication;
 
 import com.example.radio_active_mushroom.enums.UserRoleEnum;
+import com.example.radio_active_mushroom.models.ThemeEntity;
+import com.example.radio_active_mushroom.repo.ThemeRepository;
+import com.example.radio_active_mushroom.services.UserProfileService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,6 +16,7 @@ import java.util.Collection;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 public class CustomUserDetails implements UserDetails {
 
     private String username;
@@ -23,6 +28,24 @@ public class CustomUserDetails implements UserDetails {
     private UserRoleEnum role;
 
     private boolean is_active;
+
+    private UserProfileService userProfileService;
+
+    private ThemeEntity getTheme() {
+        return userProfileService.GetUserTheme(username);
+    }
+
+    public String getColorization() {
+        return getTheme().getColorization().name();
+    }
+
+    public String getMode() {
+        return getTheme().getMode().name();
+    }
+
+    public String getColor() {
+        return getTheme().getColor().name();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

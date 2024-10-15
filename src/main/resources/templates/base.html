@@ -8,7 +8,10 @@
   </head>
   <body>
 
-  <div th:fragment="body_block">
+  <div th:fragment="body_block" th:classappend="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'} ? (
+${#authentication.getPrincipal().getColor() + ' ' + #authentication.getPrincipal().getMode() + ' ' + #authentication.getPrincipal().getColorization()}
+  ) : 'LIGHT FULL DEFAULT'">
+
     <div th:replace="~{fragments/header :: header}"></div>
 
     <div style="padding: 50px 20px 0 20px">

@@ -1,7 +1,9 @@
 package com.example.radio_active_mushroom.authentication;
 
 import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.repo.ThemeRepository;
 import com.example.radio_active_mushroom.repo.UserRepository;
+import com.example.radio_active_mushroom.services.UserProfileService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class CustomAuthenticationService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private UserProfileService userProfileService;
+
     private PasswordEncoder passwordEncoder() {return new BCryptPasswordEncoder(5);};
 
     public CustomAuthenticationToken authenticate(CustomAuthenticationToken authentication) {
@@ -31,9 +36,11 @@ public class CustomAuthenticationService {
         }
         if (user.isPresent()) {
             log.info("[AUTHENTICATION] User found");
-            if (passwordEncoder().matches(authentication.getPassword(), user.get().getPassword())) {
+            if (passwordEncoder().matches(authentication.getPassword(), user.get().getPassword()) && user.get().getIs_active()) {
                 log.info("[AUTHENTICATION] Password confirmed");
-                return new CustomAuthenticationToken(modelMapper.map(user.get(), CustomUserDetails.class));
+                CustomUserDetails userDetails = modelMapper.map(user.get(), CustomUserDetails.class);
+                userDetails.setUserProfileService(userProfileService);
+                return new CustomAuthenticationToken(userDetails);
             }
             log.error("[AUTHENTICATION] Wrong password");
         }

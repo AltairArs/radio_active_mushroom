@@ -11,6 +11,15 @@
 }
 
 @mixin full_theme($color_class, $mode, $colorization) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    background-color: var(--c-background);
+    color: var(--c-text);
+
     --c-background: #{get_color($c-background, $color_class, $mode, $colorization)};
     --c-text: #{get_color($c-text, $color_class, $mode, $colorization)};
 
@@ -52,26 +61,30 @@
 }
 
 @mixin theme($color_class: false) {
-    $class_color: 'body';
-    @if $color_class != 'default' {
-        $class_color: 'body.' + $color_class;
+    $class_color: 'div';
+    @if $color_class != 'DEFAULT' {
+        $class_color: 'div.' + $color_class;
     }
     #{$class_color} {
-        @include full_theme($color_class, 'light', 'full_colorization');
 
         font-family: Vag;
-        background-color: var(--c-background);
-        color: var(--c-text);
 
-        &.part_colorization {
-            @include full_theme($color_class, 'light', 'part_colorization');
+        &.LIGHT {
+            &.PART {
+                @include full_theme($color_class, 'light', 'part_colorization');
+            }
+            &.FULL {
+                @include full_theme($color_class, 'light', 'full_colorization');
+            }
         }
 
-        &.dark {
-            &.part_colorization {
+        &.DARK {
+            &.PART {
                 @include full_theme($color_class, 'dark', 'part_colorization');
             }
-            @include full_theme($color_class, 'dark', 'full_colorization');
+            &.FULL {
+                @include full_theme($color_class, 'dark', 'full_colorization');
+            }
         }
     }
 }
@@ -81,4 +94,4 @@
     }
 }
 
-@include themes('default' 'green' 'orange' 'light-blue' 'yellow' 'purple' 'red')
+@include themes('DEFAULT' 'GREEN' 'ORANGE' 'LIGHT_BLUE' 'YELLOW' 'PURPLE' 'RED')
