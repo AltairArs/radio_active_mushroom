@@ -42,17 +42,17 @@ public class CustomAuthenticationToken implements Authentication {
 
     @Override
     public Object getCredentials() {
-        return userDetails.getPassword();
+        return userDetails != null ? userDetails.getPassword() : null;
     }
 
     @Override
     public Object getDetails() {
-        return userDetails.isEnabled();
+        return null;
     }
 
     @Override
     public Object getPrincipal() {
-        return new String[]{userDetails.getUsername(), userDetails.getEmail()};
+        return (isAuthenticated && userDetails != null) ? userDetails : null;
     }
 
     @Override
@@ -67,6 +67,6 @@ public class CustomAuthenticationToken implements Authentication {
 
     @Override
     public String getName() {
-        return userDetails.getUsername();
+        return userDetails.getUsername() != null ? userDetails.getUsername() : username;
     }
 }

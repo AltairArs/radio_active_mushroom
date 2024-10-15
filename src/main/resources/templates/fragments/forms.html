@@ -61,6 +61,7 @@ fields=${ {
 -->
 <th:block th:fragment="form_block">
   <form th:action="${form_action}" method="post" th:object="${__${form_object}__}">
+    <div th:replace="~{:: csrf_token}"></div>
     <table>
       <th:block th:each="field : ${fields}">
         <div th:replace="~{:: __${field[2]}__(field_label=${field[0]}, field_name=${field[1]})}"></div>

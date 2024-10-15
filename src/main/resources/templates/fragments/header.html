@@ -5,18 +5,19 @@
     <li class="nav-item">
         <a class="btn-nav" href="">Версии</a>
     </li>
-    <th:block sec:authorize="isAuthenticated()">
+    [[${#authenctication}]]
+    <th:block th:if="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">
         <li class="nav-item">
             <a class="btn-nav" href="">Проекты</a>
         </li>
         <li class="nav-item">
-            <a class="btn-nav" href="">Профиль</a>
+            <a class="btn-nav" href="">Профиль: [[${#authentication.getPrincipal()}]]</a>
         </li>
         <li class="nav-item">
             <a class="btn-auth" th:href="@{/accounts/logout/}">Выход</a>
         </li>
     </th:block>
-    <th:block sec:authorize="!isAuthenticated()">
+    <th:block th:unless="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">
         <li class="nav-item">
             <a class="btn-auth" th:href="@{/accounts/login/}">Вход</a>
         </li>

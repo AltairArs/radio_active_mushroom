@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.dto;
 
+import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
 import com.example.radio_active_mushroom.constraints.OnlyOneNotNull;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -17,8 +18,22 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
+@OnlyOneNotNull(
+        message = "Только одно должно быть заполнено: Email, Ник",
+        fields = {
+                "username",
+                "email"
+        }
+)
 public class UserLoginDto implements Serializable {
+    @OnlyLettersAndNumbers
+    @Size(max = 255)
     private String username;
+    @NotBlank
+    @OnlyLettersAndNumbers
+    @Size(min = 8, max = 255)
     private String password;
+    @Email
+    @Size(max = 255)
     private String email;
 }

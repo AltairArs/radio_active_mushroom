@@ -12,6 +12,6 @@ public class OnlyLettersAndNumbersValidator implements ConstraintValidator<OnlyL
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return s != null && s.matches("^[\\w]+$");
+        return s != null && s.matches("^[\\w]+$") || s == null || s.isEmpty();
     }
 }

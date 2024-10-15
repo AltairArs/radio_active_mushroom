@@ -6,11 +6,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -45,7 +43,10 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         try {
             log.info("[AUTHENTICATION] Find: username=" + username + ", email=" + email + ", pswd length=" + password.length());
             Authentication auth = authenticationManager.authenticate(new CustomAuthenticationToken(username, password, email));
-            SecurityContextHolder.getContext().setAuthentication(auth);
+            //Authentication auth = new CustomAuthenticationToken(username, password, email);
+            if (auth.isAuthenticated()){
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
             filterChain.doFilter(request, response);
         } catch (Exception e) {
             log.error("[AUTHENTICATION] Custom authentication failed", e);

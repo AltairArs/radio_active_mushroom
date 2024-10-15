@@ -10,11 +10,10 @@ import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 
-import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
+import static org.springframework.security.config.http.SessionCreationPolicy.IF_REQUIRED;
 
 @Configuration
 @EnableWebSecurity
@@ -30,9 +29,8 @@ public class SpringSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.addFilterAt(customAuthenticationFilter(new ProviderManager(customAuthenticationProvider)), UsernamePasswordAuthenticationFilter.class);
-        http.authenticationProvider(customAuthenticationProvider);
-        http.sessionManagement(session -> session.sessionCreationPolicy(STATELESS));
+        http.sessionManagement(session -> session.sessionCreationPolicy(IF_REQUIRED));
+        http.addFilterAfter(customAuthenticationFilter(new ProviderManager(customAuthenticationProvider)), LogoutFilter.class);
         http.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(
@@ -47,19 +45,9 @@ public class SpringSecurityConfiguration {
                                 "/accounts/registration/done/",
                                 "/accounts/verification/complete/",
                                 "/accounts/verification/failed/",
-                                "accounts/login/*",
-                                "accounts/login/process/"
+                                "/accounts/login/",
+                                "/accounts/logout/"
                         ).permitAll()
-                        .requestMatchers("/accounts/logout/").hasAnyRole("ADMIN", "USER", "STAFF")
-                )
-                .formLogin(form -> form
-                        .loginPage("/accounts/login/")
-                        .successForwardUrl("/")
-                        .loginProcessingUrl("/accounts/login/process/")
-                        .permitAll())
-                .logout(logout -> logout
-                        .logoutUrl("/accounts/logout")
-                        .logoutSuccessUrl("/accounts/login/")
                 );
         return http.build();
     }
