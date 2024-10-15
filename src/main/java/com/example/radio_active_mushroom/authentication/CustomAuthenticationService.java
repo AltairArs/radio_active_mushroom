@@ -5,6 +5,7 @@ import com.example.radio_active_mushroom.repo.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,16 @@ public class CustomAuthenticationService {
         }
         log.error("[AUTHENTICATION] User not found");
         return authentication;
+    }
+
+    public UserEntity GetCurrentUser(Authentication authentication) {
+        try {
+            CustomAuthenticationToken auth = (CustomAuthenticationToken) authentication;
+            Optional<UserEntity> user = userRepository.findByUsername(auth.getName());
+            return user.orElse(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

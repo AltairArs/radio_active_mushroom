@@ -1,10 +1,13 @@
 package com.example.radio_active_mushroom.controllers;
 
+import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
 import com.example.radio_active_mushroom.dto.UserLoginDto;
+import com.example.radio_active_mushroom.models.UserEntity;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("accounts/")
 public class AccountsController {
+
+    @Autowired
+    private CustomAuthenticationService authenticationService;
 
     @GetMapping("login/")
     public String login(Model model) {
@@ -61,5 +67,15 @@ public class AccountsController {
             cookie.setMaxAge(0);
         }
         return "redirect:/accounts/login/";
+    }
+
+    @GetMapping("profile/")
+    public String profile(Model model) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("first_name", user.getFirst_name());
+        model.addAttribute("last_name", user.getLast_name());
+        return "accounts/profile";
     }
 }

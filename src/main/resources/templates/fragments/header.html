@@ -10,7 +10,7 @@
             <a class="btn-nav" href="">Проекты</a>
         </li>
         <li class="nav-item">
-            <a class="btn-nav" href="">Профиль: [[${#authentication.getPrincipal().getUsername()}]]</a>
+            <a class="btn-nav" th:href="@{/accounts/profile/}">Профиль: [[${#authentication.getPrincipal().getUsername()}]]</a>
         </li>
         <li class="nav-item">
             <a class="btn-auth" th:href="@{/accounts/logout/}">Выход</a>

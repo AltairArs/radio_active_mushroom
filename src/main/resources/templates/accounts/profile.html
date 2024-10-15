@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title=username)}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Профиль', body_content=~{:: content})}"></div>
+<div th:remove="all">
+  <div th:fragment="content">
+    <div class="container-1">
+      <h3>Персональная информация</h3>
+      <table>
+        <tbody>
+        <tr>
+          <td>Ник:</td>
+          <td th:text="${username}"></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td th:text="${email}"></td>
+        </tr>
+        <tr>
+          <td>Имя:</td>
+          <td th:text="${first_name}"></td>
+        </tr>
+        <tr>
+          <td>Фамилия:</td>
+          <td th:text="${last_name}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <a class="btn-action">Сменить пароль</a>
+    <a class="btn-action" th:href="@{/accounts/profile/settings/}">Настройки</a>
+  </div>
+</div>
+</body>
+</html>

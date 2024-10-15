@@ -21,8 +21,7 @@ public enum UserRoleEnum {
     _U_S__PERMISSION
      */
     private final static String[] permissions = new String[]{
-            "_U_S_A_M_D__PROFILE",
-            "_U_S_A_M_D__LOGOUT"
+            "_U_S_A_M_D__BASE"
     };
 
     private Collection<SimpleGrantedAuthority> getPermissions(String id) {
