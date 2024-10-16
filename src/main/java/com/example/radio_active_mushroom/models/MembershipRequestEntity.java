@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.models;
 
+import com.example.radio_active_mushroom.models.primary_keys.MembershipRequestPrimeryKey;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "membership_request_entity")
+@IdClass(MembershipRequestPrimeryKey.class)
 public class MembershipRequestEntity {
 
   @Column(name = "message")

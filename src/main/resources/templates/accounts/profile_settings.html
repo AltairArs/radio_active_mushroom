@@ -11,8 +11,8 @@
                 <div class="container-1 cell">
                     <h3>Персональная информация</h3>
                     <table>
-                        <div th:replace="~{fragments/forms :: row_text(field_label='Имя', field_name='first_name', level=1)}"></div>
-                        <div th:replace="~{fragments/forms :: row_text(field_label='Фамилия', field_name='last_name', level=1)}"></div>
+                        <div th:replace="~{fragments/forms :: row_text(field_label='Имя', field_name='first_name', level=1, required=true)}"></div>
+                        <div th:replace="~{fragments/forms :: row_text(field_label='Фамилия', field_name='last_name', level=1, required=true)}"></div>
                     </table>
                 </div>
                 <div class="container-1 cell">

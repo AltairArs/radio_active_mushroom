@@ -1,6 +1,7 @@
 package com.example.radio_active_mushroom.models;
 
 import com.example.radio_active_mushroom.enums.ProjectPermissionsEnum;
+import com.example.radio_active_mushroom.models.primary_keys.ProjectPrimaryKey;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "project_entity")
+@IdClass(ProjectPrimaryKey.class)
 public class ProjectEntity {
     @Id
     @Column(name = "name", nullable = false)
@@ -49,21 +51,26 @@ public class ProjectEntity {
     @Column(name = "can_download", nullable = false, length = 12)
     private ProjectPermissionsEnum can_download = ProjectPermissionsEnum.ONLY_OWNER;
 
-    @Column(name = "members_can_add_others", nullable = false)
-    private Boolean members_can_add_others = false;
-
     @ToString.Exclude
     @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(
             name = "project_members",
-            joinColumns = {},
+            joinColumns = {
+                    @JoinColumn(name = "project_name", referencedColumnName = "name"),
+                    @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username")
+            },
             inverseJoinColumns = {@JoinColumn(name = "member_username", referencedColumnName = "username")}
     )
-    @JoinColumn(name = "project_name", referencedColumnName = "name")
-    @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username")
     private Set<UserEntity> members = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<MembershipRequestEntity> membership_requests = new LinkedHashSet<>();
 
+    public String getProjectName() {
+        if (this.friendly_name != null) {
+            return this.friendly_name;
+        } else {
+            return this.name;
+        }
+    }
 }

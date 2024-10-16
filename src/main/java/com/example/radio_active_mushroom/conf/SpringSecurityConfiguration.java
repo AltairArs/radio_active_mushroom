@@ -35,8 +35,9 @@ public class SpringSecurityConfiguration {
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(
                                 "/accounts/logout/",
-                                "/accounts/profile/",
-                                "accounts/profile/settings/"
+                                "/accounts/profile/**",
+                                "projects/list/my/",
+                                "projects/create/"
                         ).hasAuthority("BASE")
                         .requestMatchers(
                                 "/**"

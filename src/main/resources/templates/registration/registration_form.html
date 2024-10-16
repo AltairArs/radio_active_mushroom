@@ -10,12 +10,12 @@
             <form method="post" th:object="${form}">
               <div th:replace="~{fragments/forms :: csrf_token}"></div>
               <table>
-                <div th:replace="~{fragments/forms :: row_text(field_label='Ник', field_name='username', level=1)}"></div>
-                <div th:replace="~{fragments/forms :: row_text(field_label='Email', field_name='email', level=1)}"></div>
-                <div th:replace="~{fragments/forms :: row_text(field_label='Имя', field_name='first_name', level=1)}"></div>
-                <div th:replace="~{fragments/forms :: row_text(field_label='Фамилия', field_name='last_name', level=1)}"></div>
-                <div th:replace="~{fragments/forms :: row_pswd(field_label='Пароль', field_name='password', level=1)}"></div>
-                <div th:replace="~{fragments/forms :: row_pswd(field_label='Введите пароль еще раз', field_name='confirm_password', level=1)}"></div>
+                <div th:replace="~{fragments/forms :: row_text(field_label='Ник', field_name='username', level=1, required=true)}"></div>
+                <div th:replace="~{fragments/forms :: row_text(field_label='Email', field_name='email', level=1, required=true)}"></div>
+                <div th:replace="~{fragments/forms :: row_text(field_label='Имя', field_name='first_name', level=1, required=true)}"></div>
+                <div th:replace="~{fragments/forms :: row_text(field_label='Фамилия', field_name='last_name', level=1, required=true)}"></div>
+                <div th:replace="~{fragments/forms :: row_pswd(field_label='Пароль', field_name='password', level=1, required=true)}"></div>
+                <div th:replace="~{fragments/forms :: row_pswd(field_label='Введите пароль еще раз', field_name='confirm_password', level=1, required=true)}"></div>
 
                 <div th:replace="~{fragments/forms :: all_errors(level=1)}"></div>
 

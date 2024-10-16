@@ -9,12 +9,24 @@
 <!--
   field_name: String
   field_label: String
+  help_text: Optional<String>
+  required: Optional<boolean>
 -->
 <th:block th:fragment="row_text">
   <tr>
     <td th:text="${field_label}"></td>
     <td><input th:field="*{__${field_name}__}" type="text" th:placeholder="${field_label}"></td>
   </tr>
+  <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
+  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+</th:block>
+
+<th:block th:fragment="col_text">
+  <tr><td colspan="2" th:text="${field_label}"></td></tr>
+  <tr><td colspan="2"><textarea th:field="*{__${field_name}__}" rows="4" cols="40" th:placeholder="${field_label}"></textarea></td></tr>
+  <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
+  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
   <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
 
@@ -23,6 +35,8 @@
     <td th:text="${field_label}"></td>
     <td><input th:field="*{__${field_name}__}" type="password" th:placeholder="${field_label}"></td>
   </tr>
+  <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
+  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
   <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
 
@@ -33,6 +47,8 @@
       <option th:each="option : ${options}" th:text="${option[1]}" th:value="${option[0]}"></option>
     </select></td>
   </tr>
+  <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
+  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
   <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
 </th:block>
 <!--

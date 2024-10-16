@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title='Мои проекты')}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Мои проекты', body_content=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+        <a th:href="@{/projects/create/}" class="btn-action">Новый проект</a>
+        <br>
+        <br>
+        <div class="row">
+            <div class="container-1 cell">
+                <h3>Мои проекты</h3>
+                <div class="container-2" th:each="project : ${projects_as_owner}">
+                    <h4 th:text="${project.getProjectName()}"></h4>
+                    <table>
+                        <tr>
+                            <td>Кол-во участников</td>
+                            <td class="info-field-2" th:text="${project.getMembers().size()}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="container-1 cell">
+                <h3>Проекты с моим участием</h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

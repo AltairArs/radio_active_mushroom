@@ -1095,6 +1095,9 @@ input, textarea, select {
   color: var(--c-input-text);
   background-color: var(--c-input-background);
 }
+input::placeholder, textarea::placeholder, select::placeholder {
+  color: var(--c-input-text);
+}
 input[type=checkbox], textarea[type=checkbox], select[type=checkbox] {
   width: 20px;
   height: 20px;
