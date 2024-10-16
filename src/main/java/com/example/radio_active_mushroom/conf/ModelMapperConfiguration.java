@@ -1,7 +1,7 @@
 package com.example.radio_active_mushroom.conf;
 
 import com.example.radio_active_mushroom.dto.UserRegistrationDto;
-import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

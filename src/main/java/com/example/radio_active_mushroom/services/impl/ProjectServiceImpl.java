@@ -2,8 +2,8 @@ package com.example.radio_active_mushroom.services.impl;
 
 import com.example.radio_active_mushroom.dto.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
-import com.example.radio_active_mushroom.models.ProjectEntity;
-import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.models.jpa.ProjectEntity;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import com.example.radio_active_mushroom.repo.ProjectRepository;
 import com.example.radio_active_mushroom.services.ProjectService;
 import org.modelmapper.ModelMapper;

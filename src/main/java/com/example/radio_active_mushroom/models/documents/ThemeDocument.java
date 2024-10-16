@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.models;
+package com.example.radio_active_mushroom.models.documents;
 
 import com.example.radio_active_mushroom.enums.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.ThemeColorizationEnum;
@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @Entity
 @Document("theme_entity")
-public class ThemeEntity {
+public class ThemeDocument {
     @Id
     private String id;
 

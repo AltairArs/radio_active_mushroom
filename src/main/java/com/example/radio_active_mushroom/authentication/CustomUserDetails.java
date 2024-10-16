@@ -1,8 +1,7 @@
 package com.example.radio_active_mushroom.authentication;
 
 import com.example.radio_active_mushroom.enums.UserRoleEnum;
-import com.example.radio_active_mushroom.models.ThemeEntity;
-import com.example.radio_active_mushroom.repo.ThemeRepository;
+import com.example.radio_active_mushroom.models.documents.ThemeDocument;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,7 +30,7 @@ public class CustomUserDetails implements UserDetails {
 
     private UserProfileService userProfileService;
 
-    private ThemeEntity getTheme() {
+    private ThemeDocument getTheme() {
         return userProfileService.GetUserTheme(username);
     }
 

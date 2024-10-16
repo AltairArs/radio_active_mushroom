@@ -3,6 +3,7 @@ package com.example.radio_active_mushroom.dto;
 import com.example.radio_active_mushroom.enums.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.ThemeColorizationEnum;
 import com.example.radio_active_mushroom.enums.ThemeModeEnum;
+import com.example.radio_active_mushroom.models.documents.ThemeDocument;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -10,7 +11,7 @@ import lombok.*;
 import java.io.Serializable;
 
 /**
- * DTO for {@link com.example.radio_active_mushroom.models.ThemeEntity}
+ * DTO for {@link ThemeDocument}
  */
 @Data
 @AllArgsConstructor

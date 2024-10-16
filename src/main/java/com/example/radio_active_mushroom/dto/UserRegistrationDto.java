@@ -2,13 +2,14 @@ package com.example.radio_active_mushroom.dto;
 
 import com.example.radio_active_mushroom.constraints.FieldsAreEqual;
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.io.Serializable;
 
 /**
- * DTO for {@link com.example.radio_active_mushroom.models.UserEntity}
+ * DTO for {@link UserEntity}
  */
 @Data
 @AllArgsConstructor

@@ -4,8 +4,8 @@ import com.example.radio_active_mushroom.dto.UserSettingsDto;
 import com.example.radio_active_mushroom.enums.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.ThemeColorizationEnum;
 import com.example.radio_active_mushroom.enums.ThemeModeEnum;
-import com.example.radio_active_mushroom.models.ThemeEntity;
-import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.models.documents.ThemeDocument;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import com.example.radio_active_mushroom.repo.ThemeRepository;
 import com.example.radio_active_mushroom.repo.UserRepository;
 import com.example.radio_active_mushroom.services.UserProfileService;
@@ -28,14 +28,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     private ModelMapper modelMapper;
 
     @Override
-    public ThemeEntity GetUserTheme(String username) {
+    public ThemeDocument GetUserTheme(String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
-            Optional<ThemeEntity> userTheme = themeRepository.findByUsername(username);
+            Optional<ThemeDocument> userTheme = themeRepository.findByUsername(username);
             if (userTheme.isPresent()) {
                 return userTheme.get();
             } else {
-                ThemeEntity created_theme = new ThemeEntity();
+                ThemeDocument created_theme = new ThemeDocument();
                 created_theme.setUsername(username);
                 created_theme.setColor(ThemeColorEnum.DEFAULT);
                 created_theme.setMode(ThemeModeEnum.LIGHT);
@@ -50,20 +50,20 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public void SaveUserSettings(UserSettingsDto userSettings, String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
-        Optional<ThemeEntity> theme = themeRepository.findByUsername(username);
+        Optional<ThemeDocument> theme = themeRepository.findByUsername(username);
         if (user.isPresent() && theme.isPresent()) {
             UserEntity userEntity = user.get();
-            ThemeEntity themeEntity = theme.get();
+            ThemeDocument themeDocument = theme.get();
 
             userEntity.setFirst_name(userSettings.getFirst_name());
             userEntity.setLast_name(userSettings.getLast_name());
 
-            themeEntity.setColorization(userSettings.getColorization());
-            themeEntity.setMode(userSettings.getMode());
-            themeEntity.setColor(userSettings.getColor());
+            themeDocument.setColorization(userSettings.getColorization());
+            themeDocument.setMode(userSettings.getMode());
+            themeDocument.setColor(userSettings.getColor());
 
             userRepository.save(userEntity);
-            themeRepository.save(themeEntity);
+            themeRepository.save(themeDocument);
         } else {
 
         }

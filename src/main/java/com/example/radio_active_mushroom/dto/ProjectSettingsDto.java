@@ -1,6 +1,7 @@
 package com.example.radio_active_mushroom.dto;
 
 import com.example.radio_active_mushroom.enums.ProjectPermissionsEnum;
+import com.example.radio_active_mushroom.models.jpa.ProjectEntity;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * DTO for {@link com.example.radio_active_mushroom.models.ProjectEntity}
+ * DTO for {@link ProjectEntity}
  */
 @Data
 @AllArgsConstructor

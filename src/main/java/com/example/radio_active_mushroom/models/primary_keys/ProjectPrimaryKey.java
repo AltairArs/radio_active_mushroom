@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.models.primary_keys;
 
-import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

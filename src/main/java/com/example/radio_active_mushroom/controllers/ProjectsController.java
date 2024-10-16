@@ -3,7 +3,7 @@ package com.example.radio_active_mushroom.controllers;
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
 import com.example.radio_active_mushroom.dto.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
-import com.example.radio_active_mushroom.models.UserEntity;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import com.example.radio_active_mushroom.services.ProjectService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

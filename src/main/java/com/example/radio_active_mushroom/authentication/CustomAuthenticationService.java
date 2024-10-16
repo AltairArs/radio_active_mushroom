@@ -1,7 +1,6 @@
 package com.example.radio_active_mushroom.authentication;
 
-import com.example.radio_active_mushroom.models.UserEntity;
-import com.example.radio_active_mushroom.repo.ThemeRepository;
+import com.example.radio_active_mushroom.models.jpa.UserEntity;
 import com.example.radio_active_mushroom.repo.UserRepository;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import lombok.extern.slf4j.Slf4j;

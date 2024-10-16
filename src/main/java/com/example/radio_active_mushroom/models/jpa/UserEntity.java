@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.models;
+package com.example.radio_active_mushroom.models.jpa;
 
 import com.example.radio_active_mushroom.enums.UserRoleEnum;
 import jakarta.persistence.*;
