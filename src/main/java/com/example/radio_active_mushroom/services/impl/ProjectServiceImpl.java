@@ -33,4 +33,9 @@ public class ProjectServiceImpl implements ProjectService {
             return true;
         }
     }
+
+    @Override
+    public ProjectEntity getProject(UserEntity owner, String name) {
+        return projectRepository.findByOwnerAndName(owner, name).get();
+    }
 }

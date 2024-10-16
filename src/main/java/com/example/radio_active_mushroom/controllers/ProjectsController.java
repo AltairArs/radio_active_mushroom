@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("projects/")
@@ -53,5 +50,12 @@ public class ProjectsController {
                 return "redirect:/projects/list/my/";
             }
         }
+    }
+
+    @GetMapping("details/my/{project_name}/")
+    public String detailsMyProject(@PathVariable String project_name, Model model) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("project", projectService.getProject(user, project_name));
+        return "projects/my_details";
     }
 }

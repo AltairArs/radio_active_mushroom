@@ -31,7 +31,7 @@
                             <tr><td colspan="2" class="info-field-2" th:text="${project.getDescription()}"></td></tr>
                         </table>
                         <br>
-                        <a class="btn-action">Подробнее</a>
+                        <a class="btn-action" th:href="@{/projects/details/my/{project_name}/(project_name=${project.getName()})}">Подробнее</a>
                         <br>
                         <br>
                     </div>
