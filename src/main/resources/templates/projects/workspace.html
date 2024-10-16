@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title='Рабочая область')}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Рабочая область', body_content=~{:: content})}"></div>
+<div th:remove="all">
+  <div th:fragment="content">
+    <a class="btn-action" th:href="@{/projects/details/my/{project_name}/(project_name=${project_name})}">Назад</a>
+    <br>
+    <br>
+    <div class="workspace">
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

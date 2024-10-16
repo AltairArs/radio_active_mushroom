@@ -85,4 +85,11 @@ public class ProjectsController {
         projectService.updateProjectSettings(user,project_name, form);
         return "redirect:/projects/details/my/" + project_name + "/";
     }
+
+    @GetMapping("workspace/my/{project_name}/")
+    public String workspaceMyProject(@PathVariable String project_name, Model model) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("project", projectService.getProject(user, project_name));
+        return "projects/workspace";
+    }
 }
