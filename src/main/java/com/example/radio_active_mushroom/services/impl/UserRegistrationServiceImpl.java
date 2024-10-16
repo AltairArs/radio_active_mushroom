@@ -44,7 +44,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     @Override
     public boolean ValidateVerificationToken(String verificationToken) {
         Optional<UserEntity> user = userRepository.findByVerification_token(verificationToken);
-        if (!user.isPresent()) {
+        if (!user.isPresent() || verificationToken == null || verificationToken.isEmpty()) {
             return false;
         } else {
             user.get().setIs_active(true);

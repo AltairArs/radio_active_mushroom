@@ -12,7 +12,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "project_entity")
 public class ProjectEntity {
@@ -52,5 +51,19 @@ public class ProjectEntity {
 
     @Column(name = "members_can_add_others", nullable = false)
     private Boolean members_can_add_others = false;
+
+    @ToString.Exclude
+    @ManyToMany(cascade = CascadeType.REFRESH)
+    @JoinTable(
+            name = "project_members",
+            joinColumns = {},
+            inverseJoinColumns = {@JoinColumn(name = "member_username", referencedColumnName = "username")}
+    )
+    @JoinColumn(name = "project_name", referencedColumnName = "name")
+    @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username")
+    private Set<UserEntity> members = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<MembershipRequestEntity> membership_requests = new LinkedHashSet<>();
 
 }

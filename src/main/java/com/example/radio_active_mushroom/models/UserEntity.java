@@ -51,4 +51,10 @@ public class UserEntity {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProjectEntity> projects_as_owner = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<MembershipRequestEntity> membership_requests = new LinkedHashSet<>();
+
+    @ManyToMany(mappedBy = "members", cascade = CascadeType.REFRESH)
+    private Set<ProjectEntity> projects_as_member = new LinkedHashSet<>();
+
 }

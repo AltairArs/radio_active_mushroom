@@ -11,10 +11,22 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "membership_request_entity")
 public class MembershipRequestEntity {
+
   @Column(name = "message")
   private String message;
 
   @Column(name = "sended_at", nullable = false)
-  private LocalDateTime sended_at;
+  private LocalDateTime sended_at = LocalDateTime.now();
+
+  @Id
+  @ManyToOne
+  @JoinColumn(name = "sender_username")
+  private UserEntity sender;
+
+  @Id
+  @ManyToOne
+  @JoinColumn(name = "project_name", nullable = false, referencedColumnName = "name")
+  @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username", nullable = false)
+  private ProjectEntity project;
 
 }
