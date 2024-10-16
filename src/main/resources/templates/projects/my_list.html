@@ -11,18 +11,63 @@
         <div class="row">
             <div class="container-1 cell">
                 <h3>Мои проекты</h3>
-                <div class="container-2" th:each="project : ${projects_as_owner}">
-                    <h4 th:text="${project.getProjectName()}"></h4>
-                    <table>
-                        <tr>
-                            <td>Кол-во участников</td>
-                            <td class="info-field-2" th:text="${project.getMembers().size()}"></td>
-                        </tr>
-                    </table>
+                <div class="row">
+                    <div class="container-2 cell" th:each="project : ${projects_as_owner}">
+                        <h4 th:text="${project.getProjectName()}"></h4>
+                        <table>
+                            <tr>
+                                <td>Кол-во участников</td>
+                                <td class="info-field-2" th:text="${project.getMembers().size() + 1}"></td>
+                            </tr>
+                            <tr>
+                                <td>Создан</td>
+                                <td class="info-field-2" th:text="${#temporals.format(project.getCreated_at(), 'dd MM yyyy HH:mm')}"></td>
+                            </tr>
+                            <tr>
+                                <td>Последнее обновление</td>
+                                <td class="info-field-2" th:text="${#temporals.format(project.getLast_update(), 'dd MM yyyy HH:mm')}"></td>
+                            </tr>
+                            <tr><td colspan="2">Описание</td></tr>
+                            <tr><td colspan="2" class="info-field-2" th:text="${project.getDescription()}"></td></tr>
+                        </table>
+                        <br>
+                        <a class="btn-action">Подробнее</a>
+                        <br>
+                        <br>
+                    </div>
                 </div>
             </div>
             <div class="container-1 cell">
                 <h3>Проекты с моим участием</h3>
+                <div class="row">
+                    <div class="container-2 cell" th:each="project : ${projects_as_member}">
+                        <h4 th:text="${project.getProjectName()}"></h4>
+                        <table>
+                            <tr>
+                                <td>Владелец</td>
+                                <td class="info-field-2" th:text="${project.getOwner().getUsername()}"></td>
+                            </tr>
+                            <tr>
+                                <td>Кол-во участников</td>
+                                <td class="info-field-2" th:text="${project.getMembers().size() + 1}"></td>
+                            </tr>
+                            <tr>
+                                <td>Создан</td>
+                                <td class="info-field-2" th:text="${#temporals.format(project.getCreated_at(), 'dd MM yyyy HH:mm')}"></td>
+                            </tr>
+                            <tr>
+                                <td>Последнее обновление</td>
+                                <td class="info-field-2" th:text="${#temporals.format(project.getLast_update(), 'dd MM yyyy HH:mm')}"></td>
+                            </tr>
+                            <tr><td colspan="2">Описание</td></tr>
+                            <tr><td colspan="2" class="info-field-2" th:text="${project.getDescription()}"></td></tr>
+                        </table>
+                        <br>
+                        <a class="btn-action">Подробнее</a>
+                        <br>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

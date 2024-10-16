@@ -67,7 +67,7 @@ public class ProjectEntity {
     private Set<MembershipRequestEntity> membership_requests = new LinkedHashSet<>();
 
     public String getProjectName() {
-        if (this.friendly_name != null) {
+        if (this.friendly_name != null && !this.friendly_name.isEmpty()) {
             return this.friendly_name;
         } else {
             return this.name;
