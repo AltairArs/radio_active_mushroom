@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class JS_FIeldId {
+public class JS_FieldId {
     private String name;
     private String field_set_name;
 }

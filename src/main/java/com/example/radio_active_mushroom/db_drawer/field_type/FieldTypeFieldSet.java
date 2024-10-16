@@ -8,6 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class FieldTypeFieldSet {
+public class FieldTypeFieldSet extends FieldType{
     private FieldSetId field_set_id;
 }

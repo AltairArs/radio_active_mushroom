@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -33,5 +34,5 @@ public class FieldSetDocument {
     private String description;
 
     @Column(name = "constraints")
-    private List<Constraint> constraints;
+    private List<Constraint> constraints = new ArrayList<Constraint>();
 }

@@ -2,9 +2,9 @@ package com.example.radio_active_mushroom.db_drawer.js_objects;
 
 import com.example.radio_active_mushroom.enums.ConstraintCheckComparatorTypeEnum;
 import com.example.radio_active_mushroom.enums.ConstraintTypeEnum;
-import com.example.radio_active_mushroom.models.embeddable.FieldId;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -19,9 +19,9 @@ public class JS_Constraint {
     private ConstraintCheckComparatorTypeEnum comparator;
     private String first_simple_value;
     private String second_simple_value;
-    private FieldId first_field_value;
-    private FieldId second_field_value;
+    private JS_FieldId first_field_value;
+    private JS_FieldId second_field_value;
 
-    private List<String> fields_names;
-    private List<JS_FIeldId> ref_fields;
+    private List<String> fields_names = new ArrayList<String>();
+    private List<JS_FieldId> ref_fields = new ArrayList<JS_FieldId>();
 }

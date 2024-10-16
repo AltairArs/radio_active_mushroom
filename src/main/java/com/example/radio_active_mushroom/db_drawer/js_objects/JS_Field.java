@@ -5,6 +5,7 @@ import com.example.radio_active_mushroom.enums.FieldContainerTypeEnum;
 import com.example.radio_active_mushroom.enums.FieldSimpleTypeEnum;
 import lombok.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class JS_Field {
     private FIeldElementTypeEnum element_type;
 
     private FieldSimpleTypeEnum field_simple_type;
-    private Map<String, String> parameters;
+    private Map<String, String> parameters = new HashMap<String, String>();
 
     private JS_FieldSet field_set_type;
 }
