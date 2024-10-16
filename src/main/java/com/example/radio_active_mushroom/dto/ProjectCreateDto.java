@@ -24,10 +24,8 @@ public class ProjectCreateDto implements Serializable {
     @Size(max = 255)
     private String friendly_name;
     private String description;
-    @NotBlank
+
     private ProjectPermissionsEnum can_see = ProjectPermissionsEnum.ONLY_OWNER;
-    @NotBlank
     private ProjectPermissionsEnum can_edit = ProjectPermissionsEnum.ONLY_OWNER;
-    @NotBlank
     private ProjectPermissionsEnum can_download = ProjectPermissionsEnum.ONLY_OWNER;
 }

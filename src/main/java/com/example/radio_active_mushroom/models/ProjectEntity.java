@@ -56,8 +56,8 @@ public class ProjectEntity {
     @JoinTable(
             name = "project_members",
             joinColumns = {
-                    @JoinColumn(name = "project_name", referencedColumnName = "name"),
-                    @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username")
+                    @JoinColumn(name = "projects_as_member_name", referencedColumnName = "name"),
+                    @JoinColumn(name = "projects_as_member_owner_username", referencedColumnName = "owner_username")
             },
             inverseJoinColumns = {@JoinColumn(name = "member_username", referencedColumnName = "username")}
     )
