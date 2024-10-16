@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(page_title='Удалить проект')}"></head>
+<body>
+<div th:replace="~{base :: body_block(body_title='Удаление проекта', body_content=~{:: content})}"></div>
+<div th:remove="all">
+  <div th:fragment="content">
+    <a class="btn-action" th:href="@{/projects/details/my/{project_name}/(project_name=${project_name})}">Назад</a>
+    <h3>Вы действительно хотите удалить проект <big>[[${project_name}]]</big></h3>
+    <div th:replace="~{fragments/forms :: button_form(submit_value='Подтвердить')}"></div>
+  </div>
+</div>
+</body>
+</html>

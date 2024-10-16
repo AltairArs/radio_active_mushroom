@@ -7,4 +7,5 @@ import com.example.radio_active_mushroom.models.UserEntity;
 public interface ProjectService {
     public abstract boolean createNewProject(ProjectCreateDto projectCreateDto, UserEntity owner);
     public abstract ProjectEntity getProject(UserEntity owner, String name);
+    public abstract void deleteProject(UserEntity owner, String project_name);
 }

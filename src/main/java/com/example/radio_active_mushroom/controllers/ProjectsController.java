@@ -58,4 +58,16 @@ public class ProjectsController {
         model.addAttribute("project", projectService.getProject(user, project_name));
         return "projects/my_details";
     }
+
+    @GetMapping("delete/my/{project_name}/")
+    public String deleteMyProject(@PathVariable String project_name, Model model) {
+        return "projects/delete";
+    }
+
+    @PostMapping("delete/my/{project_name}/")
+    public String deleteMyProjectPost(@PathVariable String project_name, Model model) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        projectService.deleteProject(user, project_name);
+        return "redirect:/projects/list/my/";
+    }
 }

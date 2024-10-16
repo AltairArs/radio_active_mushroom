@@ -47,7 +47,7 @@
         </div>
         <br>
         <a class="btn-action">Настройки</a>
-        <a class="btn-action">Удалить</a>
+        <a class="btn-action" th:href="@{/projects/delete/my/{project_name}/(project_name=${project.getName()})}">Удалить</a>
         <a class="btn-action">В рабочую среду</a>
     </div>
 </div>

@@ -38,4 +38,12 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectEntity getProject(UserEntity owner, String name) {
         return projectRepository.findByOwnerAndName(owner, name).get();
     }
+
+    @Override
+    public void deleteProject(UserEntity owner, String project_name) {
+        Optional<ProjectEntity> projectEntity = projectRepository.findByOwnerAndName(owner, project_name);
+        if (projectEntity.isPresent()) {
+            projectRepository.delete(projectEntity.get());
+        }
+    }
 }
