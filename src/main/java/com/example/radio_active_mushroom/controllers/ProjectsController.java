@@ -2,6 +2,7 @@ package com.example.radio_active_mushroom.controllers;
 
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
 import com.example.radio_active_mushroom.dto.ProjectCreateDto;
+import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.UserEntity;
 import com.example.radio_active_mushroom.services.ProjectService;
 import jakarta.validation.Valid;
@@ -69,5 +70,19 @@ public class ProjectsController {
         UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
         projectService.deleteProject(user, project_name);
         return "redirect:/projects/list/my/";
+    }
+
+    @GetMapping("settings/my/{project_name}/")
+    public String settingsMyProject(@PathVariable String project_name, Model model) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("form", projectService.getProjectSettings(user, project_name));
+        return "projects/settings";
+    }
+
+    @PostMapping("settings/my/{project_name}/")
+    public String settingsMyProjectPost(@PathVariable String project_name, @Valid @ModelAttribute("form") ProjectSettingsDto form, BindingResult bindingResult, Model model) {
+        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        projectService.updateProjectSettings(user,project_name, form);
+        return "redirect:/projects/details/my/" + project_name + "/";
     }
 }

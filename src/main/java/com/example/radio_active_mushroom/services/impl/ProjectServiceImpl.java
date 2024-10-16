@@ -1,6 +1,7 @@
 package com.example.radio_active_mushroom.services.impl;
 
 import com.example.radio_active_mushroom.dto.ProjectCreateDto;
+import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.ProjectEntity;
 import com.example.radio_active_mushroom.models.UserEntity;
 import com.example.radio_active_mushroom.repo.ProjectRepository;
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -45,5 +47,22 @@ public class ProjectServiceImpl implements ProjectService {
         if (projectEntity.isPresent()) {
             projectRepository.delete(projectEntity.get());
         }
+    }
+
+    @Override
+    public ProjectSettingsDto getProjectSettings(UserEntity owner, String project_name) {
+        return modelMapper.map(projectRepository.findByOwnerAndName(owner, project_name).get(), ProjectSettingsDto.class);
+    }
+
+    @Override
+    public void updateProjectSettings(UserEntity owner, String project_name, ProjectSettingsDto projectSettingsDto) {
+        ProjectEntity projectEntity = projectRepository.findByOwnerAndName(owner, project_name).get();
+        projectEntity.setLast_update(LocalDateTime.now());
+        projectEntity.setDescription(projectSettingsDto.getDescription());
+        projectEntity.setFriendly_name(projectSettingsDto.getFriendly_name());
+        projectEntity.setCan_download(projectSettingsDto.getCan_download());
+        projectEntity.setCan_edit(projectSettingsDto.getCan_edit());
+        projectEntity.setCan_see(projectSettingsDto.getCan_see());
+        projectRepository.save(projectEntity);
     }
 }
