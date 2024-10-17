@@ -24,8 +24,14 @@ public class FieldSetDocument {
     @Column(name = "id", nullable = false)
     private String id;
 
-    @Embedded
-    private FieldSetId field_set_id;
+    @Column(name = "name", nullable = false)
+    private String field_set_name;
+
+    @Column(name = "project_owner_username", nullable = false)
+    private String project_owner_username;
+
+    @Column(name = "project_name", nullable = false)
+    private String project_name;
 
     @Column(name = "friendly_name")
     private String friendly_name;

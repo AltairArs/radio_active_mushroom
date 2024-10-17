@@ -19,6 +19,7 @@ import com.example.radio_active_mushroom.models.documents.FieldDocument;
 import com.example.radio_active_mushroom.models.documents.FieldSetDocument;
 import com.example.radio_active_mushroom.models.documents.TableDocument;
 import com.example.radio_active_mushroom.models.embeddable.FieldId;
+import com.example.radio_active_mushroom.models.embeddable.FieldSetId;
 import com.example.radio_active_mushroom.repo.documents.FieldDocumentRepository;
 import com.example.radio_active_mushroom.repo.documents.FieldSetDocumentRepository;
 import com.example.radio_active_mushroom.repo.documents.TableDocumentRepository;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DB_Drawer {
@@ -53,29 +55,39 @@ public class DB_Drawer {
         }
         return js_tables;
     }
-    public JS_Table generateTable(TableDocument table) {
+    private JS_Table generateTable(TableDocument table) {
         JS_Table js_table = new JS_Table();
         js_table.setPosition_y(table.getPosition_y());
         js_table.setPosition_x(table.getPosition_x());
-        js_table.setFieldSet(generateFieldSet(fieldSetRepository.findByField_set_id(table.getField_set_id()).get()));
+        js_table.setFieldSet(generateFieldSet(fieldSetRepository.findByField_set_nameAndProject_owner_usernameAndProject_name(
+                table.getField_set_name(),
+                table.getProject_owner_username(),
+                table.getProject_name()
+        ).get()));
         return js_table;
     }
-    public JS_FieldSet generateFieldSet(FieldSetDocument fieldSet) {
+    private JS_FieldSet generateFieldSet(FieldSetDocument fieldSet) {
         JS_FieldSet js_fieldSet = new JS_FieldSet();
-        js_fieldSet.setName(fieldSet.getField_set_id().getField_set_name());
+        js_fieldSet.setName(fieldSet.getField_set_name());
         js_fieldSet.setFriendly_name(fieldSet.getFriendly_name());
         js_fieldSet.setDescription(fieldSet.getDescription());
 
         for (Constraint constraint : fieldSet.getConstraints()){
             js_fieldSet.getConstraints().add(generateConstraint(constraint));
         }
-        for (FieldDocument fieldDocument : fieldRepository.findAllByField_set_id(fieldSet.getField_set_id())) {
+        for (FieldDocument fieldDocument : fieldRepository.findAllByField_set_id(
+                new FieldSetId(
+                        fieldSet.getField_set_name(),
+                        fieldSet.getProject_owner_username(),
+                        fieldSet.getProject_name()
+                )
+        )) {
             js_fieldSet.getFields().add(generateField(fieldDocument));
         }
 
         return js_fieldSet;
     }
-    public JS_Field generateField(FieldDocument field) {
+    private JS_Field generateField(FieldDocument field) {
         switch (field.getType().getElement_type()) {
             case BASE: {
                 JS_FieldSimple js_field = new JS_FieldSimple();
@@ -94,7 +106,11 @@ public class DB_Drawer {
                 js_field.setFriendly_name(field.getFriendly_name());
                 js_field.setDescription(field.getDescription());
                 FieldTypeFieldSet field_type = (FieldTypeFieldSet) field.getType();
-                js_field.setField_set_type(generateFieldSet(fieldSetRepository.findByField_set_id(field_type.getField_set_id()).get()));
+                js_field.setField_set_type(generateFieldSet(fieldSetRepository.findByField_set_nameAndProject_owner_usernameAndProject_name(
+                        field_type.getField_set_id().getField_set_name(),
+                        field_type.getField_set_id().getProject_owner_username(),
+                        field_type.getField_set_id().getProject_name()
+                ).get()));
                 return js_field;
             }
             default: {
@@ -102,7 +118,7 @@ public class DB_Drawer {
             }
         }
     }
-    public JS_Constraint generateConstraint(Constraint constraint) {
+    private JS_Constraint generateConstraint(Constraint constraint) {
         switch(constraint.getType()){
             case CHECK: {
                 JS_ConstraintCheck js_constraint = new JS_ConstraintCheck();
@@ -148,10 +164,56 @@ public class DB_Drawer {
             }
         }
     }
-    public JS_FieldId generateFieldId(FieldId fieldId) {
+    private JS_FieldId generateFieldId(FieldId fieldId) {
         JS_FieldId js_fIeldId = new JS_FieldId();
         js_fIeldId.setName(fieldId.getName());
         js_fIeldId.setField_set_name(fieldId.getField_set_id().getField_set_name());
         return js_fIeldId;
+    }
+
+    public List<TableDocument> getTableDocuments(String project_owner_username, String project_name){
+        return tableRepository.findByProject_nameAndProject_owner_username(project_name, project_owner_username);
+    }
+
+    public boolean addTable(String name, String project_owner_username, String project_name, Integer position_x, Integer position_y){
+        if (!tableRepository.findByProject_nameAndProject_ownerAndField_set_name(project_owner_username, project_name, name).isPresent()){
+            TableDocument tableDocument = new TableDocument();
+            tableDocument.setField_set_name(name);
+            tableDocument.setProject_name(project_name);
+            tableDocument.setPosition_x(position_x);
+            tableDocument.setPosition_y(position_y);
+            tableDocument.setProject_owner_username(project_owner_username);
+            tableRepository.save(tableDocument);
+            return true;
+        } else return false;
+    }
+    public void deleteTable(String name, String project_owner_username, String project_name){
+        Optional<TableDocument> tableDocument = tableRepository.findByProject_nameAndProject_ownerAndField_set_name(project_owner_username, project_name, name);
+        if (tableDocument.isPresent()){
+            tableRepository.delete(tableDocument.get());
+        }
+    }
+    public boolean updateTable(String name, String project_owner_username, String project_name, String new_name){
+        Optional<FieldSetDocument> fieldSetDocument = fieldSetRepository.findByField_set_nameAndProject_owner_usernameAndProject_name(new_name, project_owner_username, project_name);
+        if (fieldSetDocument.isPresent()){
+            return false;
+        } else {
+            Optional<TableDocument> tableDocument = tableRepository.findByProject_nameAndProject_ownerAndField_set_name(project_owner_username, project_name, name);
+            if (tableDocument.isPresent()){
+                TableDocument tableDoc = tableDocument.get();
+                tableDoc.setField_set_name(new_name);
+                tableRepository.save(tableDocument.get());
+            }
+            return true;
+        }
+    }
+    public void changeTablePosition(String name, String project_owner_username, String project_name, Integer new_position_x, Integer new_position_y){
+        Optional<TableDocument> tableDocument = tableRepository.findByProject_nameAndProject_ownerAndField_set_name(project_owner_username, project_name, name);
+        if (tableDocument.isPresent()){
+            TableDocument tableDoc = tableDocument.get();
+            tableDoc.setPosition_x(new_position_x);
+            tableDoc.setPosition_y(new_position_y);
+            tableRepository.save(tableDocument.get());
+        }
     }
 }
