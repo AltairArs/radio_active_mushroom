@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.db_drawer.constraint;
 
+import com.example.radio_active_mushroom.enums.ConstraintForeignKeyTypeRelationshipEnum;
 import com.example.radio_active_mushroom.models.embeddable.FieldId;
 import lombok.*;
 
@@ -13,4 +14,5 @@ import java.util.List;
 public class ConstraintForeignKey extends Constraint{
     private List<FieldId> fields;
     private List<FieldId> ref_fields;
+    private ConstraintForeignKeyTypeRelationshipEnum relationship;
 }

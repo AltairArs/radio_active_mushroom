@@ -70,59 +70,77 @@ public class DB_Drawer {
         return js_fieldSet;
     }
     public JS_Field generateField(FieldDocument field) {
-        JS_Field js_field = new JS_Field();
-        js_field.setName(field.getName());
-        js_field.setFriendly_name(field.getFriendly_name());
-        js_field.setDescription(field.getDescription());
-        for (Constraint constraint : field.getConstraints()) {
-            js_field.getConstraints().add(generateConstraint(constraint));
+        switch (field.getType().getElement_type()) {
+            case BASE: {
+                JS_FieldSimple js_field = new JS_FieldSimple();
+                js_field.setName(field.getName());
+                js_field.setFriendly_name(field.getFriendly_name());
+                js_field.setDescription(field.getDescription());
+
+                FieldTypeSimple field_type = (FieldTypeSimple) field.getType();
+                js_field.setField_simple_type(field_type.getField_simple_type());
+                js_field.setParameters(field_type.getParameters());
+                return js_field;
+            }
+            case FIELDSET: {
+                JS_FieldFieldSet js_field = new JS_FieldFieldSet();
+                js_field.setName(field.getName());
+                js_field.setFriendly_name(field.getFriendly_name());
+                js_field.setDescription(field.getDescription());
+                FieldTypeFieldSet field_type = (FieldTypeFieldSet) field.getType();
+                js_field.setField_set_type(generateFieldSet(fieldSetRepository.findByField_set_id(field_type.getField_set_id()).get()));
+                return js_field;
+            }
+            default: {
+                return null;
+            }
         }
-        js_field.setContainer_type(field.getType().getContainer_type());
-        js_field.setElement_type(field.getType().getElement_type());
-        if (js_field.getElement_type() == FIeldElementTypeEnum.BASE) {
-            FieldTypeSimple field_type = (FieldTypeSimple) field.getType();
-            js_field.setField_simple_type(field_type.getField_simple_type());
-            js_field.setParameters(field_type.getParameters());
-        } else {
-            //FIELDSET
-            FieldTypeFieldSet field_type = (FieldTypeFieldSet) field.getType();
-            js_field.setField_set_type(generateFieldSet(fieldSetRepository.findByField_set_id(field_type.getField_set_id()).get()));
-        }
-        return js_field;
     }
     public JS_Constraint generateConstraint(Constraint constraint) {
-        JS_Constraint js_constraint = new JS_Constraint();
-        js_constraint.setName(constraint.getName());
-        js_constraint.setType(constraint.getType());
-        switch (js_constraint.getType()){
+        switch(constraint.getType()){
             case CHECK: {
+                JS_ConstraintCheck js_constraint = new JS_ConstraintCheck();
                 ConstraintCheck constraintCheck = (ConstraintCheck) constraint;
+                js_constraint.setName(constraint.getName());
+                js_constraint.setType(constraint.getType());
                 js_constraint.setComparator(constraintCheck.getComparator());
                 js_constraint.setFirst_simple_value(constraintCheck.getFirst_simple_value());
                 js_constraint.setSecond_simple_value(constraintCheck.getSecond_simple_value());
                 js_constraint.setFirst_field_value(generateFieldId(constraintCheck.getFirst_field_value()));
                 js_constraint.setSecond_field_value(generateFieldId(constraintCheck.getSecond_field_value()));
+                return js_constraint;
             }
-            break;
             case FOREIGN_KEY: {
+                JS_ConstraintForeignKey js_constraint = new JS_ConstraintForeignKey();
                 ConstraintForeignKey constraintForeignKey = (ConstraintForeignKey) constraint;
+                js_constraint.setRelationship(constraintForeignKey.getRelationship());
+                js_constraint.setName(constraint.getName());
+                js_constraint.setType(constraint.getType());
                 for (FieldId fieldId : constraintForeignKey.getFields()){
                     js_constraint.getFields_names().add(fieldId.getName());
                 }
                 for (FieldId fieldId : constraintForeignKey.getRef_fields()){
                     js_constraint.getRef_fields().add(generateFieldId(fieldId));
                 }
+                return js_constraint;
             }
-            break;
             case UNIQUE, PRIMARY_KEY: {
+                JS_ConstraintOnFields js_constraint = new JS_ConstraintOnFields();
+                js_constraint.setName(constraint.getName());
+                js_constraint.setType(constraint.getType());
                 ConstraintOnFields constraintOnFields = (ConstraintOnFields) constraint;
                 for (FieldId fieldId : constraintOnFields.getFields()){
                     js_constraint.getFields_names().add(fieldId.getName());
                 }
+                return js_constraint;
             }
-            break;
+            default: {
+                JS_Constraint js_constraint = new JS_Constraint();
+                js_constraint.setName(constraint.getName());
+                js_constraint.setType(constraint.getType());
+                return js_constraint;
+            }
         }
-        return js_constraint;
     }
     public JS_FieldId generateFieldId(FieldId fieldId) {
         JS_FieldId js_fIeldId = new JS_FieldId();
