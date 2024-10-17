@@ -216,4 +216,30 @@ public class DB_Drawer {
             tableRepository.save(tableDocument.get());
         }
     }
+
+    public String generateTableName(String project_owner_username, String project_name){
+        return "table_" + String.valueOf(tableRepository.findByProject_nameAndProject_owner_username(project_name, project_owner_username).size());
+    }
+    public String generateFieldSetName(String project_owner_username, String project_name){
+        return "field_set_" + String.valueOf(fieldSetRepository.findByProject_nameAndProject_owner_username(project_name, project_owner_username).size());
+    }
+    public String generateFieldName(String project_owner_username, String project_name, String field_set_name){
+        return "field_" + String.valueOf(fieldRepository.findAllByField_set_id(new FieldSetId(
+                field_set_name, project_owner_username, project_name
+        )).size());
+    }
+    public String generateConstraintName(String project_owner_username, String project_name, String field_set_name){
+        List<Constraint> constraints = new ArrayList<Constraint>();
+        Optional<FieldSetDocument> fieldSetDocument = fieldSetRepository.findByField_set_nameAndProject_owner_usernameAndProject_name(field_set_name, project_owner_username, project_name);
+        if (fieldSetDocument.isPresent()){
+            constraints.addAll(fieldSetDocument.get().getConstraints());
+        }
+        List<FieldDocument> fieldDocuments = fieldRepository.findAllByField_set_id(new FieldSetId(
+                field_set_name, project_owner_username, project_name
+        ));
+        for (FieldDocument fieldDocument : fieldDocuments){
+            constraints.addAll(fieldDocument.getConstraints());
+        }
+        return "constraint_" + String.valueOf(constraints.size());
+    }
 }
