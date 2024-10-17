@@ -4,7 +4,7 @@ import com.example.radio_active_mushroom.dto.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.jpa.ProjectEntity;
 import com.example.radio_active_mushroom.models.jpa.UserEntity;
-import com.example.radio_active_mushroom.repo.ProjectRepository;
+import com.example.radio_active_mushroom.repo.jpa.ProjectRepository;
 import com.example.radio_active_mushroom.services.ProjectService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

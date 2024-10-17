@@ -2,7 +2,7 @@ package com.example.radio_active_mushroom.services.impl;
 
 import com.example.radio_active_mushroom.dto.UserRegistrationDto;
 import com.example.radio_active_mushroom.models.jpa.UserEntity;
-import com.example.radio_active_mushroom.repo.UserRepository;
+import com.example.radio_active_mushroom.repo.jpa.UserRepository;
 import com.example.radio_active_mushroom.services.MailService;
 import com.example.radio_active_mushroom.services.UserRegistrationService;
 import org.modelmapper.ModelMapper;

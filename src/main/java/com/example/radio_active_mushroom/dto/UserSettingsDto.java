@@ -1,8 +1,8 @@
 package com.example.radio_active_mushroom.dto;
 
-import com.example.radio_active_mushroom.enums.ThemeColorEnum;
-import com.example.radio_active_mushroom.enums.ThemeColorizationEnum;
-import com.example.radio_active_mushroom.enums.ThemeModeEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeModeEnum;
 import com.example.radio_active_mushroom.models.documents.ThemeDocument;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.db_drawer.field_type;
 
-import com.example.radio_active_mushroom.enums.FieldSimpleTypeEnum;
+import com.example.radio_active_mushroom.enums.field.FieldSimpleTypeEnum;
 import lombok.*;
 
 import java.util.HashMap;

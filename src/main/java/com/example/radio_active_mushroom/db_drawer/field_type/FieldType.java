@@ -1,7 +1,7 @@
 package com.example.radio_active_mushroom.db_drawer.field_type;
 
-import com.example.radio_active_mushroom.enums.FIeldElementTypeEnum;
-import com.example.radio_active_mushroom.enums.FieldContainerTypeEnum;
+import com.example.radio_active_mushroom.enums.field.FIeldElementTypeEnum;
+import com.example.radio_active_mushroom.enums.field.FieldContainerTypeEnum;
 import lombok.*;
 
 @Getter

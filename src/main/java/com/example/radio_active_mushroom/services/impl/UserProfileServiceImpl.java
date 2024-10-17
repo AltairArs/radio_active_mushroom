@@ -1,13 +1,13 @@
 package com.example.radio_active_mushroom.services.impl;
 
 import com.example.radio_active_mushroom.dto.UserSettingsDto;
-import com.example.radio_active_mushroom.enums.ThemeColorEnum;
-import com.example.radio_active_mushroom.enums.ThemeColorizationEnum;
-import com.example.radio_active_mushroom.enums.ThemeModeEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeModeEnum;
 import com.example.radio_active_mushroom.models.documents.ThemeDocument;
 import com.example.radio_active_mushroom.models.jpa.UserEntity;
-import com.example.radio_active_mushroom.repo.ThemeRepository;
-import com.example.radio_active_mushroom.repo.UserRepository;
+import com.example.radio_active_mushroom.repo.documents.ThemeDocumentRepository;
+import com.example.radio_active_mushroom.repo.jpa.UserRepository;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Optional;
 public class UserProfileServiceImpl implements UserProfileService {
 
     @Autowired
-    private ThemeRepository themeRepository;
+    private ThemeDocumentRepository themeDocumentRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -31,7 +31,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     public ThemeDocument GetUserTheme(String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
-            Optional<ThemeDocument> userTheme = themeRepository.findByUsername(username);
+            Optional<ThemeDocument> userTheme = themeDocumentRepository.findByUsername(username);
             if (userTheme.isPresent()) {
                 return userTheme.get();
             } else {
@@ -40,7 +40,7 @@ public class UserProfileServiceImpl implements UserProfileService {
                 created_theme.setColor(ThemeColorEnum.DEFAULT);
                 created_theme.setMode(ThemeModeEnum.LIGHT);
                 created_theme.setColorization(ThemeColorizationEnum.FULL);
-                themeRepository.save(created_theme);
+                themeDocumentRepository.save(created_theme);
                 return created_theme;
             }
         }
@@ -50,7 +50,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public void SaveUserSettings(UserSettingsDto userSettings, String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
-        Optional<ThemeDocument> theme = themeRepository.findByUsername(username);
+        Optional<ThemeDocument> theme = themeDocumentRepository.findByUsername(username);
         if (user.isPresent() && theme.isPresent()) {
             UserEntity userEntity = user.get();
             ThemeDocument themeDocument = theme.get();
@@ -63,7 +63,7 @@ public class UserProfileServiceImpl implements UserProfileService {
             themeDocument.setColor(userSettings.getColor());
 
             userRepository.save(userEntity);
-            themeRepository.save(themeDocument);
+            themeDocumentRepository.save(themeDocument);
         } else {
 
         }

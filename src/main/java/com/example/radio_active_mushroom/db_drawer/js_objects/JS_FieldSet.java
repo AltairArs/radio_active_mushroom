@@ -1,5 +1,7 @@
 package com.example.radio_active_mushroom.db_drawer.js_objects;
 
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_constraint.JS_Constraint;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_field.JS_Field;
 import lombok.*;
 
 import java.util.ArrayList;

@@ -7,15 +7,21 @@ import com.example.radio_active_mushroom.db_drawer.constraint.ConstraintOnFields
 import com.example.radio_active_mushroom.db_drawer.field_type.FieldTypeFieldSet;
 import com.example.radio_active_mushroom.db_drawer.field_type.FieldTypeSimple;
 import com.example.radio_active_mushroom.db_drawer.js_objects.*;
-import com.example.radio_active_mushroom.enums.FIeldElementTypeEnum;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_constraint.JS_Constraint;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_constraint.JS_ConstraintCheck;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_constraint.JS_ConstraintForeignKey;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_constraint.JS_ConstraintOnFields;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_field.JS_Field;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_field.JS_FieldFieldSet;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_field.JS_FieldId;
 import com.example.radio_active_mushroom.models.documents.DB_DrawerSettings;
 import com.example.radio_active_mushroom.models.documents.FieldDocument;
 import com.example.radio_active_mushroom.models.documents.FieldSetDocument;
 import com.example.radio_active_mushroom.models.documents.TableDocument;
 import com.example.radio_active_mushroom.models.embeddable.FieldId;
-import com.example.radio_active_mushroom.repo.FieldDocumentRepository;
-import com.example.radio_active_mushroom.repo.FieldSetDocumentRepository;
-import com.example.radio_active_mushroom.repo.TableDocumentRepository;
+import com.example.radio_active_mushroom.repo.documents.FieldDocumentRepository;
+import com.example.radio_active_mushroom.repo.documents.FieldSetDocumentRepository;
+import com.example.radio_active_mushroom.repo.documents.TableDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

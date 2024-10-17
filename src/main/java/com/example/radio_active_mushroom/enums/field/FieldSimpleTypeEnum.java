@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.enums;
+package com.example.radio_active_mushroom.enums.field;
 
 public enum FieldSimpleTypeEnum {
     SMALL_AUTO, AUTO, BIG_AUTO,

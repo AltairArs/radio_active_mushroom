@@ -1,6 +1,7 @@
-package com.example.radio_active_mushroom.db_drawer.js_objects;
+package com.example.radio_active_mushroom.db_drawer.js_objects.js_constraint;
 
-import com.example.radio_active_mushroom.enums.ConstraintForeignKeyTypeRelationshipEnum;
+import com.example.radio_active_mushroom.db_drawer.js_objects.js_field.JS_FieldId;
+import com.example.radio_active_mushroom.enums.constraint.ConstraintForeignKeyTypeRelationshipEnum;
 import lombok.*;
 
 import java.util.ArrayList;

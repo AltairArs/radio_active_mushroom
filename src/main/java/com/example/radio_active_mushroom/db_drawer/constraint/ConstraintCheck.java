@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.db_drawer.constraint;
 
-import com.example.radio_active_mushroom.enums.ConstraintCheckComparatorTypeEnum;
+import com.example.radio_active_mushroom.enums.constraint.ConstraintCheckComparatorTypeEnum;
 import com.example.radio_active_mushroom.models.embeddable.FieldId;
 import lombok.*;
 

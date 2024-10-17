@@ -1,8 +1,8 @@
 package com.example.radio_active_mushroom.models.documents;
 
-import com.example.radio_active_mushroom.enums.ThemeColorEnum;
-import com.example.radio_active_mushroom.enums.ThemeColorizationEnum;
-import com.example.radio_active_mushroom.enums.ThemeModeEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
+import com.example.radio_active_mushroom.enums.theme.ThemeModeEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
