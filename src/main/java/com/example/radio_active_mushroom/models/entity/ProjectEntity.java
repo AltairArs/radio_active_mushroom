@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.models.jpa;
+package com.example.radio_active_mushroom.models.entity;
 
 import com.example.radio_active_mushroom.enums.ProjectPermissionsEnum;
 import com.example.radio_active_mushroom.models.primary_keys.ProjectPrimaryKey;

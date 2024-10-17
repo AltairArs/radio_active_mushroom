@@ -3,7 +3,7 @@ package com.example.radio_active_mushroom.controllers;
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
 import com.example.radio_active_mushroom.dto.UserLoginDto;
 import com.example.radio_active_mushroom.dto.UserSettingsDto;
-import com.example.radio_active_mushroom.models.jpa.UserEntity;
+import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;

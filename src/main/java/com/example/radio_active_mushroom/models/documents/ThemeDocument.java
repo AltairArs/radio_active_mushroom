@@ -12,25 +12,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @ToString
-@Entity
-@Document("theme_entity")
+@Document(collection = "theme_entity")
 public class ThemeDocument {
     @Id
     private String id;
 
-    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "color", nullable = false, length = 20)
     private ThemeColorEnum color;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "colorization", nullable = false, length = 4)
     private ThemeColorizationEnum colorization;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "mode", nullable = false, length = 5)
     private ThemeModeEnum mode;
 
 }

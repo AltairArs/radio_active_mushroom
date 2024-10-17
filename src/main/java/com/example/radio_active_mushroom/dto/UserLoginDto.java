@@ -2,7 +2,7 @@ package com.example.radio_active_mushroom.dto;
 
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
 import com.example.radio_active_mushroom.constraints.OnlyOneNotNull;
-import com.example.radio_active_mushroom.models.jpa.UserEntity;
+import com.example.radio_active_mushroom.models.entity.UserEntity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

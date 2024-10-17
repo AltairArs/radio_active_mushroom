@@ -1,7 +1,7 @@
 package com.example.radio_active_mushroom.authentication;
 
-import com.example.radio_active_mushroom.models.jpa.UserEntity;
-import com.example.radio_active_mushroom.repo.jpa.UserRepository;
+import com.example.radio_active_mushroom.models.entity.UserEntity;
+import com.example.radio_active_mushroom.repo.entity.UserRepository;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

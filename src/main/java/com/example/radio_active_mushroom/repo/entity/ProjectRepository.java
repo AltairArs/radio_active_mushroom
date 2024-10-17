@@ -1,7 +1,7 @@
-package com.example.radio_active_mushroom.repo.jpa;
+package com.example.radio_active_mushroom.repo.entity;
 
-import com.example.radio_active_mushroom.models.jpa.ProjectEntity;
-import com.example.radio_active_mushroom.models.jpa.UserEntity;
+import com.example.radio_active_mushroom.models.entity.ProjectEntity;
+import com.example.radio_active_mushroom.models.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

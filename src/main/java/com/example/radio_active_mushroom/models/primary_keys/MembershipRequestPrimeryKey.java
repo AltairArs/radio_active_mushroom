@@ -1,7 +1,7 @@
 package com.example.radio_active_mushroom.models.primary_keys;
 
-import com.example.radio_active_mushroom.models.jpa.ProjectEntity;
-import com.example.radio_active_mushroom.models.jpa.UserEntity;
+import com.example.radio_active_mushroom.models.entity.ProjectEntity;
+import com.example.radio_active_mushroom.models.entity.UserEntity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;

@@ -2,7 +2,7 @@ package com.example.radio_active_mushroom.dto;
 
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
 import com.example.radio_active_mushroom.enums.ProjectPermissionsEnum;
-import com.example.radio_active_mushroom.models.jpa.ProjectEntity;
+import com.example.radio_active_mushroom.models.entity.ProjectEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

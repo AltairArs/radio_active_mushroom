@@ -2,7 +2,7 @@ package com.example.radio_active_mushroom.dto;
 
 import com.example.radio_active_mushroom.constraints.FieldsAreEqual;
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
-import com.example.radio_active_mushroom.models.jpa.UserEntity;
+import com.example.radio_active_mushroom.models.entity.UserEntity;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
