@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/img/logo.png}">
+    <script th:src="@{/js/scripts.js}" type="module"></script>
   </head>
   <body>
 
@@ -14,9 +16,9 @@ ${#authentication.getPrincipal().getColor() + ' ' + #authentication.getPrincipal
 
     <div th:replace="~{fragments/header :: header}"></div>
 
-    <div style="padding: 60px 20px 0 20px">
+    <div style="padding: 80px 20px 0 20px">
 
-      <h1 th:if="${body_title != null}" th:text="${body_title}"></h1>
+      <h1 class="header-m-o" th:if="${body_title != null}" th:text="${body_title}"></h1>
 
       <div th:replace="${body_content}"></div>
 

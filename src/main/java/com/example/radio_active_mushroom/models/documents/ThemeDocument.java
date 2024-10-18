@@ -4,6 +4,7 @@ import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeModeEnum;
 import lombok.*;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
@@ -12,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Getter
 @Setter
 @ToString
+@TypeAlias(value = "theme")
 @Document(collection = "theme_document")
 public class ThemeDocument {
     @MongoId
