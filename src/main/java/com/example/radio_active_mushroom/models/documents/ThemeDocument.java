@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @ToString
-@Document(collection = "theme_entity")
+@Document(collection = "theme_document")
 public class ThemeDocument {
     @Id
     private String id;
@@ -24,5 +24,4 @@ public class ThemeDocument {
     private ThemeColorizationEnum colorization;
 
     private ThemeModeEnum mode;
-
 }
