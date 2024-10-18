@@ -1,0 +1,11 @@
+@import "./vars.scss";
+
+.icon {
+  mix-blend-mode: difference;
+  height: 30px;
+}
+.logo {
+  margin-left: $pad;
+  border-radius: $radius;
+  background-color: white;
+}
