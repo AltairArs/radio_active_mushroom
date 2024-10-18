@@ -3,9 +3,9 @@ package com.example.radio_active_mushroom.models.documents;
 import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeModeEnum;
-import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @Document(collection = "theme_document")
 public class ThemeDocument {
-    @Id
+    @MongoId
     private String id;
 
     private String username;
