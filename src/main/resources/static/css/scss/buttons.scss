@@ -1,4 +1,5 @@
 @import "./vars.scss";
+@import "containers.scss";
 
 .btn-nav {
     border-radius: $radius;
@@ -68,7 +69,8 @@
     }
 }
 
-.btn-auth {  
+.btn-auth {
+    @extend .vertical-center;
     box-shadow: 
         0.3em 0.3em 0 0 var(--c-nav-auth-shadow),
         inset 0.3em 0.3em 0 0 var(--c-nav-auth-shadow);

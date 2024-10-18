@@ -1,6 +1,8 @@
-<nav th:fragment="header" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
+<nav th:fragment="header" class="nav">
     <li class="nav-item">
-        <a class="btn-nav" th:href="@{/}">Главная</a>
+        <div class="logo">
+            <a th:href="@{/}"><img th:src="@{/img/logo.png}" height="50px"></a>
+        </div>
     </li>
     <li class="nav-item">
         <a class="btn-nav" href="">Версии</a>
@@ -18,7 +20,10 @@
     </th:block>
     <th:block th:unless="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">
         <li class="nav-item">
-            <a class="btn-auth" th:href="@{/accounts/login/}">Вход</a>
+            <a class="btn-auth" th:href="@{/accounts/login/}">
+                <img th:src="@{/img/accounts/login.png/}" class="icon">
+                <text>Вход</text>
+            </a>
         </li>
         <li class="nav-item">
             <a class="btn-auth" th:href="@{/accounts/registration/}">Регистрация</a>

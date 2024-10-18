@@ -1,7 +1,8 @@
 @import "vars.scss";
+@import "containers.scss";
 
 .nav {
-    padding: $pad * 2 0;
+    padding: $pad 0;
     list-style-type: none;
     width: 100vw;
     background-color: var(--c-nav-background);
@@ -9,6 +10,7 @@
     top: 0;
     left: 0;
     right: 0;
+    @extend .vertical-center;
     border-radius: 0 0 $radius $radius;
     & .nav-item {
         display: inline-block;
