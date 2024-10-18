@@ -5,8 +5,14 @@
 <div th:replace="~{base :: body_block(body_title='Мои проекты', body_content=~{:: content})}"></div>
 <div th:remove="all">
     <div th:fragment="content">
-        <a th:href="@{/projects/create/}" class="btn-action">Новый проект</a>
-        <br>
+        <div class="row">
+            <div class="cell">
+                <a th:href="@{/projects/create/}" class="btn-action">
+                    <img th:src="@{/img/editing/add.png/}" class="icon">
+                    <text>Новый проект</text>
+                </a>
+            </div>
+        </div>
         <br>
         <div class="row">
             <div class="container-1 cell">

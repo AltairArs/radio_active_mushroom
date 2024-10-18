@@ -9,13 +9,22 @@
     </li>
     <th:block th:if="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">
         <li class="nav-item">
-            <a class="btn-nav" th:href="@{/projects/list/my/}">Проекты</a>
+            <a class="btn-nav" th:href="@{/projects/list/my/}">
+                <img th:src="@{/img/project/project.png/}" class="icon">
+                <text>Проекты</text>
+            </a>
         </li>
         <li class="nav-item">
-            <a class="btn-nav" th:href="@{/accounts/profile/}">Профиль: [[${#authentication.getPrincipal().getUsername()}]]</a>
+            <a class="btn-nav" th:href="@{/accounts/profile/}">
+                <img th:src="@{/img/accounts/profile.png/}" class="icon">
+                <text>Профиль: [[${#authentication.getPrincipal().getUsername()}]]</text>
+            </a>
         </li>
         <li class="nav-item">
-            <a class="btn-auth" th:href="@{/accounts/logout/}">Выход</a>
+            <a class="btn-auth" th:href="@{/accounts/logout/}">
+                <img th:src="@{/img/accounts/logout.png/}" class="icon">
+                <text>Выход</text>
+            </a>
         </li>
     </th:block>
     <th:block th:unless="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">

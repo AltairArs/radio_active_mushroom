@@ -28,8 +28,17 @@
         </tbody>
       </table>
     </div>
-    <a class="btn-action">Сменить пароль</a>
-    <a class="btn-action" th:href="@{/accounts/profile/settings/}">Настройки</a>
+    <div class="row">
+      <div class="cell">
+        <a class="btn-action">Сменить пароль</a>
+      </div>
+      <div class="cell">
+        <a class="btn-action" th:href="@{/accounts/profile/settings/}">
+          <img th:src="@{/img/settings.png/}" class="icon">
+          <text>Настройки</text>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 </body>

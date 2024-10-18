@@ -10,6 +10,7 @@ input, textarea, select {
     box-shadow: 2px 3px 0 var(--c-input-shadow);
     color: var(--c-input-text);
     background-color: var(--c-input-background);
+    caret-color: var(--c-input-text);
     &::placeholder {
         color: var(--c-input-text);
     }

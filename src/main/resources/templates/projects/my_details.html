@@ -46,9 +46,26 @@
             </div>
         </div>
         <br>
-        <a class="btn-action" th:href="@{/projects/settings/my/{project_name}/(project_name=${project.getName()})}">Настройки</a>
-        <a class="btn-action" th:href="@{/projects/delete/my/{project_name}/(project_name=${project.getName()})}">Удалить</a>
-        <a class="btn-action" th:href="@{/projects/workspace/my/{project_name}/(project_name=${project.getName()})}">В рабочую среду</a>
+        <div class="row">
+            <div class="cell">
+                <a class="btn-action" th:href="@{/projects/settings/my/{project_name}/(project_name=${project.getName()})}">
+                    <img th:src="@{/img/settings.png/}" class="icon">
+                    <text>Настройки</text>
+                </a>
+            </div>
+            <div class="cell">
+                <a class="btn-action" th:href="@{/projects/delete/my/{project_name}/(project_name=${project.getName()})}">
+                    <img th:src="@{/img/editing/delete.png/}" class="icon">
+                    <text>Удалить</text>
+                </a>
+            </div>
+            <div class="cell">
+                <a class="btn-action" th:href="@{/projects/workspace/my/{project_name}/(project_name=${project.getName()})}">
+                    <img th:src="@{/img/project/workspace.png/}" class="icon">
+                    <text>В рабочую среду</text>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </body>

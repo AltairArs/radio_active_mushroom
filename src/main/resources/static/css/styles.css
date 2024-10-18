@@ -23,6 +23,7 @@ div.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -60,6 +61,7 @@ div.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -97,6 +99,7 @@ div.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -134,6 +137,7 @@ div.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -175,6 +179,7 @@ div.GREEN.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -212,6 +217,7 @@ div.GREEN.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(23, 197, 0);
@@ -249,6 +255,7 @@ div.GREEN.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -286,6 +293,7 @@ div.GREEN.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(0, 48, 4);
@@ -327,6 +335,7 @@ div.ORANGE.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -364,6 +373,7 @@ div.ORANGE.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(202, 131, 0);
@@ -401,6 +411,7 @@ div.ORANGE.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -438,6 +449,7 @@ div.ORANGE.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(63, 34, 0);
@@ -479,6 +491,7 @@ div.LIGHT_BLUE.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -516,6 +529,7 @@ div.LIGHT_BLUE.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(0, 207, 207);
@@ -553,6 +567,7 @@ div.LIGHT_BLUE.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -590,6 +605,7 @@ div.LIGHT_BLUE.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(0, 55, 59);
@@ -631,6 +647,7 @@ div.YELLOW.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -668,6 +685,7 @@ div.YELLOW.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(194, 191, 0);
@@ -705,6 +723,7 @@ div.YELLOW.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -742,6 +761,7 @@ div.YELLOW.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(68, 67, 0);
@@ -783,6 +803,7 @@ div.PURPLE.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -820,6 +841,7 @@ div.PURPLE.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(175, 76, 255);
@@ -857,6 +879,7 @@ div.PURPLE.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -894,6 +917,7 @@ div.PURPLE.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(61, 0, 85);
@@ -935,6 +959,7 @@ div.RED.LIGHT.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: white;
@@ -972,6 +997,7 @@ div.RED.LIGHT.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(255, 0, 0);
@@ -1009,6 +1035,7 @@ div.RED.DARK.PART {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: black;
@@ -1046,6 +1073,7 @@ div.RED.DARK.FULL {
   bottom: 0;
   right: 0;
   left: 0;
+  background-repeat: repeat;
   background-color: var(--c-background);
   color: var(--c-text);
   --c-background: rgb(48, 0, 0);
@@ -1094,6 +1122,7 @@ input, textarea, select {
   box-shadow: 2px 3px 0 var(--c-input-shadow);
   color: var(--c-input-text);
   background-color: var(--c-input-background);
+  caret-color: var(--c-input-text);
 }
 input::placeholder, textarea::placeholder, select::placeholder {
   color: var(--c-input-text);
@@ -1168,7 +1197,7 @@ body {
   width: 100%;
 }
 
-.vertical-center, .btn-auth, .nav {
+.vertical-center, .btn-auth, .btn-action-on-1, .btn-action, .btn-nav, .nav {
   display: flex;
   align-items: center;
 }
@@ -1246,7 +1275,7 @@ body {
   width: 100%;
 }
 
-.vertical-center, .btn-auth, .nav {
+.vertical-center, .btn-auth, .btn-action-on-1, .btn-action, .btn-nav, .nav {
   display: flex;
   align-items: center;
 }
@@ -1315,7 +1344,7 @@ body {
   width: 100%;
 }
 
-.vertical-center, .btn-auth, .nav {
+.vertical-center, .btn-auth, .btn-action-on-1, .btn-action, .btn-nav, .nav {
   display: flex;
   align-items: center;
 }
@@ -1488,7 +1517,7 @@ body {
   width: 100%;
 }
 
-.vertical-center, .nav, .btn-auth {
+.vertical-center, .nav, .btn-nav, .btn-action, .btn-action-on-1, .btn-auth {
   display: flex;
   align-items: center;
 }
