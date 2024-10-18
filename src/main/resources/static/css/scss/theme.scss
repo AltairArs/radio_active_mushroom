@@ -12,13 +12,12 @@
 
 @mixin full_theme($color_class, $mode, $colorization) {
     position: absolute;
-    top: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    top: 0;
     left: 0;
     background-repeat: repeat;
-
-    background-color: var(--c-background);
+    background: linear-gradient(to right, var(--c-background), var(--c-background));
     color: var(--c-text);
 
     --c-background: #{get_color($c-background, $color_class, $mode, $colorization)};

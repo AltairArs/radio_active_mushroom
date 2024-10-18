@@ -19,12 +19,12 @@ div {
 }
 div.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -57,12 +57,12 @@ div.LIGHT.PART {
 }
 div.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -95,12 +95,12 @@ div.LIGHT.FULL {
 }
 div.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -133,12 +133,12 @@ div.DARK.PART {
 }
 div.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -175,12 +175,12 @@ div.GREEN {
 }
 div.GREEN.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -213,12 +213,12 @@ div.GREEN.LIGHT.PART {
 }
 div.GREEN.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(23, 197, 0);
   --c-text: rgb(14, 48, 0);
@@ -251,12 +251,12 @@ div.GREEN.LIGHT.FULL {
 }
 div.GREEN.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -289,12 +289,12 @@ div.GREEN.DARK.PART {
 }
 div.GREEN.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(0, 48, 4);
   --c-text: rgb(82, 255, 91);
@@ -331,12 +331,12 @@ div.ORANGE {
 }
 div.ORANGE.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -369,12 +369,12 @@ div.ORANGE.LIGHT.PART {
 }
 div.ORANGE.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(202, 131, 0);
   --c-text: rgb(54, 31, 0);
@@ -407,12 +407,12 @@ div.ORANGE.LIGHT.FULL {
 }
 div.ORANGE.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -445,12 +445,12 @@ div.ORANGE.DARK.PART {
 }
 div.ORANGE.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(63, 34, 0);
   --c-text: rgb(255, 166, 1);
@@ -487,12 +487,12 @@ div.LIGHT_BLUE {
 }
 div.LIGHT_BLUE.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -525,12 +525,12 @@ div.LIGHT_BLUE.LIGHT.PART {
 }
 div.LIGHT_BLUE.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(0, 207, 207);
   --c-text: rgb(0, 63, 63);
@@ -563,12 +563,12 @@ div.LIGHT_BLUE.LIGHT.FULL {
 }
 div.LIGHT_BLUE.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -601,12 +601,12 @@ div.LIGHT_BLUE.DARK.PART {
 }
 div.LIGHT_BLUE.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(0, 55, 59);
   --c-text: rgb(0, 247, 255);
@@ -643,12 +643,12 @@ div.YELLOW {
 }
 div.YELLOW.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -681,12 +681,12 @@ div.YELLOW.LIGHT.PART {
 }
 div.YELLOW.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(194, 191, 0);
   --c-text: rgb(61, 55, 0);
@@ -719,12 +719,12 @@ div.YELLOW.LIGHT.FULL {
 }
 div.YELLOW.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -757,12 +757,12 @@ div.YELLOW.DARK.PART {
 }
 div.YELLOW.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(68, 67, 0);
   --c-text: rgb(255, 238, 0);
@@ -799,12 +799,12 @@ div.PURPLE {
 }
 div.PURPLE.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -837,12 +837,12 @@ div.PURPLE.LIGHT.PART {
 }
 div.PURPLE.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(175, 76, 255);
   --c-text: rgb(70, 0, 92);
@@ -875,12 +875,12 @@ div.PURPLE.LIGHT.FULL {
 }
 div.PURPLE.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -913,12 +913,12 @@ div.PURPLE.DARK.PART {
 }
 div.PURPLE.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(61, 0, 85);
   --c-text: rgb(241, 89, 255);
@@ -955,12 +955,12 @@ div.RED {
 }
 div.RED.LIGHT.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: white;
   --c-text: black;
@@ -993,12 +993,12 @@ div.RED.LIGHT.PART {
 }
 div.RED.LIGHT.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(255, 0, 0);
   --c-text: rgb(66, 0, 0);
@@ -1031,12 +1031,12 @@ div.RED.LIGHT.FULL {
 }
 div.RED.DARK.PART {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: black;
   --c-text: white;
@@ -1069,12 +1069,12 @@ div.RED.DARK.PART {
 }
 div.RED.DARK.FULL {
   position: absolute;
-  top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  top: 0;
   left: 0;
   background-repeat: repeat;
-  background-color: var(--c-background);
+  background: linear-gradient(to right, var(--c-background), var(--c-background));
   color: var(--c-text);
   --c-background: rgb(48, 0, 0);
   --c-text: rgb(255, 93, 93);

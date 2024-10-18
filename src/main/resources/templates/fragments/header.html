@@ -5,7 +5,10 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="btn-nav" href="">Версии</a>
+        <a class="btn-nav" href="">
+            <img th:src="@{/img/versions/version.png}" class="icon">
+            <text>Версии</text>
+        </a>
     </li>
     <th:block th:if="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">
         <li class="nav-item">

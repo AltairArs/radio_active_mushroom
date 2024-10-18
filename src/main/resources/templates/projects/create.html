@@ -9,10 +9,10 @@
             <form method="post" th:object="${form}">
                 <div th:replace="~{fragments/forms :: csrf_token}"></div>
                 <table>
-                    <div th:replace="~{fragments/forms :: row_text(field_label='Название', field_name='name', level=1, required=true)}"></div>
+                    <div th:replace="~{fragments/forms :: row_text(field_label='Название', field_name='name', level=1, required=true, icon=@{/img/field_types/str.png})}"></div>
                     <div th:replace="~{fragments/forms :: row_text(field_label='Дружелюбное название', field_name='friendly_name', level=1, help_text=
-                    'Отображается вместо рабочего названия')}"></div>
-                    <div th:replace="~{fragments/forms :: col_text(field_label='Описание', field_name='description', level=1)}"></div>
+                    'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>
+                    <div th:replace="~{fragments/forms :: col_text(field_label='Описание', field_name='description', level=1, icon=@{/img/field_types/text.png})}"></div>
 
                     <div th:replace="~{fragments/forms :: row_select(field_label='Могут видеть', field_name='can_see', level=1, options=${ {
                         {'ALL', 'Любой пользователь'},

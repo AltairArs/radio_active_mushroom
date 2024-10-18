@@ -19,8 +19,8 @@
                     <h3>Общая информация</h3>
                     <table>
                         <div th:replace="~{fragments/forms :: row_text(field_label='Дружелюбное название', field_name='friendly_name', level=1, help_text=
-                    'Отображается вместо рабочего названия')}"></div>
-                        <div th:replace="~{fragments/forms :: col_text(field_label='Описание', field_name='description', level=1)}"></div>
+                    'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>
+                        <div th:replace="~{fragments/forms :: col_text(field_label='Описание', field_name='description', level=1, icon=@{/img/field_types/text.png})}"></div>
 
                         <div th:replace="~{fragments/forms :: all_errors(level=1)}"></div>
                     </table>
