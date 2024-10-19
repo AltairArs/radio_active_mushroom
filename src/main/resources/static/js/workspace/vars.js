@@ -1,0 +1,10 @@
+export const SHOW_MENU_OFFSET = 20;
+export const WORKSPACE_ID = "workspace";
+export const WORKSPACE_MENU_ID = "workspace_menu";
+export const DISPLAY_SHOW = "block";
+export const DISPLAY_HIDE = "none";
+export const WORKSPACE_ADD_TABLE_BUTTON_ID = "workspace_add_table_button";
+export const WORKSPACE_ADD_TABLE_DIALOG_ID = "workspace_add_table_dialog";
+export const WORKSPACE_CONNECT_TABLES_BUTTON_ID = "workspace_connect_tables_button";
+export const WORKSPACE_CONNECT_TABLES_DIALOG_ID = "workspace_connect_tables_dialog";
+export const WORKSPACE_CONTENT_ID = "workspace_content";

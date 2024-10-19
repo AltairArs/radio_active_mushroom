@@ -14,19 +14,34 @@
       </div>
     </div>
     <br>
-    <div class="workspace">
+    <div class="workspace" id="workspace">
+      <div id="workspace_content"></div>
 
-      <ul class="workspace-menu">
+      <ul class="workspace-menu" id="workspace_menu">
         <h3 class="header-m-o">Меню</h3>
-        <button class="btn-action-on-1">
+        <button class="btn-action-on-1" id="workspace_add_table_button">
           <img th:src="@{/img/editing/add.png}" class="icon">
           <text>Новая сущность</text>
         </button>
-        <button class="btn-action-on-1">
+        <button class="btn-action-on-1" id="workspace_connect_tables_button">
           <img th:src="@{/img/constraints/reference.png}" class="icon">
           <text>Связать сущности</text>
         </button>
       </ul>
+
+      <dialog class="container-1 dialog" id="workspace_add_table_dialog">
+        <form method="dialog">
+          <h3 class="header-m-o">Новая сущность</h3>
+          <button class="btn-action-on-1">Отмена</button>
+        </form>
+      </dialog>
+
+      <dialog class="container-1 dialog" id="workspace_connect_tables_dialog">
+        <form method="dialog">
+          <h3 class="header-m-o">Связать сущности</h3>
+          <button class="btn-action-on-1">Отмена</button>
+        </form>
+      </dialog>
 
     </div>
   </div>
