@@ -11,11 +11,11 @@ import lombok.Setter;
 @Setter
 public class MembershipRequestPrimeryKey {
     @ManyToOne
-    @JoinColumn(name = "sender_username")
+    @JoinColumn(name = "senderUsername")
     private UserEntity sender;
 
     @ManyToOne
-    @JoinColumn(name = "project_name", nullable = false, referencedColumnName = "name")
-    @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username", nullable = false)
+    @JoinColumn(name = "projectName", nullable = false, referencedColumnName = "name")
+    @JoinColumn(name = "projectOwnerUsername", referencedColumnName = "ownerUsername", nullable = false)
     private ProjectEntity project;
 }

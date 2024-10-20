@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "project_entity")
+@Table(name = "projectEntity")
 @IdClass(ProjectPrimaryKey.class)
 public class ProjectEntity {
     @Id
@@ -24,51 +24,51 @@ public class ProjectEntity {
     @Id
     @ToString.Exclude
     @ManyToOne
-    @JoinColumn(name = "owner_username")
+    @JoinColumn(name = "ownerUsername")
     private UserEntity owner;
 
-    @Column(name = "friendly_name")
-    private String friendly_name;
+    @Column(name = "friendlyName")
+    private String friendlyName;
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime created_at = LocalDateTime.now();
+    @Column(name = "createdAt", nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(name = "last_update", nullable = false)
-    private LocalDateTime last_update;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "can_see", nullable = false, length = 12)
-    private ProjectPermissionsEnum can_see = ProjectPermissionsEnum.ONLY_OWNER;
+    @Column(name = "lastUpdate", nullable = false)
+    private LocalDateTime lastUpdate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "can_edit", nullable = false, length = 12)
-    private ProjectPermissionsEnum can_edit = ProjectPermissionsEnum.ONLY_OWNER;
+    @Column(name = "canSee", nullable = false, length = 12)
+    private ProjectPermissionsEnum canSee = ProjectPermissionsEnum.ONLY_OWNER;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "can_download", nullable = false, length = 12)
-    private ProjectPermissionsEnum can_download = ProjectPermissionsEnum.ONLY_OWNER;
+    @Column(name = "canEdit", nullable = false, length = 12)
+    private ProjectPermissionsEnum canEdit = ProjectPermissionsEnum.ONLY_OWNER;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "canDownload", nullable = false, length = 12)
+    private ProjectPermissionsEnum canDownload = ProjectPermissionsEnum.ONLY_OWNER;
 
     @ToString.Exclude
     @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(
-            name = "project_members",
+            name = "projectMembersEntity",
             joinColumns = {
-                    @JoinColumn(name = "projects_as_member_name", referencedColumnName = "name"),
-                    @JoinColumn(name = "projects_as_member_owner_username", referencedColumnName = "owner_username")
+                    @JoinColumn(name = "projectsAsMemberName", referencedColumnName = "name"),
+                    @JoinColumn(name = "projectsAsMemberOwnerUsername", referencedColumnName = "ownerUsername")
             },
-            inverseJoinColumns = {@JoinColumn(name = "member_username", referencedColumnName = "username")}
+            inverseJoinColumns = {@JoinColumn(name = "memberUsername", referencedColumnName = "username")}
     )
     private Set<UserEntity> members = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<MembershipRequestEntity> membership_requests = new LinkedHashSet<>();
+    private Set<MembershipRequestEntity> membershipRequests = new LinkedHashSet<>();
 
     public String getProjectName() {
-        if (this.friendly_name != null && !this.friendly_name.isEmpty()) {
-            return this.friendly_name;
+        if (this.friendlyName != null && !this.friendlyName.isEmpty()) {
+            return this.friendlyName;
         } else {
             return this.name;
         }

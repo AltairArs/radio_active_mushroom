@@ -10,25 +10,25 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "membership_request_entity")
+@Table(name = "membershipRequestEntity")
 @IdClass(MembershipRequestPrimeryKey.class)
 public class MembershipRequestEntity {
 
   @Column(name = "message")
   private String message;
 
-  @Column(name = "sended_at", nullable = false)
-  private LocalDateTime sended_at = LocalDateTime.now();
+  @Column(name = "sendedAt", nullable = false)
+  private LocalDateTime sendedAt = LocalDateTime.now();
 
   @Id
   @ManyToOne
-  @JoinColumn(name = "sender_username")
+  @JoinColumn(name = "senderUsername")
   private UserEntity sender;
 
   @Id
   @ManyToOne
-  @JoinColumn(name = "project_name", nullable = false, referencedColumnName = "name")
-  @JoinColumn(name = "project_owner_username", referencedColumnName = "owner_username", nullable = false)
+  @JoinColumn(name = "projectName", nullable = false, referencedColumnName = "name")
+  @JoinColumn(name = "projectOwnerUsername", referencedColumnName = "ownerUsername", nullable = false)
   private ProjectEntity project;
 
 }

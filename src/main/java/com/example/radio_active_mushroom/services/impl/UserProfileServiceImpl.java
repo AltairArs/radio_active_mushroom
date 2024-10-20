@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.services.impl;
 
-import com.example.radio_active_mushroom.dto.UserSettingsDto;
+import com.example.radio_active_mushroom.dto.entity.UserSettingsDto;
 import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeModeEnum;
@@ -28,35 +28,35 @@ public class UserProfileServiceImpl implements UserProfileService {
     private ModelMapper modelMapper;
 
     @Override
-    public ThemeDocument GetUserTheme(String username) {
+    public ThemeDocument getUserTheme(String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
             Optional<ThemeDocument> userTheme = themeDocumentRepository.findByUsername(username);
             if (userTheme.isPresent()) {
                 return userTheme.get();
             } else {
-                ThemeDocument created_theme = new ThemeDocument();
-                created_theme.setUsername(username);
-                created_theme.setColor(ThemeColorEnum.DEFAULT);
-                created_theme.setMode(ThemeModeEnum.LIGHT);
-                created_theme.setColorization(ThemeColorizationEnum.FULL);
-                themeDocumentRepository.save(created_theme);
-                return created_theme;
+                ThemeDocument createdTheme = new ThemeDocument();
+                createdTheme.setUsername(username);
+                createdTheme.setColor(ThemeColorEnum.DEFAULT);
+                createdTheme.setMode(ThemeModeEnum.LIGHT);
+                createdTheme.setColorization(ThemeColorizationEnum.FULL);
+                themeDocumentRepository.save(createdTheme);
+                return createdTheme;
             }
         }
         return null;
     }
 
     @Override
-    public void SaveUserSettings(UserSettingsDto userSettings, String username) {
+    public void saveUserSettings(UserSettingsDto userSettings, String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         Optional<ThemeDocument> theme = themeDocumentRepository.findByUsername(username);
         if (user.isPresent() && theme.isPresent()) {
             UserEntity userEntity = user.get();
             ThemeDocument themeDocument = theme.get();
 
-            userEntity.setFirst_name(userSettings.getFirst_name());
-            userEntity.setLast_name(userSettings.getLast_name());
+            userEntity.setFirstName(userSettings.getFirstName());
+            userEntity.setLastName(userSettings.getLastName());
 
             themeDocument.setColorization(userSettings.getColorization());
             themeDocument.setMode(userSettings.getMode());
@@ -64,17 +64,15 @@ public class UserProfileServiceImpl implements UserProfileService {
 
             userRepository.save(userEntity);
             themeDocumentRepository.save(themeDocument);
-        } else {
-
         }
     }
 
     @Override
-    public UserSettingsDto GetUserSettings(String username) {
-        UserSettingsDto userSettings = modelMapper.map(GetUserTheme(username), UserSettingsDto.class);
+    public UserSettingsDto getUserSettings(String username) {
+        UserSettingsDto userSettings = modelMapper.map(getUserTheme(username), UserSettingsDto.class);
         UserEntity user = userRepository.findByUsername(username).get();
-        userSettings.setFirst_name(user.getFirst_name());
-        userSettings.setLast_name(user.getLast_name());
+        userSettings.setFirstName(user.getFirstName());
+        userSettings.setLastName(user.getLastName());
         return userSettings;
     }
 }

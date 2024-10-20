@@ -1,83 +1,83 @@
 <!--
-  submit_value: String
+  submitValue: String
   level: int
 -->
-<tr th:fragment="form_buttons">
-  <td class="btn-center"><input type="submit" th:value="${submit_value}" th:classappend="${level} == 1 ? 'btn-action-on-1' : 'btn-action'"></td>
+<tr th:fragment="formButtons">
+  <td class="btn-center"><input type="submit" th:value="${submitValue}" th:classappend="${level} == 1 ? 'btn-action-on-1' : 'btn-action'"></td>
   <td class="btn-center"><input type="reset" value="Очистить" th:classappend="${level} == 1 ? 'btn-action-on-1' : 'btn-action'"></td>
 </tr>
 <!--
-  field_name: String
-  field_label: String
-  help_text: Optional<String>
+  fieldName: String
+  fieldLabel: String
+  helpText: Optional<String>
   required: Optional<boolean>
   icon: String
 -->
-<th:block th:fragment="row_text">
+<th:block th:fragment="rowText">
   <tr>
-    <td th:text="${field_label}"></td>
+    <td th:text="${fieldLabel}"></td>
     <td class="vertical-center">
       <img th:src="${icon}" class="icon">
-      <input th:field="*{__${field_name}__}" type="text" th:placeholder="${field_label}">
+      <input th:field="*{__${fieldName}__}" type="text" th:placeholder="${fieldLabel}">
     </td>
   </tr>
   <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
-  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
-  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+  <tr th:if="${helpText != null}"><td colspan="2" class="help-text" th:text="${helpText}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(fieldName)}" th:errors="*{__${fieldName}__}"></td></tr>
 </th:block>
 
-<th:block th:fragment="col_text">
+<th:block th:fragment="colText">
   <tr><td colspan="2" class="vertical-center">
-    <text th:text="${field_label}"></text>
+    <text th:text="${fieldLabel}"></text>
     <img th:src="${icon}" class="icon">
   </td></tr>
-  <tr><td colspan="2"><textarea th:field="*{__${field_name}__}" rows="4" cols="40" th:placeholder="${field_label}"></textarea></td></tr>
+  <tr><td colspan="2"><textarea th:field="*{__${fieldName}__}" rows="4" cols="40" th:placeholder="${fieldLabel}"></textarea></td></tr>
   <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
-  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
-  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+  <tr th:if="${helpText != null}"><td colspan="2" class="help-text" th:text="${helpText}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(fieldName)}" th:errors="*{__${fieldName}__}"></td></tr>
 </th:block>
 
-<th:block th:fragment="row_pswd">
+<th:block th:fragment="rowPswd">
   <tr>
-    <td th:text="${field_label}"></td>
+    <td th:text="${fieldLabel}"></td>
     <td class="vertical-center">
       <img th:src="${icon}" class="icon">
-      <input th:field="*{__${field_name}__}" type="password" th:placeholder="${field_label}">
+      <input th:field="*{__${fieldName}__}" type="password" th:placeholder="${fieldLabel}">
     </td>
   </tr>
   <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
-  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
-  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+  <tr th:if="${helpText != null}"><td colspan="2" class="help-text" th:text="${helpText}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(fieldName)}" th:errors="*{__${fieldName}__}"></td></tr>
 </th:block>
 
-<th:block th:fragment="row_select">
+<th:block th:fragment="rowSelect">
   <tr>
-    <td th:text="${field_label}"></td>
+    <td th:text="${fieldLabel}"></td>
     <td class="vertical-center">
       <img th:src="${icon}" class="icon">
-      <select th:field="*{__${field_name}__}">
+      <select th:field="*{__${fieldName}__}">
         <th:block th:each="option : ${options}">
           <option th:value="${option[0]}" th:text="${option[1]}"></option>
         </th:block>
     </select></td>
   </tr>
   <tr th:if="${required != null}"><td colspan="2" class="help-text">* Обязательно</td></tr>
-  <tr th:if="${help_text != null}"><td colspan="2" class="help-text" th:text="${help_text}"></td></tr>
-  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(field_name)}" th:errors="*{__${field_name}__}"></td></tr>
+  <tr th:if="${helpText != null}"><td colspan="2" class="help-text" th:text="${helpText}"></td></tr>
+  <tr><td colspan="2" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'" th:if="${#fields.hasErrors(fieldName)}" th:errors="*{__${fieldName}__}"></td></tr>
 </th:block>
 <!--
 
 -->
-<input th:fragment="csrf_token" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+<input th:fragment="csrfToken" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 <!--
-  form_action: Optional<String>
-  submit_value: String
+  formAction: Optional<String>
+  submitValue: String
 -->
-<form method="post" th:fragment="button_form" th:action="${form_action}">
-  <div th:replace="~{:: csrf_token}"></div>
-  <input type="submit" th:value="${submit_value}" class="btn-action">
+<form method="post" th:fragment="buttonForm" th:action="${formAction}">
+  <div th:replace="~{:: csrfToken}"></div>
+  <input type="submit" th:value="${submitValue}" class="btn-action">
 </form>
 <!--
   level: int
 -->
-<tr th:if="${#fields.hasGlobalErrors()}" th:fragment="all_errors" th:each="err : ${#fields.globalErrors()}"><td colspan="2" th:text="${err}" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'"></td></tr>
+<tr th:if="${#fields.hasGlobalErrors()}" th:fragment="allErrors" th:each="err : ${#fields.globalErrors()}"><td colspan="2" th:text="${err}" th:classappend="${level} == 1 ? 'error-on-1' : 'error-on-2'"></td></tr>

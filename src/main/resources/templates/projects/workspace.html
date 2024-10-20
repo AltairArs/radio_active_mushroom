@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(page_title='Рабочая область')}"></head>
+<head th:replace="~{base :: head(pageTitle='Рабочая область')}"></head>
 <body>
-<div th:replace="~{base :: body_block(body_title='Рабочая область', body_content=~{:: content})}"></div>
+<div th:replace="~{base :: bodyBlock(bodyTitle='Рабочая область', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
     <div class="row">
       <div class="cell">
-        <a class="btn-action" th:href="@{/projects/details/my/{project_name}/(project_name=${project_name})}">
+        <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${projectName})}">
           <img th:src="@{/img/editing/back.png}" class="icon">
           <text>Назад</text>
         </a>
@@ -15,28 +15,28 @@
     </div>
     <br>
     <div class="workspace" id="workspace">
-      <div id="workspace_content"></div>
+      <div id="workspaceContent"></div>
 
-      <ul class="workspace-menu" id="workspace_menu">
+      <ul class="workspace-menu" id="workspaceMenu">
         <h3 class="header-m-o">Меню</h3>
-        <button class="btn-action-on-1" id="workspace_add_table_button">
+        <button class="btn-action-on-1" id="workspaceAddTableButton">
           <img th:src="@{/img/editing/add.png}" class="icon">
           <text>Новая сущность</text>
         </button>
-        <button class="btn-action-on-1" id="workspace_connect_tables_button">
+        <button class="btn-action-on-1" id="workspaceConnectTablesButton">
           <img th:src="@{/img/constraints/reference.png}" class="icon">
           <text>Связать сущности</text>
         </button>
       </ul>
 
-      <dialog class="container-1 dialog" id="workspace_add_table_dialog">
+      <dialog class="container-1 dialog" id="workspaceAddTableDialog">
         <form method="dialog">
           <h3 class="header-m-o">Новая сущность</h3>
           <button class="btn-action-on-1">Отмена</button>
         </form>
       </dialog>
 
-      <dialog class="container-1 dialog" id="workspace_connect_tables_dialog">
+      <dialog class="container-1 dialog" id="workspaceConnectTablesDialog">
         <form method="dialog">
           <h3 class="header-m-o">Связать сущности</h3>
           <button class="btn-action-on-1">Отмена</button>

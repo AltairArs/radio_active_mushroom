@@ -3,29 +3,45 @@ import {
     DISPLAY_HIDE
 } from "./vars.js";
 
-function to_pixels(pixels) {
+import {
+    workspace
+} from "./elements.js";
+
+function toPixels(pixels) {
     return String(pixels).concat('px');
 }
 
-function set_display(element, display) {
+function setDisplay(element, display) {
     element.style.display = display;
 }
 
-export function show_el(element) {
-    set_display(element, DISPLAY_SHOW);
+export function showEl(element) {
+    setDisplay(element, DISPLAY_SHOW);
 }
 
-export function hide_el(element) {
-    set_display(element, DISPLAY_HIDE);
+export function hideEl(element) {
+    setDisplay(element, DISPLAY_HIDE);
 }
 
-export function set_position(element, x, y) {
-    element.style.top = to_pixels(y);
-    element.style.left = to_pixels(x);
+export function setPosition(element, x, y) {
+    element.style.top = toPixels(y);
+    element.style.left = toPixels(x);
 }
 
-export function add_listener_dialog_show_button(dialog, button) {
+export function addListenerDialogShowButton(dialog, button) {
     button.addEventListener("click", function (event){
         dialog.showModal();
     });
+}
+
+export function getWorkspaceWidth() {
+    return window.innerWidth;
+}
+
+export function getWorkspaceHeight() {
+    return window.innerHeight;
+}
+
+export function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{base :: head(pageTitle='Регистрация')}"></head>
+  <body>
+    <div th:replace="~{base :: bodyBlock(bodyTitle='Регистрация', bodyContent=~{:: content})}"></div>
+      <div th:remove="all">
+        <div th:fragment="content">
+
+          <div class="container-center container-1">
+            <form method="post" th:object="${form}">
+              <div th:replace="~{fragments/forms :: csrfToken}"></div>
+              <table>
+                <div th:replace="~{fragments/forms :: rowText(fieldLabel='Ник', fieldName='username', level=1, required=true, icon=@{/img/field_types/str.png/})}"></div>
+                <div th:replace="~{fragments/forms :: rowText(fieldLabel='Email', fieldName='email', level=1, required=true, icon=@{/img/field_types/str.png/})}"></div>
+                <div th:replace="~{fragments/forms :: rowText(fieldLabel='Имя', fieldName='firstName', level=1, required=true, icon=@{/img/field_types/str.png/})}"></div>
+                <div th:replace="~{fragments/forms :: rowText(fieldLabel='Фамилия', fieldName='lastName', level=1, required=true, icon=@{/img/field_types/str.png/})}"></div>
+                <div th:replace="~{fragments/forms :: rowPswd(fieldLabel='Пароль', fieldName='password', level=1, required=true, icon=@{/img/field_types/password.png})}"></div>
+                <div th:replace="~{fragments/forms :: rowPswd(fieldLabel='Введите пароль еще раз', fieldName='confirmPassword', level=1, required=true, icon=@{/img/field_types/password.png})}"></div>
+
+                <div th:replace="~{fragments/forms :: allErrors(level=1)}"></div>
+
+                <div th:replace="~{fragments/forms :: formButtons(submitValue='Зарегистрироваться', level=1)}"></div>
+              </table>
+            </form>
+          </div>
+
+        </div>
+      </div>
+  </body>
+</html>

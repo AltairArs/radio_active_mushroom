@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Setter
 @ToString
 @TypeAlias(value = "theme")
-@Document(collection = "theme_document")
+@Document(collection = "themeDocument")
 public class ThemeDocument {
     @MongoId
     private String id;

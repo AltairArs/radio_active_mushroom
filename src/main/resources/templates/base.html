@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
   <head th:fragment="head">
-    <title th:text="${page_title}"></title>
+    <title th:text="${pageTitle}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
@@ -10,7 +10,7 @@
   </head>
   <body>
 
-  <div th:fragment="body_block" th:classappend="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'} ? (
+  <div th:fragment="bodyBlock" th:classappend="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'} ? (
 ${#authentication.getPrincipal().getColor() + ' ' + #authentication.getPrincipal().getMode() + ' ' + #authentication.getPrincipal().getColorization()}
   ) : 'LIGHT FULL DEFAULT'">
 
@@ -18,9 +18,9 @@ ${#authentication.getPrincipal().getColor() + ' ' + #authentication.getPrincipal
 
     <div style="padding: 80px 20px 0 20px">
 
-      <h1 class="header-m-o" th:if="${body_title != null}" th:text="${body_title}"></h1>
+      <h1 class="header-m-o" th:if="${bodyTitle != null}" th:text="${bodyTitle}"></h1>
 
-      <div th:replace="${body_content}"></div>
+      <div th:replace="${bodyContent}"></div>
 
     </div>
   </div>

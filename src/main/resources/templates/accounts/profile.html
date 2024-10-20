@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(page_title=${username})}"></head>
+<head th:replace="~{base :: head(pageTitle=${username})}"></head>
 <body>
-<div th:replace="~{base :: body_block(body_title='Профиль', body_content=~{:: content})}"></div>
+<div th:replace="~{base :: bodyBlock(bodyTitle='Профиль', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
     <div class="container-1">
@@ -19,11 +19,11 @@
         </tr>
         <tr>
           <td>Имя:</td>
-          <td th:text="${first_name}" class="info-field-1"></td>
+          <td th:text="${firstName}" class="info-field-1"></td>
         </tr>
         <tr>
           <td>Фамилия:</td>
-          <td th:text="${last_name}" class="info-field-1"></td>
+          <td th:text="${lastName}" class="info-field-1"></td>
         </tr>
         </tbody>
       </table>

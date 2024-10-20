@@ -1,13 +1,11 @@
-package com.example.radio_active_mushroom.dto;
+package com.example.radio_active_mushroom.dto.entity;
 
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
 import com.example.radio_active_mushroom.enums.ProjectPermissionsEnum;
 import com.example.radio_active_mushroom.models.entity.ProjectEntity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -17,16 +15,19 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class ProjectCreateDto implements Serializable {
     @NotBlank
     @OnlyLettersAndNumbers
     @Size(max = 255)
     private String name;
     @Size(max = 255)
-    private String friendly_name;
+    private String friendlyName;
     private String description;
 
-    private ProjectPermissionsEnum can_see = ProjectPermissionsEnum.ONLY_OWNER;
-    private ProjectPermissionsEnum can_edit = ProjectPermissionsEnum.ONLY_OWNER;
-    private ProjectPermissionsEnum can_download = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canSee = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canEdit = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canDownload = ProjectPermissionsEnum.ONLY_OWNER;
 }

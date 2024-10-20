@@ -1,8 +1,8 @@
 package com.example.radio_active_mushroom.controllers;
 
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
-import com.example.radio_active_mushroom.dto.ProjectCreateDto;
-import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
+import com.example.radio_active_mushroom.dto.entity.ProjectCreateDto;
+import com.example.radio_active_mushroom.dto.entity.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.services.ProjectService;
 import jakarta.validation.Valid;
@@ -26,10 +26,10 @@ public class ProjectsController {
 
     @GetMapping("list/my/")
     public String listMyProjects(Model model) {
-        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
-        model.addAttribute("projects_as_owner", user.getProjects_as_owner());
-        model.addAttribute("projects_as_member", user.getProjects_as_member());
-        return "projects/my_list";
+        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("projectsAsOwner", user.getProjectsAsOwner());
+        model.addAttribute("projectsAsMember", user.getProjectsAsMember());
+        return "projects/myList";
     }
 
     @GetMapping("create/")
@@ -43,7 +43,7 @@ public class ProjectsController {
         if (bindingResult.hasErrors()) {
             return "projects/create";
         } else {
-            UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+            UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
             if (!projectService.createNewProject(projectCreateDto, user)) {
                 bindingResult.addError(new ObjectError("form", "У вас уже есть проект с таким названием"));
                 return "projects/create";
@@ -53,43 +53,43 @@ public class ProjectsController {
         }
     }
 
-    @GetMapping("details/my/{project_name}/")
-    public String detailsMyProject(@PathVariable String project_name, Model model) {
-        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
-        model.addAttribute("project", projectService.getProject(user, project_name));
-        return "projects/my_details";
+    @GetMapping("details/my/{projectName}/")
+    public String detailsMyProject(@PathVariable String projectName, Model model) {
+        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("project", projectService.getProject(user, projectName));
+        return "projects/myDetails";
     }
 
-    @GetMapping("delete/my/{project_name}/")
-    public String deleteMyProject(@PathVariable String project_name, Model model) {
+    @GetMapping("delete/my/{projectName}/")
+    public String deleteMyProject(@PathVariable String projectName, Model model) {
         return "projects/delete";
     }
 
-    @PostMapping("delete/my/{project_name}/")
-    public String deleteMyProjectPost(@PathVariable String project_name, Model model) {
-        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
-        projectService.deleteProject(user, project_name);
+    @PostMapping("delete/my/{projectName}/")
+    public String deleteMyProjectPost(@PathVariable String projectName, Model model) {
+        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        projectService.deleteProject(user, projectName);
         return "redirect:/projects/list/my/";
     }
 
-    @GetMapping("settings/my/{project_name}/")
-    public String settingsMyProject(@PathVariable String project_name, Model model) {
-        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
-        model.addAttribute("form", projectService.getProjectSettings(user, project_name));
+    @GetMapping("settings/my/{projectName}/")
+    public String settingsMyProject(@PathVariable String projectName, Model model) {
+        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("form", projectService.getProjectSettings(user, projectName));
         return "projects/settings";
     }
 
-    @PostMapping("settings/my/{project_name}/")
-    public String settingsMyProjectPost(@PathVariable String project_name, @Valid @ModelAttribute("form") ProjectSettingsDto form, BindingResult bindingResult, Model model) {
-        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
-        projectService.updateProjectSettings(user,project_name, form);
-        return "redirect:/projects/details/my/" + project_name + "/";
+    @PostMapping("settings/my/{projectName}/")
+    public String settingsMyProjectPost(@PathVariable String projectName, @Valid @ModelAttribute("form") ProjectSettingsDto form, BindingResult bindingResult, Model model) {
+        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        projectService.updateProjectSettings(user, projectName, form);
+        return "redirect:/projects/details/my/" + projectName + "/";
     }
 
-    @GetMapping("workspace/my/{project_name}/")
-    public String workspaceMyProject(@PathVariable String project_name, Model model) {
-        UserEntity user = authenticationService.GetCurrentUser(SecurityContextHolder.getContext().getAuthentication());
-        model.addAttribute("project", projectService.getProject(user, project_name));
+    @GetMapping("workspace/my/{projectName}/")
+    public String workspaceMyProject(@PathVariable String projectName, Model model) {
+        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+        model.addAttribute("project", projectService.getProject(user, projectName));
         return "projects/workspace";
     }
 }

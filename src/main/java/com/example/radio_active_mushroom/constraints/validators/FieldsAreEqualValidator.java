@@ -19,12 +19,12 @@ public class FieldsAreEqualValidator implements ConstraintValidator<FieldsAreEqu
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        Object field1_value = new BeanWrapperImpl(o).getPropertyValue(field1);
-        Object field2_value = new BeanWrapperImpl(o).getPropertyValue(field2);
-        if (field1_value != null) {
-            return field1_value.equals(field2_value);
+        Object field1Value = new BeanWrapperImpl(o).getPropertyValue(field1);
+        Object field2Value = new BeanWrapperImpl(o).getPropertyValue(field2);
+        if (field1Value != null) {
+            return field1Value.equals(field2Value);
         } else {
-            return field2_value == null;
+            return field2Value == null;
         }
     }
 }

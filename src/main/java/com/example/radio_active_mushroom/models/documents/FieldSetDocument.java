@@ -13,8 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@TypeAlias(value = "field_set")
-@Document(collection = "field_set_document")
+@TypeAlias(value = "fieldSet")
+@Document(collection = "fieldSetDocument")
 public class FieldSetDocument {
     @MongoId
     private String id;
@@ -23,12 +23,15 @@ public class FieldSetDocument {
 
     private String description;
 
-    private String friendly_name;
+    private String friendlyName;
 
-    private String project_name;
+    private String projectName;
 
-    private String project_owner_username;
+    private String projectOwnerUsername;
 
     @DocumentReference(lazy = true)
     private List<FieldDocument> fields;
+
+    @DocumentReference(lazy = true)
+    private TableDocument table;
 }

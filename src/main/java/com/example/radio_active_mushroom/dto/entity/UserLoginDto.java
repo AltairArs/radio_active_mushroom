@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.dto;
+package com.example.radio_active_mushroom.dto.entity;
 
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
 import com.example.radio_active_mushroom.constraints.OnlyOneNotNull;

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(pageTitle='Выход')}"></head>
+<body>
+<div th:replace="~{base :: bodyBlock(bodyTitle='Вы действительно хотите выйти?', bodyContent=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+        <div th:replace="~{fragments/forms :: buttonForm(formAction='', submitValue='Подтверждаю')}"></div>
+    </div>
+</div>
+</body>
+</html>

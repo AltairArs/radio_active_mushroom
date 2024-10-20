@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.services.impl;
 
-import com.example.radio_active_mushroom.dto.UserRegistrationDto;
+import com.example.radio_active_mushroom.dto.entity.UserRegistrationDto;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.repo.entity.UserRepository;
 import com.example.radio_active_mushroom.services.MailService;
@@ -26,9 +26,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
     private ModelMapper modelMapper;
 
     @Override
-    public void RegisterNewUser(UserRegistrationDto userRegistrationDto) {
+    public void registerNewUser(UserRegistrationDto userRegistrationDto) {
         UserEntity user = modelMapper.map(userRegistrationDto, UserEntity.class);
-        user.setVerification_token(UUID.randomUUID().toString());
+        user.setVerificationToken(UUID.randomUUID().toString());
 
         mailService.sendMail(
                 userRegistrationDto.getEmail(),
@@ -36,19 +36,19 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
                 "Перейдите по ссылке ниже, чтобы активировать ваш аккаунт Radio Active Mushroom\n"
                         + ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString()
                         + "/accounts/verify/"
-                        + user.getVerification_token() + "/"
+                        + user.getVerificationToken() + "/"
         );
         userRepository.save(user);
     }
 
     @Override
-    public boolean ValidateVerificationToken(String verificationToken) {
-        Optional<UserEntity> user = userRepository.findByVerification_token(verificationToken);
+    public boolean validateVerificationToken(String verificationToken) {
+        Optional<UserEntity> user = userRepository.findByVerificationToken(verificationToken);
         if (!user.isPresent() || verificationToken == null || verificationToken.isEmpty()) {
             return false;
         } else {
-            user.get().setIs_active(true);
-            user.get().setVerification_token(null);
+            user.get().setIsActive(true);
+            user.get().setVerificationToken(null);
             userRepository.save(user.get());
             return true;
         }

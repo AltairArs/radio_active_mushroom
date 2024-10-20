@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.conf;
 
-import com.example.radio_active_mushroom.dto.UserRegistrationDto;
+import com.example.radio_active_mushroom.dto.entity.UserRegistrationDto;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;

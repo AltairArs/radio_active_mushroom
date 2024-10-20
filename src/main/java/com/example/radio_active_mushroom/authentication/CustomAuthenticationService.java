@@ -31,7 +31,7 @@ public class CustomAuthenticationService {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isPresent()) {
             UserEntity userEntity = user.get();
-            userEntity.setLast_login(LocalDateTime.now());
+            userEntity.setLastLogin(LocalDateTime.now());
             userRepository.save(userEntity);
         }
     }
@@ -45,7 +45,7 @@ public class CustomAuthenticationService {
         }
         if (user.isPresent()) {
             log.info("[AUTHENTICATION] User found");
-            if (passwordEncoder().matches(authentication.getPassword(), user.get().getPassword()) && user.get().getIs_active()) {
+            if (passwordEncoder().matches(authentication.getPassword(), user.get().getPassword()) && user.get().getIsActive()) {
                 log.info("[AUTHENTICATION] Password confirmed");
                 CustomUserDetails userDetails = modelMapper.map(user.get(), CustomUserDetails.class);
                 userDetails.setUserProfileService(userProfileService);
@@ -57,7 +57,7 @@ public class CustomAuthenticationService {
         return authentication;
     }
 
-    public UserEntity GetCurrentUser(Authentication authentication) {
+    public UserEntity getCurrentUser(Authentication authentication) {
         try {
             CustomAuthenticationToken auth = (CustomAuthenticationToken) authentication;
             Optional<UserEntity> user = userRepository.findByUsername(auth.getName());

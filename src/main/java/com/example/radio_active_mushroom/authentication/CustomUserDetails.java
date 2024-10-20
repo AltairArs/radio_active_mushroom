@@ -26,12 +26,12 @@ public class CustomUserDetails implements UserDetails {
 
     private UserRoleEnum role;
 
-    private boolean is_active;
+    private boolean isActive;
 
     private UserProfileService userProfileService;
 
     private ThemeDocument getTheme() {
-        return userProfileService.GetUserTheme(username);
+        return userProfileService.getUserTheme(username);
     }
 
     public String getColorization() {
@@ -63,6 +63,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return is_active;
+        return isActive;
     }
 }

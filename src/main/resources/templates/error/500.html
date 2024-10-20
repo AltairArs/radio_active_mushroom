@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(page_title='Внутренняя ошибка')}"></head>
+<head th:replace="~{base :: head(pageTitle='Внутренняя ошибка')}"></head>
 <body>
-<div th:replace="~{base :: body_block(body_title='На сервере произошла ошибка', body_content=~{:: content})}"></div>
+<div th:replace="~{base :: bodyBlock(bodyTitle='На сервере произошла ошибка', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
 

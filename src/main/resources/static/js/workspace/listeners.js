@@ -5,25 +5,28 @@ import {
 } from "./vars.js";
 
 import {
-    set_position,
-    show_el,
-    hide_el,
-    add_listener_dialog_show_button
+    setPosition,
+    showEl,
+    hideEl,
+    addListenerDialogShowButton,
+    getWorkspaceWidth,
+    getWorkspaceHeight,
+    clamp
 } from "./functions.js";
 
 els.workspace.addEventListener("contextmenu", function(event){
     event.preventDefault();
-    set_position(
-        els.workspace_menu,
-        event.x - SHOW_MENU_OFFSET,
-        event.y - SHOW_MENU_OFFSET * 1.5
+    showEl(els.workspaceMenu);
+    setPosition(
+        els.workspaceMenu,
+        clamp(event.x - SHOW_MENU_OFFSET, 0, getWorkspaceWidth() - els.workspaceMenu.offsetWidth),
+        clamp(event.y - SHOW_MENU_OFFSET * 1.5, 0, getWorkspaceHeight() - els.workspaceMenu.offsetHeight)
     )
-    show_el(els.workspace_menu);
 });
 
-els.workspace_menu.addEventListener("mouseleave", function (event){
-    hide_el(els.workspace_menu);
+els.workspaceMenu.addEventListener("mouseleave", function (event){
+    hideEl(els.workspaceMenu);
 })
 
-add_listener_dialog_show_button(els.workspace_add_table_dialog, els.workspace_add_table_button);
-add_listener_dialog_show_button(els.workspace_connect_tables_dialog, els.workspace_connect_tables_button);
+addListenerDialogShowButton(els.workspaceAddTableDialog, els.workspaceAddTableButton);
+addListenerDialogShowButton(els.workspaceConnectTablesDialog, els.workspaceConnectTablesButton);

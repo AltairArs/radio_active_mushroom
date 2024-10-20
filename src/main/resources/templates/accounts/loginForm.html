@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(pageTitle='Вход')}"></head>
+<body>
+<div th:replace="~{base :: bodyBlock(bodyTitle='Вход', bodyContent=~{:: content})}"></div>
+<div th:remove="all">
+  <div th:fragment="content">
+    <div class="container-1 container-center">
+      <h3>Вход возможен по нику или по Email</h3>
+      <form method="post" th:object="${form}">
+        <div th:replace="~{fragments/forms :: csrfToken}"></div>
+        <table>
+          <div th:replace="~{fragments/forms :: rowText(fieldLabel='Ник', fieldName='username', level=1, required=true)}"></div>
+          <div th:replace="~{fragments/forms :: rowText(fieldLabel='Email', fieldName='email', level=1, required=true)}"></div>
+          <div th:replace="~{fragments/forms :: rowPswd(fieldLabel='Пароль', fieldName='password', level=1, required=true)}"></div>
+
+          <div th:replace="~{fragments/forms :: allErrors(level=1)}"></div>
+
+          <div th:replace="~{fragments/forms :: formButtons(submitValue='Войти', level=1)}"></div>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

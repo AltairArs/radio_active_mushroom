@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(page_title='Новый проект')}"></head>
+<head th:replace="~{base :: head(pageTitle='Новый проект')}"></head>
 <body>
-<div th:replace="~{base :: body_block(body_title='Новый проект', body_content=~{:: content})}"></div>
+<div th:replace="~{base :: bodyBlock(bodyTitle='Новый проект', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
     <div th:fragment="content">
         <div class="container-1 container-center">
             <form method="post" th:object="${form}">
-                <div th:replace="~{fragments/forms :: csrf_token}"></div>
+                <div th:replace="~{fragments/forms :: csrfToken}"></div>
                 <table>
-                    <div th:replace="~{fragments/forms :: row_text(field_label='Название', field_name='name', level=1, required=true, icon=@{/img/field_types/str.png})}"></div>
-                    <div th:replace="~{fragments/forms :: row_text(field_label='Дружелюбное название', field_name='friendly_name', level=1, help_text=
+                    <div th:replace="~{fragments/forms :: rowText(fieldLabel='Название', fieldName='name', level=1, required=true, icon=@{/img/field_types/str.png})}"></div>
+                    <div th:replace="~{fragments/forms :: rowText(fieldLabel='Дружелюбное название', fieldName='friendlyName', level=1, helpText=
                     'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>
-                    <div th:replace="~{fragments/forms :: col_text(field_label='Описание', field_name='description', level=1, icon=@{/img/field_types/text.png})}"></div>
+                    <div th:replace="~{fragments/forms :: colText(fieldLabel='Описание', fieldName='description', level=1, icon=@{/img/field_types/text.png})}"></div>
 
-                    <div th:replace="~{fragments/forms :: row_select(field_label='Могут видеть', field_name='can_see', level=1, options=${ {
+                    <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут видеть', fieldName='canSee', level=1, options=${ {
                         {'ALL', 'Любой пользователь'},
                         {'ONLY_MEMBERS', 'Только участники'},
                         {'ONLY_OWNER', 'Только владелец'}
-                        } }, help_text='Также дает право на генерацию таблиц и кода')}"></div>
+                        } }, helpText='Также дает право на генерацию таблиц и кода')}"></div>
 
-                    <div th:replace="~{fragments/forms :: row_select(field_label='Могут редактировать', field_name='can_see', level=1, options=${ {
+                    <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут редактировать', fieldName='canEdit', level=1, options=${ {
                         {'ALL', 'Любой пользователь'},
                         {'ONLY_MEMBERS', 'Только участники'},
                         {'ONLY_OWNER', 'Только владелец'}
                         } })}"></div>
 
-                    <div th:replace="~{fragments/forms :: row_select(field_label='Могут скачивать', field_name='can_see', level=1, options=${ {
+                    <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут скачивать', fieldName='canDownload', level=1, options=${ {
                         {'ALL', 'Любой пользователь'},
                         {'ONLY_MEMBERS', 'Только участники'},
                         {'ONLY_OWNER', 'Только владелец'}
-                        } }, help_text='Также дает право на экспорт')}"></div>
+                        } }, helpText='Также дает право на экспорт')}"></div>
 
-                    <div th:replace="~{fragments/forms :: all_errors(level=1)}"></div>
+                    <div th:replace="~{fragments/forms :: allErrors(level=1)}"></div>
 
-                    <div th:replace="~{fragments/forms :: form_buttons(submit_value='Создать', level=1)}"></div>
+                    <div th:replace="~{fragments/forms :: formButtons(submitValue='Создать', level=1)}"></div>
                 </table>
             </form>
         </div>

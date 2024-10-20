@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.dto;
+package com.example.radio_active_mushroom.dto.entity;
 
 import com.example.radio_active_mushroom.constraints.FieldsAreEqual;
 import com.example.radio_active_mushroom.constraints.OnlyLettersAndNumbers;
@@ -19,7 +19,7 @@ import java.io.Serializable;
 @ToString
 @FieldsAreEqual(
         field1 = "password",
-        field2 = "confirm_password",
+        field2 = "confirmPassword",
         message = "Пароли должны совпадать"
 )
 public class UserRegistrationDto implements Serializable {
@@ -37,12 +37,12 @@ public class UserRegistrationDto implements Serializable {
     private String email;
     @NotBlank
     @Size(max = 255)
-    private String first_name;
+    private String firstName;
     @NotBlank
     @Size(max = 255)
-    private String last_name;
+    private String lastName;
     @NotBlank
     @OnlyLettersAndNumbers
     @Size(max = 255)
-    private String confirm_password;
+    private String confirmPassword;
 }

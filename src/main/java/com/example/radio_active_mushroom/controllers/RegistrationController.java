@@ -1,6 +1,6 @@
 package com.example.radio_active_mushroom.controllers;
 
-import com.example.radio_active_mushroom.dto.UserRegistrationDto;
+import com.example.radio_active_mushroom.dto.entity.UserRegistrationDto;
 import com.example.radio_active_mushroom.services.UserRegistrationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,41 +16,41 @@ public class RegistrationController {
     UserRegistrationService userRegistrationService;
 
     @GetMapping("registration/")
-    public String registration_form(Model model) {
+    public String registrationForm(Model model) {
         model.addAttribute("form", new UserRegistrationDto());
-        return "registration/registration_form";
+        return "registration/registrationForm";
     }
 
     @PostMapping("registration/")
-    public String registration_form_post(@Valid @ModelAttribute("form") UserRegistrationDto form, BindingResult bindingResult, Model model) {
+    public String registrationFormPost(@Valid @ModelAttribute("form") UserRegistrationDto form, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("form", form);
-            return "registration/registration_form";
+            return "registration/registrationForm";
         } else {
-            userRegistrationService.RegisterNewUser(form);
+            userRegistrationService.registerNewUser(form);
             return "redirect:/accounts/registration/done/";
         }
 
     }
 
     @GetMapping("registration/done/")
-    public String registration_done(Model model) {
-        return "registration/registration_done";
+    public String registrationDone(Model model) {
+        return "registration/registrationDone";
     }
 
     @GetMapping("verification/complete/")
-    public String verification_complete(Model model) {
-        return "registration/verification_complete";
+    public String verificationComplete(Model model) {
+        return "registration/verificationComplete";
     }
 
     @GetMapping("verification/failed/")
-    public String verification_failed(Model model) {
-        return "registration/verification_failed";
+    public String verificationFailed(Model model) {
+        return "registration/verificationFailed";
     }
 
-    @GetMapping("verify/{verification_token}/")
-    public String verify(@PathVariable String verification_token, Model model) {
-        if (userRegistrationService.ValidateVerificationToken(verification_token)) {
+    @GetMapping("verify/{verificationToken}/")
+    public String verify(@PathVariable String verificationToken, Model model) {
+        if (userRegistrationService.validateVerificationToken(verificationToken)) {
             return "redirect:/accounts/verification/complete/";
         } else {
             return "redirect:/accounts/verification/failed/";

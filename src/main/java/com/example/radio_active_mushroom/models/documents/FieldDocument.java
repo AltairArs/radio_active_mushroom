@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Setter
 @ToString
 @TypeAlias(value = "field")
-@Document(collection = "field_document")
+@Document(collection = "fieldDocument")
 public class FieldDocument {
     @MongoId
     private String id;
@@ -22,9 +22,9 @@ public class FieldDocument {
 
     private String description;
 
-    private String friendly_name;
+    private String friendlyName;
 
-    @DocumentReference(lazy = true, lookup = "{ 'field_name' : ?#{#self.name} }")
+    @DocumentReference(lazy = true)
     @ReadOnlyProperty
     private FieldSetDocument fieldSet;
 }

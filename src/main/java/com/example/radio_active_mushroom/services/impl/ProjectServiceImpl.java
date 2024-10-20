@@ -1,7 +1,7 @@
 package com.example.radio_active_mushroom.services.impl;
 
-import com.example.radio_active_mushroom.dto.ProjectCreateDto;
-import com.example.radio_active_mushroom.dto.ProjectSettingsDto;
+import com.example.radio_active_mushroom.dto.entity.ProjectCreateDto;
+import com.example.radio_active_mushroom.dto.entity.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.entity.ProjectEntity;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.repo.entity.ProjectRepository;
@@ -30,7 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
         } else {
             ProjectEntity newProject = modelMapper.map(projectCreateDto, ProjectEntity.class);
             newProject.setOwner(owner);
-            newProject.setLast_update(newProject.getCreated_at());
+            newProject.setLastUpdate(newProject.getCreatedAt());
             projectRepository.save(newProject);
             return true;
         }
@@ -42,27 +42,26 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void deleteProject(UserEntity owner, String project_name) {
-        Optional<ProjectEntity> projectEntity = projectRepository.findByOwnerAndName(owner, project_name);
-        if (projectEntity.isPresent()) {
-            projectRepository.delete(projectEntity.get());
-        }
+    public void deleteProject(UserEntity owner, String projectName) {
+        Optional<ProjectEntity> projectEntity = projectRepository.findByOwnerAndName(owner, projectName);
+        projectEntity.ifPresent(entity -> projectRepository.delete(entity));
     }
 
     @Override
-    public ProjectSettingsDto getProjectSettings(UserEntity owner, String project_name) {
-        return modelMapper.map(projectRepository.findByOwnerAndName(owner, project_name).get(), ProjectSettingsDto.class);
+    public ProjectSettingsDto getProjectSettings(UserEntity owner, String projectName) {
+        ProjectEntity projectEntity = projectRepository.findByOwnerAndName(owner, projectName).get();
+        return modelMapper.map(projectRepository.findByOwnerAndName(owner, projectName).get(), ProjectSettingsDto.class);
     }
 
     @Override
-    public void updateProjectSettings(UserEntity owner, String project_name, ProjectSettingsDto projectSettingsDto) {
-        ProjectEntity projectEntity = projectRepository.findByOwnerAndName(owner, project_name).get();
-        projectEntity.setLast_update(LocalDateTime.now());
+    public void updateProjectSettings(UserEntity owner, String projectName, ProjectSettingsDto projectSettingsDto) {
+        ProjectEntity projectEntity = projectRepository.findByOwnerAndName(owner, projectName).get();
+        projectEntity.setLastUpdate(LocalDateTime.now());
         projectEntity.setDescription(projectSettingsDto.getDescription());
-        projectEntity.setFriendly_name(projectSettingsDto.getFriendly_name());
-        projectEntity.setCan_download(projectSettingsDto.getCan_download());
-        projectEntity.setCan_edit(projectSettingsDto.getCan_edit());
-        projectEntity.setCan_see(projectSettingsDto.getCan_see());
+        projectEntity.setFriendlyName(projectSettingsDto.getFriendlyName());
+        projectEntity.setCanDownload(projectSettingsDto.getCanDownload());
+        projectEntity.setCanEdit(projectSettingsDto.getCanEdit());
+        projectEntity.setCanSee(projectSettingsDto.getCanSee());
         projectRepository.save(projectEntity);
     }
 }

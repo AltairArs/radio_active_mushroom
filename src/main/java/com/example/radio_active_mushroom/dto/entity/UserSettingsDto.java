@@ -1,4 +1,4 @@
-package com.example.radio_active_mushroom.dto;
+package com.example.radio_active_mushroom.dto.entity;
 
 import com.example.radio_active_mushroom.enums.theme.ThemeColorEnum;
 import com.example.radio_active_mushroom.enums.theme.ThemeColorizationEnum;
@@ -22,10 +22,10 @@ import java.io.Serializable;
 public class UserSettingsDto implements Serializable {
     @NotBlank
     @Size(max = 255)
-    private String first_name;
+    private String firstName;
     @NotBlank
     @Size(max = 255)
-    private String last_name;
+    private String lastName;
     @NotBlank
     private ThemeColorEnum color;
     @NotBlank

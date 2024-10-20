@@ -18,6 +18,6 @@ public class ProjectPrimaryKey implements Serializable {
 
     @ToString.Exclude
     @ManyToOne
-    @JoinColumn(name = "owner_username")
+    @JoinColumn(name = "ownerUsername")
     private UserEntity owner;
 }
