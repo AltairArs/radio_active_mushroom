@@ -34,14 +34,16 @@ export function addListenerDialogShowButton(dialog, button) {
     });
 }
 
-export function getWorkspaceWidth() {
-    return window.innerWidth;
-}
-
-export function getWorkspaceHeight() {
-    return window.innerHeight;
-}
-
 export function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
+}
+
+export function getRect(element) {
+    const rect = element.getBoundingClientRect();
+    return {
+        x: rect.left + window.scrollX,
+        y: rect.top + window.scrollY,
+        width: rect.width,
+        height: rect.height
+    }
 }
