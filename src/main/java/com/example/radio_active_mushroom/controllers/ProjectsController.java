@@ -1,6 +1,7 @@
 package com.example.radio_active_mushroom.controllers;
 
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
+import com.example.radio_active_mushroom.dto.document.CreateTable;
 import com.example.radio_active_mushroom.dto.entity.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.entity.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
@@ -90,6 +91,8 @@ public class ProjectsController {
     public String workspaceMyProject(@PathVariable String projectName, Model model) {
         UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
         model.addAttribute("project", projectService.getProject(user, projectName));
+        model.addAttribute("ownerUsername", user.getUsername());
+        model.addAttribute("formCreateTable", new CreateTable());
         return "projects/workspace";
     }
 }

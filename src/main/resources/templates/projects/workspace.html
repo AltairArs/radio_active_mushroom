@@ -5,6 +5,10 @@
 <div th:replace="~{base :: bodyBlock(bodyTitle='Рабочая область', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
+
+    <div style="display: none;" id="projectOwnerUsername" th:text="${ownerUsername}"></div>
+    <div style="display: none;" id="projectName" th:text="${projectName}"></div>
+
     <div class="row">
       <div class="cell">
         <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${projectName})}">
@@ -30,9 +34,20 @@
       </ul>
 
       <dialog class="container-1 dialog" id="workspaceAddTableDialog">
-        <form method="dialog">
+        <form method="dialog" th:object="${formCreateTable}">
+          <div th:replace="~{fragments/forms :: csrfToken}"></div>
+
           <h3 class="header-m-o">Новая сущность</h3>
-          <button class="btn-action-on-1">Отмена</button>
+          <table>
+            <div th:replace="~{fragments/forms :: rowText(fieldLabel='Название', fieldName='name', level=1, required=true, icon=@{/img/field_types/str.png})}"></div>
+            <div th:replace="~{fragments/forms :: rowText(fieldLabel='Дружелюбное название', fieldName='friendlyName', level=1, helpText=
+                    'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>
+            <div th:replace="~{fragments/forms :: colText(fieldLabel='Описание', fieldName='description', level=1, icon=@{/img/field_types/text.png})}"></div>
+          </table>
+          <div class="row btn-center">
+            <button class="btn-action-on-1 cell">Отмена</button>
+            <button class="btn-action-on-1 cell" type="submit" id="workspaceAddTableButtonSubmit">Создать</button>
+          </div>
         </form>
       </dialog>
 
