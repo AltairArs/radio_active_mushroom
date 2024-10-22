@@ -1,4 +1,4 @@
-![alt text](https://github.com/AltairArs/radio_active_mushroom/blob/master/src/main/resources/static/img/logo.png)
+<img src="https://github.com/AltairArs/radio_active_mushroom/blob/master/src/main/resources/static/img/logo.png" alt="logo" width="100">
 # RadioActive Mushroom
 ## Описание
 Сайт для создания и редактирования схем баз данных, а также генерации "сырого" SQL кода для различных БД.
