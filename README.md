@@ -62,18 +62,18 @@
 + Фреймворки
 	+ Spring (Java JDK 21)
    	> Зависимости:
-    	>  - ModelMapper
-    	>  - JPA
-    	>  - MongoDB Draiwer
-    	>  - Thymeleaf
-    	>  - WEB
-    	>  - Devtools
-    	>  - Liquibase
-    	>  - PostgreSQL Draiwer
-    	>  - Lombok
-    	>  - Security
-    	>  - Mail Sender
-    	>  - Validation
+    	>  + ModelMapper
+    	>  + JPA
+    	>  + MongoDB Draiwer
+    	>  + Thymeleaf
+    	>  + WEB
+    	>  + Devtools
+    	>  + Liquibase
+    	>  + PostgreSQL Draiwer
+    	>  + Lombok
+    	>  + Security
+    	>  + Mail Sender
+    	>  + Validation
  	+ JQuery
   	+ SCSS
 + Базы данных
