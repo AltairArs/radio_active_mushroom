@@ -61,19 +61,7 @@
 ## Стек технологий
 + Фреймворки
 	+ Spring (Java JDK 21)
-   	> Зависимости:
-    	>  + ModelMapper
-    	>  + JPA
-    	>  + MongoDB Draiwer
-    	>  + Thymeleaf
-    	>  + WEB
-    	>  + Devtools
-    	>  + Liquibase
-    	>  + PostgreSQL Draiwer
-    	>  + Lombok
-    	>  + Security
-    	>  + Mail Sender
-    	>  + Validation
+   	> Зависимости: ModelMapper, JPA, MongoDB Drawer, Thymeleaf, WEB, Devtools, Liquibase, PostgreSQL Drawer, Lombok, Security, Mail Sender, Validation
  	+ JQuery
   	+ SCSS
 + Базы данных
