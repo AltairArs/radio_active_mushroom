@@ -3,10 +3,6 @@ import {
     DISPLAY_HIDE
 } from "./vars.js";
 
-import {
-    workspace
-} from "./elements.js";
-
 function toPixels(pixels) {
     return String(pixels).concat('px');
 }
@@ -29,7 +25,7 @@ export function setPosition(element, x, y) {
 }
 
 export function addListenerDialogShowButton(dialog, button) {
-    button.addEventListener("click", function (event){
+    $(button).click(function (event){
         dialog.showModal();
     });
 }
