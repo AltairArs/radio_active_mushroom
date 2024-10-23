@@ -24,12 +24,6 @@ export function setPosition(element, x, y) {
     element.style.left = toPixels(x);
 }
 
-export function addListenerDialogShowButton(dialog, button) {
-    $(button).click(function (event){
-        dialog.showModal();
-    });
-}
-
 export function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
 }

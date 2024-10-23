@@ -11,3 +11,5 @@ export const WORKSPACE_CONTENT_ID = "workspaceContent";
 export const PROJECT_OWNER_USERNAME_ID = "projectOwnerUsername";
 export const PROJECT_NAME_ID = "projectName";
 export const WORKSPACE_ADD_TABLE_BUTTON_SUBMIT_ID = "workspaceAddTableButtonSubmit";
+export const CSRF_HEADER_NAME_ID = "_csrf_header";
+export const CSRF_TOKEN_ID = "_csrf";

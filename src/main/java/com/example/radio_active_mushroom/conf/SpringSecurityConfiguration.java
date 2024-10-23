@@ -36,8 +36,8 @@ public class SpringSecurityConfiguration {
                         .requestMatchers(
                                 "/accounts/logout/",
                                 "/accounts/profile/**",
-                                "projects/list/my/",
-                                "projects/create/"
+                                "/projects/list/my/",
+                                "/projects/create/"
                         ).hasAuthority("BASE")
                         .requestMatchers(
                                 "/**"

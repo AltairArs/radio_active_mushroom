@@ -11,11 +11,12 @@ import {
 } from "./functions.js";
 
 import {
-    workspace
+    workspace,
+    getCSRF
 } from "./elements.js";
-
-
-
+/*
+SHOW AND HIDE WORKSPACE MENU
+ */
 workspace.this.addEventListener("contextmenu", function (event){
     event.preventDefault();
     showEl(workspace.menu.this);
@@ -30,9 +31,32 @@ workspace.this.addEventListener("contextmenu", function (event){
 $(workspace.menu.this).mouseleave(function (event){
     hideEl(workspace.menu.this);
 });
-
+/*
+ADD EVENTS FOR DIALOG, BUTTONS AND FORMS
+ */
 $.each(workspace.menu.options, function (key, value){
+    // SHOW DIALOG
     $(value.showButton).click(function (event){
         value.dialog.showModal();
     });
+    // SENDING AJAX REQUESTS
+    $(value.submitButton).click(function (event){
+       event.preventDefault();
+       let form = value.dialog.getElementsByTagName("form").item(0);
+       $.post(
+            $(form).attr("action"),
+            // FORM DATA
+            $(form).serializeArray()
+       ).then(function (data){
+           // WORK WITH REQUEST RESPONSE
+           alert(data.name)
+       });
+    });
+});
+/*
+ADD CSRF TOKEN TO HEADERS FOR AJAX REQUESTS
+ */
+$(document).ajaxSend(function (event, xhr, options){
+    let csrf = getCSRF();
+    xhr.setRequestHeader(csrf.header, csrf.token);
 });

@@ -68,7 +68,10 @@
 <!--
 
 -->
-<input th:fragment="csrfToken" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+<th:block th:fragment="csrfToken">
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+  <input type="hidden" th:name="_csrf_header" th:value="${_csrf.headerName}"/>
+</th:block>
 <!--
   formAction: Optional<String>
   submitValue: String

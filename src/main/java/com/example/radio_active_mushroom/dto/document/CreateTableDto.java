@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class CreateTable implements Serializable {
+public class CreateTableDto implements Serializable {
     String name;
     String description;
     String friendlyName;
