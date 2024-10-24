@@ -14,3 +14,4 @@ export const WORKSPACE_ADD_TABLE_BUTTON_SUBMIT_ID = "workspaceAddTableButtonSubm
 export const CSRF_HEADER_NAME_ID = "_csrf_header";
 export const CSRF_TOKEN_ID = "_csrf";
 export const WORKSPACE_GET_ALL_URL_ID = "workspaceGetAllTables";
+export const WORKSPACE_CHANGE_TABLE_POSITION_ID = "workspaceChangeTablePosition";

@@ -5,10 +5,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FieldSetDocumentRepository extends MongoRepository<FieldSetDocument, String> {
     List<FieldSetDocument> findAllByProjectNameAndProjectOwnerUsername(String projectName, String projectOwnerUsername);
     boolean existsByProjectNameAndProjectOwnerUsernameAndName(String projectName, String projectOwnerUsername, String name);
     FieldSetDocument getById(String id);
+    FieldSetDocument getByProjectNameAndProjectOwnerUsernameAndName(String projectName, String projectOwnerUsername, String name);
 }

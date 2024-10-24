@@ -7,6 +7,13 @@
   <div th:fragment="content">
     <input id="workspaceGetAllTables" type="hidden" th:value="@{/projects/edit/{ownerUsername}/{projectName}/get/all/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
 
+    <form id="workspaceChangeTablePosition" style="display: none;" th:action="@{/projects/edit/{ownerUsername}/{projectName}/change/table/position/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+      <div th:replace="~{fragments/forms :: csrfToken}"></div>
+      <input name="x" type="number">
+      <input name="y" type="number">
+      <input name="tableName" type="text">
+    </form>
+
     <div class="row">
       <div class="cell">
         <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${projectName})}">

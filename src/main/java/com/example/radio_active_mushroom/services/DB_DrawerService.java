@@ -16,4 +16,5 @@ public interface DB_DrawerService {
     public abstract List<TableDocument> findTables(String projectName, String projectOwnerName);
     public abstract List<JS_Table> getTables(String projectName, String projectOwnerName);
     public abstract boolean addTable(String projectName, String projectOwnerName, CreateTableDto createTableDto);
+    public abstract void changeTablePosition(String projectName, String projectOwnerName, String tableName, Position position);
 }

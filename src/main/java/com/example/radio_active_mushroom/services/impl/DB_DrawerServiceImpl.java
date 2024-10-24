@@ -95,4 +95,11 @@ public class DB_DrawerServiceImpl implements DB_DrawerService {
             return true;
         }
     }
+
+    @Override
+    public void changeTablePosition(String projectName, String projectOwnerName, String tableName, Position position) {
+        FieldSetDocument fieldSetDocument = fieldSetDocumentRepository.getByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, tableName);
+        fieldSetDocument.getTable().setPosition(position);
+        tableDocumentRepository.save(fieldSetDocument.getTable());
+    }
 }

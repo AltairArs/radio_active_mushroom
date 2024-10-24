@@ -1,6 +1,7 @@
 package com.example.radio_active_mushroom.controllers.rest;
 
 import com.example.radio_active_mushroom.dto.AJAX_Form;
+import com.example.radio_active_mushroom.dto.document.ChangeTablePositionDto;
 import com.example.radio_active_mushroom.dto.document.CreateTableDto;
 import com.example.radio_active_mushroom.services.DB_DrawerService;
 import jakarta.validation.Valid;
@@ -38,5 +39,11 @@ public class ProjectRestController {
         AJAX_Form form = new AJAX_Form();
         form.setTables(dbDrawerService.getTables(projectName, username));
         return ResponseEntity.ok().body(form);
+    }
+
+    @PostMapping("change/table/position/")
+    public @ResponseBody ResponseEntity<AJAX_Form> changeTablePosition(@PathVariable String username, @PathVariable String projectName, @ModelAttribute @RequestBody ChangeTablePositionDto changeTablePositionDto){
+        dbDrawerService.changeTablePosition(projectName, username, changeTablePositionDto.getTableName(), changeTablePositionDto.toPosition());
+        return ResponseEntity.ok().body(new AJAX_Form());
     }
 }

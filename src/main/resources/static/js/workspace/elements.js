@@ -16,7 +16,8 @@ export let workspace = {
             }
         }
     },
-    "content": document.getElementById(vars.WORKSPACE_CONTENT_ID)
+    "content": document.getElementById(vars.WORKSPACE_CONTENT_ID),
+    "changePositionForm": document.getElementById(vars.WORKSPACE_CHANGE_TABLE_POSITION_ID)
 };
 
 export let getAllURL = document.getElementById(vars.WORKSPACE_GET_ALL_URL_ID).value;
