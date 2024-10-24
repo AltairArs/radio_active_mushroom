@@ -12,7 +12,7 @@ input, textarea, select {
     background-color: var(--c-input-background);
     caret-color: var(--c-input-text);
     &::placeholder {
-        color: var(--c-input-text);
+        color: var(--c-input-shadow);
     }
     &[type="checkbox"] {
         width: 20px;

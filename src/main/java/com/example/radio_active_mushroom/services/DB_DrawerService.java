@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.services;
 
+import com.example.radio_active_mushroom.dto.document.CreateTableDto;
 import com.example.radio_active_mushroom.dto.jsObjects.JS_FieldSet;
 import com.example.radio_active_mushroom.dto.jsObjects.JS_Table;
 import com.example.radio_active_mushroom.models.documents.FieldSetDocument;
@@ -14,5 +15,5 @@ public interface DB_DrawerService {
     public abstract JS_FieldSet generateFieldSet(FieldSetDocument fieldSetDocument);
     public abstract List<TableDocument> findTables(String projectName, String projectOwnerName);
     public abstract List<JS_Table> getTables(String projectName, String projectOwnerName);
-    public abstract boolean addTable(Position position, String projectName, String projectOwnerName, String name, String description, String friendlyName);
+    public abstract boolean addTable(String projectName, String projectOwnerName, CreateTableDto createTableDto);
 }

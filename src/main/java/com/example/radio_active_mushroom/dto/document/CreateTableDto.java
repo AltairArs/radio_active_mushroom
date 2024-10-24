@@ -21,4 +21,6 @@ public class CreateTableDto extends AJAX_Form {
     String name;
     String description;
     String friendlyName;
+    Integer position_x;
+    Integer position_y;
 }

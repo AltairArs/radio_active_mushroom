@@ -20,8 +20,7 @@ export function hideEl(element) {
 }
 
 export function setPosition(element, x, y) {
-    element.style.top = toPixels(y);
-    element.style.left = toPixels(x);
+    $(element).css("top", toPixels(y)).css("left", toPixels(x));
 }
 
 export function clamp(value, min, max) {
@@ -64,4 +63,19 @@ export function clearErrors(form){
             trs[i].remove();
         }
     }
+}
+
+export function setFormInputs(form, inputs){
+    let inputArray = $(form).find("input");
+    $.each(inputs, function (key, value){
+        for (let i = 0; i < inputArray.length; i++) {
+            if ($(inputArray[i]).attr("name") === key){
+                $(inputArray[i]).val(value);
+            }
+        }
+    });
+}
+
+export function clearFormInputs(form) {
+    form.reset()
 }

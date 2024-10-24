@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
 @TypeAlias(value = "fieldSet")
 @Document(collection = "fieldSetDocument")
 public class FieldSetDocument {
-    @MongoId
+    @MongoId(targetType = FieldType.OBJECT_ID)
     private String id;
 
     private String name;
@@ -29,9 +30,9 @@ public class FieldSetDocument {
 
     private String projectOwnerUsername;
 
-    @DocumentReference(lazy = true)
+    @DocumentReference
     private List<FieldDocument> fields;
 
-    @DocumentReference(lazy = true)
+    @DocumentReference
     private TableDocument table;
 }

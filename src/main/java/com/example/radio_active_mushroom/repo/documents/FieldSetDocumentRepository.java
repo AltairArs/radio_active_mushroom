@@ -10,4 +10,5 @@ import java.util.List;
 public interface FieldSetDocumentRepository extends MongoRepository<FieldSetDocument, String> {
     List<FieldSetDocument> findAllByProjectNameAndProjectOwnerUsername(String projectName, String projectOwnerUsername);
     boolean existsByProjectNameAndProjectOwnerUsernameAndName(String projectName, String projectOwnerUsername, String name);
+    FieldSetDocument getById(String id);
 }

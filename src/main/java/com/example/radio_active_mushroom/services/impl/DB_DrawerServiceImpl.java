@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.services.impl;
 
+import com.example.radio_active_mushroom.dto.document.CreateTableDto;
 import com.example.radio_active_mushroom.dto.jsObjects.JS_FieldSet;
 import com.example.radio_active_mushroom.dto.jsObjects.JS_Table;
 import com.example.radio_active_mushroom.models.documents.FieldSetDocument;
@@ -36,7 +37,7 @@ public class DB_DrawerServiceImpl implements DB_DrawerService {
     public JS_Table generateTable(TableDocument tableDocument) {
         return new JS_Table(
                 tableDocument.getPosition(),
-                generateFieldSet(tableDocument.getFieldSet())
+                generateFieldSet(fieldSetDocumentRepository.getById(tableDocument.getFieldSet()))
         );
     }
 
@@ -66,24 +67,31 @@ public class DB_DrawerServiceImpl implements DB_DrawerService {
     }
 
     @Override
-    public boolean addTable(Position position, String projectName, String projectOwnerName, String name, String description, String friendlyName) {
-        if (fieldSetDocumentRepository.existsByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, name)) {
+    public boolean addTable(String projectName, String projectOwnerName, CreateTableDto createTableDto) {
+        if (fieldSetDocumentRepository.existsByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, createTableDto.getName())) {
             return false;
         } else {
             TableDocument tableDocument = new TableDocument();
-            tableDocument.setPosition(position);
+            tableDocument.setPosition(new Position(
+                    createTableDto.getPosition_x(),
+                    createTableDto.getPosition_y()
+            ));
 
             FieldSetDocument fieldSetDocument = new FieldSetDocument();
             fieldSetDocument.setProjectName(projectName);
             fieldSetDocument.setProjectOwnerUsername(projectOwnerName);
-            fieldSetDocument.setFriendlyName(friendlyName);
-            fieldSetDocument.setDescription(description);
-            fieldSetDocument.setName(name);
-
-            fieldSetDocument.setTable(tableDocument);
-            tableDocument.setFieldSet(fieldSetDocument);
+            fieldSetDocument.setFriendlyName(createTableDto.getFriendlyName());
+            fieldSetDocument.setDescription(createTableDto.getDescription());
+            fieldSetDocument.setName(createTableDto.getName());
 
             fieldSetDocumentRepository.save(fieldSetDocument);
+            tableDocumentRepository.save(tableDocument);
+
+            fieldSetDocument.setTable(tableDocument);
+            tableDocument.setFieldSet(fieldSetDocument.getId());
+
+            fieldSetDocumentRepository.save(fieldSetDocument);
+            tableDocumentRepository.save(tableDocument);
             return true;
         }
     }

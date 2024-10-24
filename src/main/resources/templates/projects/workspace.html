@@ -5,6 +5,7 @@
 <div th:replace="~{base :: bodyBlock(bodyTitle='Рабочая область', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
+    <input id="workspaceGetAllTables" type="hidden" th:value="@{/projects/edit/{ownerUsername}/{projectName}/get/all/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
 
     <div class="row">
       <div class="cell">
@@ -31,11 +32,13 @@
       </ul>
 
       <dialog class="container-1 dialog" id="workspaceAddTableDialog">
-        <form method="dialog" th:object="${formCreateTable}" th:action="@{'/projects/edit/' + ownerUsername + '/' + projectName + '/add/table/'}">
+        <form method="dialog" th:object="${formCreateTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/add/table/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
           <div th:replace="~{fragments/forms :: csrfToken}"></div>
 
           <h3 class="header-m-o">Новая сущность</h3>
           <table>
+            <input name="position_x" type="hidden">
+            <input name="position_y" type="hidden">
             <div th:replace="~{fragments/forms :: rowText(fieldLabel='Название', fieldName='name', level=1, required=true, icon=@{/img/field_types/str.png})}"></div>
             <div th:replace="~{fragments/forms :: rowText(fieldLabel='Дружелюбное название', fieldName='friendlyName', level=1, helpText=
                     'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>

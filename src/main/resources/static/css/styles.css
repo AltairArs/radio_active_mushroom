@@ -1125,7 +1125,7 @@ input, textarea, select {
   caret-color: var(--c-input-text);
 }
 input::placeholder, textarea::placeholder, select::placeholder {
-  color: var(--c-input-text);
+  color: var(--c-input-shadow);
 }
 input[type=checkbox], textarea[type=checkbox], select[type=checkbox] {
   width: 20px;
@@ -1145,7 +1145,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2 {
+.container-1, .error-on-2, .table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1153,7 +1153,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1223,7 +1223,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2 {
+.container-1, .error-on-2, .table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1231,7 +1231,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1292,7 +1292,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2 {
+.container-1, .error-on-2, .table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1300,7 +1300,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1442,6 +1442,69 @@ body {
   color: var(--c-text);
 }
 
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.container-1, .error-on-2, .table {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-background);
+  color: var(--c-container-text);
+  width: fit-content;
+  margin: 12px;
+}
+.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
+  background-color: var(--c-container-info-field-background);
+  color: var(--c-container-info-field-text);
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.container-2, .error-on-1 {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-text);
+  color: var(--c-container-background);
+  width: fit-content;
+  margin: 12px;
+}
+.container-2 .info-field-2, .error-on-1 .info-field-2 {
+  background-color: var(--c-container-info-field-text);
+  color: var(--c-container-info-field-background);
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.row .cell {
+  display: inline-table;
+  margin: auto;
+}
+
+.help-text {
+  font-size: small;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-center {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.vertical-center, .nav, .btn-nav, .btn-action, .btn-action-on-1, .btn-auth {
+  display: flex;
+  align-items: center;
+}
+
 .workspace {
   border-radius: 20px;
   padding: 5px;
@@ -1459,13 +1522,18 @@ body {
   border-radius: 20px;
 }
 
+.table {
+  box-shadow: 0px 4px 4px 4px var(--c-btn-action-shadow);
+  position: absolute;
+}
+
 body {
   font-family: Vag;
   background-color: var(--c-background);
   color: var(--c-text);
 }
 
-.container-1, .error-on-2 {
+.container-1, .error-on-2, .table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1473,7 +1541,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;

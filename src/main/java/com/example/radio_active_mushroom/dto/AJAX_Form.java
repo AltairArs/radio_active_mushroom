@@ -1,5 +1,6 @@
 package com.example.radio_active_mushroom.dto;
 
+import com.example.radio_active_mushroom.dto.jsObjects.JS_Table;
 import lombok.*;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -17,6 +18,8 @@ import java.util.Map;
 @ToString
 public class AJAX_Form implements Serializable {
     protected Map<String, String> errors;
+
+    protected List<JS_Table> tables;
 
     public void setErrorsFromErrorList(List<ObjectError> objectErrors){
         clearError();
