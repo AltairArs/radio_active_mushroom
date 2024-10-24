@@ -33,5 +33,5 @@
 .table {
     @extend .container-1;
     box-shadow: 0px 4px 4px 4px var(--c-btn-action-shadow);
-    position: absolute;
+    position: relative;
 }

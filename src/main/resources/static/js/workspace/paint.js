@@ -6,11 +6,14 @@ export function clearContent(workspaceContent) {
 }
 
 export function paint(tables, workspaceContent) {
+    // CLEAR ALD TABLES
     clearContent(workspaceContent);
+    // ADD TABLES
     $.each(tables, function (index, value) {
         let table = "<div id='" + value.fieldSet.name + "' class='table vertical-center'><img src='/img/project/table.png' class='icon'>" + value.fieldSet.name + "</div>";
         $(workspaceContent).append($(table));
     });
+    // ON DRAGGING FOR TABLES
     $.each($(workspaceContent).find(".table"), function (index, value){
         $(value).css("top", tables[index].position.y).css("left", tables[index].position.x);
         let rect = getRect(workspace.this);
@@ -20,12 +23,14 @@ export function paint(tables, workspaceContent) {
                 rect.x, rect.y, rect.x + rect.width - rect2.width - 50, rect.y + rect.height - rect2.height - 30
             ]
         });
+
         value.addEventListener("mouseup", function (event){
             let form = workspace.changePositionForm;
             let rect = getRect(value);
+            let rect2 = getRect(workspace.this);
             setFormInputs(form, {
-                "x": rect.x,
-                "y": rect.y,
+                "x": rect.x - rect2.x,
+                "y": rect.y - rect2.y,
                 "tableName": $(value).attr("id")
             })
             $.post(

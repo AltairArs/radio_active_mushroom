@@ -22,6 +22,8 @@ let position = {
     "x": 0,
     "y": 0
 };
+let scale = 1;
+
 try {
     /*
     SHOW AND HIDE WORKSPACE MENU
@@ -77,11 +79,21 @@ try {
             });
         });
     });
-
+    // ON DRAGGING FOR WORKSPACE CONTENT
+    $(workspace.content).draggable();
+    // GET TABLES
     $.get(
         getAllURL
     ).then(function (data){
         paint(data.tables, workspace.content);
+    });
+    // ZOOM
+    $(workspace.this).bind("mousewheel", function (event){
+        if (event.ctrlKey){
+            event.preventDefault();
+            scale = clamp(scale + event.originalEvent.wheelDelta / 1200.0, 0.4, 1);
+            $(workspace.content).parent().css("transform", "scale(" + scale + ")");
+        }
     });
 } catch (e) {
 

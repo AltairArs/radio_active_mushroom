@@ -1207,7 +1207,7 @@ body {
   list-style-type: none;
   width: 100vw;
   background-color: var(--c-nav-background);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
