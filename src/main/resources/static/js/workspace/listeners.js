@@ -7,7 +7,8 @@ import {
     showEl,
     hideEl,
     clamp,
-    getRect
+    getRect,
+    showErrors, clearErrors
 } from "./functions.js";
 
 import {
@@ -49,7 +50,10 @@ $.each(workspace.menu.options, function (key, value){
             $(form).serializeArray()
        ).then(function (data){
            // WORK WITH REQUEST RESPONSE
-           alert(data.name)
+           clearErrors(form);
+           if (data.errors){
+                showErrors(form, data.errors);
+           }
        });
     });
 });

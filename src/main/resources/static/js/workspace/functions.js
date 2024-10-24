@@ -8,7 +8,7 @@ function toPixels(pixels) {
 }
 
 function setDisplay(element, display) {
-    element.style.display = display;
+    $(element).css("display", display);
 }
 
 export function showEl(element) {
@@ -35,5 +35,33 @@ export function getRect(element) {
         y: rect.top + window.scrollY,
         width: rect.width,
         height: rect.height
+    }
+}
+
+export function showErrors(form, errors){
+    function getInputTR(tbody, inputName){
+        let trs = $(tbody).find("tr");
+        for (let i= 0; i < trs.length; i++){
+            if ($(trs[i]).find("input").attr("name") === inputName){
+                return trs[i];
+            }
+        }
+        return null;
+    }
+
+    let tbody = form.getElementsByTagName("tbody").item(0);
+    $.each(errors, function (key, value){
+        let error = "<tr><td colspan='2' class='error-on-1'>" + value + "</td></tr>";
+        $(error).insertAfter($(getInputTR(tbody, key)));
+    });
+}
+
+export function clearErrors(form){
+    let tbody = form.getElementsByTagName("tbody").item(0);
+    let trs = $(tbody).find("tr");
+    for (let i= 0; i < trs.length; i++){
+        if ($(trs[i]).find(".error-on-1").length !== 0){
+            trs[i].remove();
+        }
     }
 }
