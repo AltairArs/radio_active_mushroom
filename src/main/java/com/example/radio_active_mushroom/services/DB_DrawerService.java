@@ -22,4 +22,5 @@ public interface DB_DrawerService {
     public abstract void changeTablePosition(String projectName, String projectOwnerName, ChangeTablePositionDto changeTablePositionDto);
     public abstract void editTable(String projectName, String projectOwnerName, EditTableDto editTableDto);
     public abstract void deleteTable(String projectName, String projectOwnerName, DeleteTableDto deleteTableDto);
+    public abstract JS_Table getTable(String projectName, String projectOwnerName, String tableName);
 }

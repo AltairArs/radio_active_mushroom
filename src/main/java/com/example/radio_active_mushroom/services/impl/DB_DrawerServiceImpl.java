@@ -124,4 +124,9 @@ public class DB_DrawerServiceImpl implements DB_DrawerService {
             fieldSetDocumentRepository.delete(fieldSetDocument);
         }
     }
+
+    @Override
+    public JS_Table getTable(String projectName, String projectOwnerName, String tableName) {
+        return generateTable(fieldSetDocumentRepository.getByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, tableName).getTable());
+    }
 }

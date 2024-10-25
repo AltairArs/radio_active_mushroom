@@ -29,6 +29,11 @@ function initMenu(menu, content, workspace, formChangePosition, workspaceObject,
             dialog.showModal();
             hideEl(menu);
         })
+
+        $(dialog).find("button").click(function (event){
+            dialog.close();
+        })
+
         let submitButton = $(dialog).find("input[type='submit']")[0];
         let form = $(dialog).find("form")[0];
         /*
@@ -80,29 +85,29 @@ export function initTargets(workspace, workspaceObject, targetSettings) {
                 });
                 if (showedMenu === 0){
                     showEl(value);
+                    event.preventDefault();
+                    let rectWorkspace = getRect(workspace);
+                    let rectMenu = getRect(value);
+                    /*
+                    UPDATE GLOBAL PARAMETERS
+                     */
+                    workspaceObject.x = clamp(event.pageX - SHOW_MENU_OFFSET, rectWorkspace.x, rectWorkspace.x + rectWorkspace.width - rectMenu.width);
+                    workspaceObject.y = clamp(event.pageY - SHOW_MENU_OFFSET * 1.5, rectWorkspace.y, rectWorkspace.y + rectWorkspace.height - rectMenu.height - SHOW_MENU_OFFSET);
+                    setPosition(
+                        value,
+                        workspaceObject.x,
+                        workspaceObject.y
+                    );
+                    /*
+                    CUSTOM ACTIONS
+                     */
+                    $.each(targetSettings, function (key, setValue){
+                        if (key === menuTarget) {
+                            setValue(targetValue, value, workspace);
+                            return false; // break
+                        }
+                    });
                 }
-                event.preventDefault();
-                let rectWorkspace = getRect(workspace);
-                let rectMenu = getRect(value);
-                /*
-                UPDATE GLOBAL PARAMETERS
-                 */
-                workspaceObject.x = clamp(event.pageX - SHOW_MENU_OFFSET, rectWorkspace.x, rectWorkspace.x + rectWorkspace.width - rectMenu.width);
-                workspaceObject.y = clamp(event.pageY - SHOW_MENU_OFFSET * 1.5, rectWorkspace.y, rectWorkspace.y + rectWorkspace.height - rectMenu.height - SHOW_MENU_OFFSET);
-                setPosition(
-                    value,
-                    workspaceObject.x,
-                    workspaceObject.y
-                );
-                /*
-                CUSTOM ACTIONS
-                 */
-                $.each(targetSettings, function (key, setValue){
-                    if (key === menuTarget) {
-                        setValue(targetValue, value, workspace);
-                        return false; // break
-                    }
-                });
             });
         });
     });

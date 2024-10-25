@@ -86,6 +86,21 @@
 
       <dialog class="container-1 dialog" id="editTableDialog">
         <h3>Редактировать таблицу</h3>
+        <form method="post" th:object="${formEditTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/edit/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+          <div th:replace="~{fragments/forms :: csrfToken}"></div>
+
+          <table>
+            <input type="hidden" th:field="*{tableName}">
+            <div th:replace="~{fragments/forms :: rowText(fieldLabel='Дружелюбное название', fieldName='friendlyName', level=1, helpText=
+                    'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>
+            <div th:replace="~{fragments/forms :: colText(fieldLabel='Описание', fieldName='description', level=1, icon=@{/img/field_types/text.png})}"></div>
+          </table>
+
+        </form>
+        <div class="row vertical-center">
+          <button class="btn-action-on-1 cell">Отмена</button>
+          <input class="btn-action-on-1 cell" type="submit" value="Сохранить">
+        </div>
       </dialog>
 
       <dialog class="container-1 dialog" id="deleteTableDialog">

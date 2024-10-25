@@ -5,6 +5,7 @@ import com.example.radio_active_mushroom.dto.document.ChangeTablePositionDto;
 import com.example.radio_active_mushroom.dto.document.CreateTableDto;
 import com.example.radio_active_mushroom.dto.document.DeleteTableDto;
 import com.example.radio_active_mushroom.dto.document.EditTableDto;
+import com.example.radio_active_mushroom.dto.jsObjects.JS_Table;
 import com.example.radio_active_mushroom.services.DB_DrawerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,10 @@ public class ProjectRestController {
     public @ResponseBody ResponseEntity<AJAX_Form> deleteTable(@PathVariable String username, @PathVariable String projectName, @ModelAttribute("formDeleteTable") @RequestBody DeleteTableDto deleteTableDto) {
         dbDrawerService.deleteTable(projectName, username, deleteTableDto);
         return getAll(username, projectName);
+    }
+
+    @GetMapping("table/get/{tableName}/")
+    public @ResponseBody ResponseEntity<JS_Table> getTable(@PathVariable String username, @PathVariable String projectName, @PathVariable String tableName) {
+        return ResponseEntity.ok().body(dbDrawerService.getTable(projectName, username, tableName));
     }
 }

@@ -1,4 +1,5 @@
 import {
+    getAllURL,
     getCSRF
 } from "./elements.js";
 
@@ -29,6 +30,9 @@ $(document).ajaxSend(function (event, xhr, options){
 let workspaceObject = new WorkspaceObject(0, 0, 1);
 
 initWorkspace(workspaceObject, {
+    /*
+    IS EXECUTED BY PRESSING MOUSE RIGHT BUTTON
+     */
     ".workspace-frame": function (menuTarget, menu, workspace){
         let rect = getRect(workspace);
         setFormInputs(
@@ -44,5 +48,16 @@ initWorkspace(workspaceObject, {
                 "tableName": $(menuTarget).attr("id")
             }
         );
+        $.get(
+            getAllURL.replace("all", $(menuTarget).attr("id"))
+        ).then(function (data){
+            setFormInputs(
+                $(document.getElementById("editTableDialog")).find("form"), {
+                    "tableName": data.fieldSet.name,
+                    "friendlyName": data.fieldSet.friendlyName,
+                    "description": data.fieldSet.description
+                }
+            );
+        });
     }
 });

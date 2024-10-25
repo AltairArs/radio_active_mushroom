@@ -11,7 +11,13 @@ function clearContent(content){
 PAINT ONE TABLE
  */
 function paintTable(table) {
-    return "<div id='" + table.fieldSet.name + "' class='workspace-table vertical-center'><img src='/img/project/table.png' class='icon'>" + table.fieldSet.name + "</div>"
+    let name = "";
+    if (table.fieldSet.friendlyName != null && table.fieldSet.friendlyName !== ""){
+        name = table.fieldSet.friendlyName;
+    } else {
+        name = table.fieldSet.name;
+    }
+    return "<div id='" + table.fieldSet.name + "' class='workspace-table vertical-center'><img src='/img/project/table.png' class='icon'>" + name + "</div>"
 }
 
 export function paintTables(tables, content, workspace, formChangePosition, workspaceObject, targetSettings) {
