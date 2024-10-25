@@ -29,7 +29,9 @@ function initMenu(menu, content, workspace, formChangePosition, workspaceObject,
             dialog.showModal();
             hideEl(menu);
         })
-
+        /*
+        BUTTON FOR CLOSE DIALOG
+         */
         $(dialog).find("button").click(function (event){
             dialog.close();
         })
