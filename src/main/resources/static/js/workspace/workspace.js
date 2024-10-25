@@ -6,6 +6,7 @@ import {
     initWorkspace
 } from "./inits.js";
 import {setFormInputs} from "./forms.js";
+import {hideEl, showEl} from "./functions.js";
 
 /*
 CLASS WITH GLOBAL PARAMETERS
@@ -28,7 +29,7 @@ $(document).ajaxSend(function (event, xhr, options){
 let workspaceObject = new WorkspaceObject(0, 0, 1);
 
 initWorkspace(workspaceObject, {
-    ".workspace-frame": function (menuTarget){
+    ".workspace-frame": function (menuTarget, menu){
         setFormInputs(
             $(document.getElementById("addTableDialog")).find("form"), {
                 "position_x": workspaceObject.x,
@@ -36,11 +37,11 @@ initWorkspace(workspaceObject, {
             }
         );
     },
-    ".workspace-table": function (menuTarget){
+    ".workspace-table": function (menuTarget, menu){
         setFormInputs(
             $(document.getElementById("deleteTableDialog")).find("form"), {
                 "tableName": $(menuTarget).attr("id")
             }
-        )
+        );
     }
 });

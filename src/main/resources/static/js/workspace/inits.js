@@ -2,7 +2,7 @@ import {clamp, getRect, hideEl, setPosition, showEl} from "./functions.js";
 import {clearErrors, clearFormInputs, setFormInputs, showErrors} from "./forms.js";
 import {paintTables} from "./paint.js";
 import {
-    CHANGE_TABLE_POSITION_FORM_ID,
+    CHANGE_TABLE_POSITION_FORM_ID, DISPLAY_SHOW,
     MENU_TARGET_ATTRIBUTE_NAME, SHOW_DIALOG_ID_ATTRIBUTE_NAME,
     SHOW_MENU_OFFSET,
     WORKSPACE_CLASS,
@@ -72,23 +72,34 @@ export function initTargets(workspace, workspaceObject, targetSettings) {
          */
         $.each($(menuTarget).toArray(), function (index, targetValue){
             targetValue.addEventListener("contextmenu", function (event){
+                let showedMenu = 0;
+                $.each($(".workspace-menu"), function (index, mValue){
+                    if (mValue.style.display  === DISPLAY_SHOW){
+                        showedMenu++;
+                    }
+                });
+                if (showedMenu === 0){
+                    showEl(value);
+                }
                 event.preventDefault();
-                showEl(value);
                 let rectWorkspace = getRect(workspace);
                 let rectMenu = getRect(value);
                 /*
                 UPDATE GLOBAL PARAMETERS
                  */
-                workspaceObject.x = clamp(event.x - SHOW_MENU_OFFSET, rectWorkspace.x, rectWorkspace.x + rectWorkspace.width - rectMenu.width);
-                workspaceObject.y = clamp(event.y - SHOW_MENU_OFFSET * 1.5, rectWorkspace.y, rectWorkspace.y + rectWorkspace.height - rectMenu.height - SHOW_MENU_OFFSET);
+                workspaceObject.x = clamp(event.pageX - SHOW_MENU_OFFSET, rectWorkspace.x, rectWorkspace.x + rectWorkspace.width - rectMenu.width);
+                workspaceObject.y = clamp(event.pageY - SHOW_MENU_OFFSET * 1.5, rectWorkspace.y, rectWorkspace.y + rectWorkspace.height - rectMenu.height - SHOW_MENU_OFFSET);
                 setPosition(
                     value,
                     workspaceObject.x,
                     workspaceObject.y
                 );
+                /*
+                CUSTOM ACTIONS
+                 */
                 $.each(targetSettings, function (key, setValue){
                     if (key === menuTarget) {
-                        setValue(targetValue);
+                        setValue(targetValue, value);
                         return false; // break
                     }
                 });
