@@ -1,6 +1,9 @@
 package com.example.radio_active_mushroom.services.impl;
 
+import com.example.radio_active_mushroom.dto.document.ChangeTablePositionDto;
 import com.example.radio_active_mushroom.dto.document.CreateTableDto;
+import com.example.radio_active_mushroom.dto.document.DeleteTableDto;
+import com.example.radio_active_mushroom.dto.document.EditTableDto;
 import com.example.radio_active_mushroom.dto.jsObjects.JS_FieldSet;
 import com.example.radio_active_mushroom.dto.jsObjects.JS_Table;
 import com.example.radio_active_mushroom.models.documents.FieldSetDocument;
@@ -97,9 +100,28 @@ public class DB_DrawerServiceImpl implements DB_DrawerService {
     }
 
     @Override
-    public void changeTablePosition(String projectName, String projectOwnerName, String tableName, Position position) {
-        FieldSetDocument fieldSetDocument = fieldSetDocumentRepository.getByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, tableName);
-        fieldSetDocument.getTable().setPosition(position);
+    public void changeTablePosition(String projectName, String projectOwnerName, ChangeTablePositionDto changeTablePositionDto) {
+        FieldSetDocument fieldSetDocument = fieldSetDocumentRepository.getByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, changeTablePositionDto.getTableName());
+        fieldSetDocument.getTable().setPosition(changeTablePositionDto.toPosition());
         tableDocumentRepository.save(fieldSetDocument.getTable());
+    }
+
+    @Override
+    public void editTable(String projectName, String projectOwnerName, EditTableDto editTableDto) {
+        FieldSetDocument fieldSetDocument = fieldSetDocumentRepository.getByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, editTableDto.getTableName());
+        if (fieldSetDocument != null) {
+            fieldSetDocument.setDescription(editTableDto.getDescription());
+            fieldSetDocument.setFriendlyName(editTableDto.getFriendlyName());
+            fieldSetDocumentRepository.save(fieldSetDocument);
+        }
+    }
+
+    @Override
+    public void deleteTable(String projectName, String projectOwnerName, DeleteTableDto deleteTableDto) {
+        FieldSetDocument fieldSetDocument = fieldSetDocumentRepository.getByProjectNameAndProjectOwnerUsernameAndName(projectName, projectOwnerName, deleteTableDto.getTableName());
+        if (fieldSetDocument != null){
+            tableDocumentRepository.delete(fieldSetDocument.getTable());
+            fieldSetDocumentRepository.delete(fieldSetDocument);
+        }
     }
 }

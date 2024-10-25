@@ -1145,7 +1145,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2, .table {
+.container-1, .error-on-2, .workspace-table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1153,7 +1153,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1223,7 +1223,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2, .table {
+.container-1, .error-on-2, .workspace-table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1231,7 +1231,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1292,7 +1292,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2, .table {
+.container-1, .error-on-2, .workspace-table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1300,7 +1300,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1448,7 +1448,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2, .table {
+.container-1, .error-on-2, .workspace-table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1456,7 +1456,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;
@@ -1522,7 +1522,13 @@ body {
   border-radius: 20px;
 }
 
-.table {
+.workspace-frame {
+  overflow: clip;
+  height: 100%;
+  width: 100%;
+}
+
+.workspace-table {
   box-shadow: 0px 4px 4px 4px var(--c-btn-action-shadow);
   position: absolute;
 }
@@ -1533,7 +1539,7 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2, .table {
+.container-1, .error-on-2, .workspace-table {
   border-radius: 20px;
   padding: 10px;
   background-color: var(--c-container-background);
@@ -1541,7 +1547,7 @@ body {
   width: fit-content;
   margin: 12px;
 }
-.container-1 .info-field-1, .error-on-2 .info-field-1, .table .info-field-1 {
+.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
   background-color: var(--c-container-info-field-background);
   color: var(--c-container-info-field-text);
   border-radius: 20px;

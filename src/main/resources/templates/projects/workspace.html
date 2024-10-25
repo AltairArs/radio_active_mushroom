@@ -5,13 +5,13 @@
 <div th:replace="~{base :: bodyBlock(bodyTitle='Рабочая область', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
-    <input id="workspaceGetAllTables" type="hidden" th:value="@{/projects/edit/{ownerUsername}/{projectName}/get/all/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+    <input id="workspaceGetAllTables" type="hidden" th:value="@{/projects/edit/{ownerUsername}/{projectName}/table/get/all/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
 
-    <form id="workspaceChangeTablePosition" style="display: none;" th:action="@{/projects/edit/{ownerUsername}/{projectName}/change/table/position/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+    <form id="workspaceChangeTablePosition" th:object="${formChangeTablePosition}" style="display: none;" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/edit/position/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
       <div th:replace="~{fragments/forms :: csrfToken}"></div>
-      <input name="x" type="number">
-      <input name="y" type="number">
-      <input name="tableName" type="text">
+      <input th:field="*{x}">
+      <input th:field="*{y}">
+      <input th:field="*{tableName}">
     </form>
 
     <div class="row">
@@ -23,31 +23,48 @@
       </div>
     </div>
     <br>
-    <div class="workspace" id="workspace">
-      <div style=" overflow: clip; height: 100%; width: 100%;">
-        <div id="workspaceContent" style="width: calc(infinity * 1px); height: calc(infinity * 1px);"></div>
+    <div class="workspace">
+      <div class="workspace-frame">
+        <div class="workspace-area" style="width: calc(infinity * 1px); height: calc(infinity * 1px);"></div>
       </div>
 
-      <ul class="workspace-menu" id="workspaceMenu">
+      <ul class="workspace-menu" menu-target=".workspace-frame">
         <h3 class="header-m-o">Меню</h3>
-        <button class="btn-action-on-1" id="workspaceAddTableButton">
+        <button class="btn-action-on-1" show-dialog="addTableDialog">
           <img th:src="@{/img/editing/add.png}" class="icon">
           <text>Новая сущность</text>
         </button>
-        <button class="btn-action-on-1" id="workspaceConnectTablesButton">
+
+        <button class="btn-action-on-1" show-dialog="connectTablesDialog">
           <img th:src="@{/img/constraints/reference.png}" class="icon">
           <text>Связать сущности</text>
         </button>
       </ul>
 
-      <dialog class="container-1 dialog" id="workspaceAddTableDialog">
-        <form method="dialog" th:object="${formCreateTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/add/table/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+      <ul class="workspace-menu" menu-target=".workspace-table">
+        <div class="vertical-center">
+          <img th:src="@{/img/project/table.png}" class="icon">
+          <h3 class="header-m-o">Меню</h3>
+        </div>
+        <button class="btn-action-on-1" show-dialog="editTableDialog">
+          <img th:src="@{/img/editing/edit.png}" class="icon">
+          <text>Редактировать</text>
+        </button>
+
+        <button class="btn-action-on-1" show-dialog="deleteTableDialog">
+          <img th:src="@{/img/editing/delete.png}" class="icon">
+          <text>Удалить</text>
+        </button>
+      </ul>
+
+      <dialog class="container-1 dialog" id="addTableDialog">
+        <form method="dialog" th:object="${formCreateTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/add/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
           <div th:replace="~{fragments/forms :: csrfToken}"></div>
 
           <h3 class="header-m-o">Новая сущность</h3>
           <table>
-            <input name="position_x" type="hidden">
-            <input name="position_y" type="hidden">
+            <input th:field="*{position_x}" type="hidden">
+            <input th:field="*{position_y}" type="hidden">
             <div th:replace="~{fragments/forms :: rowText(fieldLabel='Название', fieldName='name', level=1, required=true, icon=@{/img/field_types/str.png})}"></div>
             <div th:replace="~{fragments/forms :: rowText(fieldLabel='Дружелюбное название', fieldName='friendlyName', level=1, helpText=
                     'Отображается вместо рабочего названия', icon=@{/img/field_types/str.png})}"></div>
@@ -55,15 +72,32 @@
           </table>
           <div class="row btn-center">
             <button class="btn-action-on-1 cell">Отмена</button>
-            <input class="btn-action-on-1 cell" type="submit" id="workspaceAddTableButtonSubmit" value="Создать">
+            <input class="btn-action-on-1 cell" type="submit" value="Создать">
           </div>
         </form>
       </dialog>
 
-      <dialog class="container-1 dialog" id="workspaceConnectTablesDialog">
+      <dialog class="container-1 dialog" id="connectTablesDialog">
         <form method="dialog">
           <h3 class="header-m-o">Связать сущности</h3>
           <button class="btn-action-on-1">Отмена</button>
+        </form>
+      </dialog>
+
+      <dialog class="container-1 dialog" id="editTableDialog">
+        <button class="btn-action-on-1">Отмена</button>
+      </dialog>
+
+      <dialog class="container-1 dialog" id="deleteTableDialog">
+        <h3 class="header-m-o">Вы точно хотите удалить таблицу?</h3>
+        <form method="dialog" th:object="${formDeleteTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/delete/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+          <div th:replace="~{fragments/forms :: csrfToken}"></div>
+          <text>Название таблицы:</text>
+          <input th:field="*{tableName}" readonly>
+          <div class="row vertical-center">
+            <button class="btn-action-on-1 cell">Отмена</button>
+            <input class="btn-action-on-1 cell" type="submit" value="Подтвердить">
+          </div>
         </form>
       </dialog>
 

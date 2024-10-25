@@ -1,7 +1,10 @@
 package com.example.radio_active_mushroom.controllers;
 
 import com.example.radio_active_mushroom.authentication.CustomAuthenticationService;
+import com.example.radio_active_mushroom.dto.document.ChangeTablePositionDto;
 import com.example.radio_active_mushroom.dto.document.CreateTableDto;
+import com.example.radio_active_mushroom.dto.document.DeleteTableDto;
+import com.example.radio_active_mushroom.dto.document.EditTableDto;
 import com.example.radio_active_mushroom.dto.entity.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.entity.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
@@ -93,6 +96,9 @@ public class ProjectsController {
         model.addAttribute("project", projectService.getProject(user, projectName));
         model.addAttribute("ownerUsername", user.getUsername());
         model.addAttribute("formCreateTable", new CreateTableDto());
+        model.addAttribute("formChangeTablePosition", new ChangeTablePositionDto());
+        model.addAttribute("formEditTable", new EditTableDto());
+        model.addAttribute("formDeleteTable", new DeleteTableDto());
         return "projects/workspace";
     }
 }

@@ -3,13 +3,14 @@ package com.example.radio_active_mushroom.controllers.rest;
 import com.example.radio_active_mushroom.dto.AJAX_Form;
 import com.example.radio_active_mushroom.dto.document.ChangeTablePositionDto;
 import com.example.radio_active_mushroom.dto.document.CreateTableDto;
+import com.example.radio_active_mushroom.dto.document.DeleteTableDto;
+import com.example.radio_active_mushroom.dto.document.EditTableDto;
 import com.example.radio_active_mushroom.services.DB_DrawerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,7 +19,7 @@ public class ProjectRestController {
     @Autowired
     private DB_DrawerService dbDrawerService;
 
-    @PostMapping("add/table/")
+    @PostMapping("table/add/")
     public @ResponseBody ResponseEntity<AJAX_Form> addTable(@PathVariable String username, @PathVariable String projectName, @ModelAttribute("formCreateTable") @Valid @RequestBody CreateTableDto formCreateTable, BindingResult bindingResult) {
         AJAX_Form form = new AJAX_Form();
         if (bindingResult.hasErrors()) {
@@ -34,16 +35,28 @@ public class ProjectRestController {
         return ResponseEntity.ok().body(form);
     }
 
-    @GetMapping("get/all/")
+    @GetMapping("table/get/all/")
     public @ResponseBody ResponseEntity<AJAX_Form> getAll(@PathVariable String username, @PathVariable String projectName) {
         AJAX_Form form = new AJAX_Form();
         form.setTables(dbDrawerService.getTables(projectName, username));
         return ResponseEntity.ok().body(form);
     }
 
-    @PostMapping("change/table/position/")
-    public @ResponseBody ResponseEntity<AJAX_Form> changeTablePosition(@PathVariable String username, @PathVariable String projectName, @ModelAttribute @RequestBody ChangeTablePositionDto changeTablePositionDto){
-        dbDrawerService.changeTablePosition(projectName, username, changeTablePositionDto.getTableName(), changeTablePositionDto.toPosition());
+    @PostMapping("table/edit/position/")
+    public @ResponseBody ResponseEntity<AJAX_Form> changeTablePosition(@PathVariable String username, @PathVariable String projectName, @ModelAttribute("formChangeTablePosition") @RequestBody ChangeTablePositionDto changeTablePositionDto){
+        dbDrawerService.changeTablePosition(projectName, username, changeTablePositionDto);
         return ResponseEntity.ok().body(new AJAX_Form());
+    }
+
+    @PostMapping("table/edit/")
+    public @ResponseBody ResponseEntity<AJAX_Form> editTable(@PathVariable String username, @PathVariable String projectName, @ModelAttribute("formEditTable") @RequestBody EditTableDto editTableDto){
+        dbDrawerService.editTable(projectName, username, editTableDto);
+        return getAll(username, projectName);
+    }
+
+    @PostMapping("table/delete/")
+    public @ResponseBody ResponseEntity<AJAX_Form> deleteTable(@PathVariable String username, @PathVariable String projectName, @ModelAttribute("formDeleteTable") @RequestBody DeleteTableDto deleteTableDto) {
+        dbDrawerService.deleteTable(projectName, username, deleteTableDto);
+        return getAll(username, projectName);
     }
 }

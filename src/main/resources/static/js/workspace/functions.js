@@ -3,10 +3,6 @@ import {
     DISPLAY_HIDE
 } from "./vars.js";
 
-function toPixels(pixels) {
-    return String(pixels).concat('px');
-}
-
 function setDisplay(element, display) {
     $(element).css("display", display);
 }
@@ -20,6 +16,9 @@ export function hideEl(element) {
 }
 
 export function setPosition(element, x, y) {
+    function toPixels(px){
+        return String(px).concat("px");
+    }
     $(element).css("top", toPixels(y)).css("left", toPixels(x));
 }
 
@@ -35,47 +34,4 @@ export function getRect(element) {
         width: rect.width,
         height: rect.height
     }
-}
-
-export function showErrors(form, errors){
-    function getInputTR(tbody, inputName){
-        let trs = $(tbody).find("tr");
-        for (let i= 0; i < trs.length; i++){
-            if ($(trs[i]).find("input").attr("name") === inputName){
-                return trs[i];
-            }
-        }
-        return null;
-    }
-
-    let tbody = form.getElementsByTagName("tbody").item(0);
-    $.each(errors, function (key, value){
-        let error = "<tr><td colspan='2' class='error-on-1'>" + value + "</td></tr>";
-        $(error).insertAfter($(getInputTR(tbody, key)));
-    });
-}
-
-export function clearErrors(form){
-    let tbody = form.getElementsByTagName("tbody").item(0);
-    let trs = $(tbody).find("tr");
-    for (let i= 0; i < trs.length; i++){
-        if ($(trs[i]).find(".error-on-1").length !== 0){
-            trs[i].remove();
-        }
-    }
-}
-
-export function setFormInputs(form, inputs){
-    let inputArray = $(form).find("input");
-    $.each(inputs, function (key, value){
-        for (let i = 0; i < inputArray.length; i++) {
-            if ($(inputArray[i]).attr("name") === key){
-                $(inputArray[i]).val(value);
-            }
-        }
-    });
-}
-
-export function clearFormInputs(form) {
-    form.reset()
 }

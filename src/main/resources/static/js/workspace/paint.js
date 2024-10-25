@@ -1,42 +1,61 @@
-import {getRect, setFormInputs} from "./functions.js";
-import {workspace} from "./elements.js";
-
-export function clearContent(workspaceContent) {
-    $(workspaceContent).empty();
+import {getRect, setPosition} from "./functions.js";
+import {setFormInputs} from "./forms.js";
+import {initTargets} from "./inits.js";
+/*
+REMOVE TABLES
+ */
+function clearContent(content){
+    $(content).empty();
+}
+/*
+PAINT ONE TABLE
+ */
+function paintTable(table) {
+    return "<div id='" + table.fieldSet.name + "' class='workspace-table vertical-center'><img src='/img/project/table.png' class='icon'>" + table.fieldSet.name + "</div>"
 }
 
-export function paint(tables, workspaceContent) {
-    // CLEAR ALD TABLES
-    clearContent(workspaceContent);
-    // ADD TABLES
-    $.each(tables, function (index, value) {
-        let table = "<div id='" + value.fieldSet.name + "' class='table vertical-center'><img src='/img/project/table.png' class='icon'>" + value.fieldSet.name + "</div>";
-        $(workspaceContent).append($(table));
+export function paintTables(tables, content, workspace, formChangePosition, workspaceObject, targetSettings) {
+    clearContent(content);
+    /*
+    ADD TABLES
+     */
+    $.each(tables, function (index, value){
+        $(content).append($(paintTable(value)));
     });
-    // ON DRAGGING FOR TABLES
-    $.each($(workspaceContent).find(".table"), function (index, value){
-        $(value).css("top", tables[index].position.y).css("left", tables[index].position.x);
-        let rect = getRect(workspace.this);
-        let rect2 = getRect(value);
+
+    $.each($(content).find(".workspace-table"), function (index, value){
+        setPosition(value, tables[index].position.x, tables[index].position.y);
+        let rectWorkspace = getRect(workspace);
+        let rectTable = getRect(value);
+        /*
+        ON TABLE DRAGGING
+         */
         $(value).draggable({
             containment: [
-                rect.x, rect.y, rect.x + rect.width - rect2.width - 50, rect.y + rect.height - rect2.height - 30
+                rectWorkspace.x, rectWorkspace.y,
+                rectWorkspace.x + rectWorkspace.width - rectTable.width - 50, rectWorkspace.y + rectWorkspace.height - rectTable.height - 30
             ]
         });
-
-        value.addEventListener("mouseup", function (event){
-            let form = workspace.changePositionForm;
-            let rect = getRect(value);
-            let rect2 = getRect(workspace.this);
-            setFormInputs(form, {
-                "x": rect.x - rect2.x,
-                "y": rect.y - rect2.y,
-                "tableName": $(value).attr("id")
-            })
+        /*
+        SEND REQUEST FOR CHANGE TABLE POSITION
+         */
+        $(value).mouseup(function (event){
+            let rectTable = getRect(value);
+            setFormInputs(
+                formChangePosition, {
+                    "x": rectTable.x - rectWorkspace.x,
+                    "y": rectTable.y - rectWorkspace.y,
+                    "tableName": $(value).attr("id")
+                }
+            );
             $.post(
-                $(form).attr("action"),
-                $(form).serializeArray()
-            )
+                $(formChangePosition).attr("action"),
+                $(formChangePosition).serializeArray()
+            );
         });
     });
+    /*
+    INIT TARGETS
+     */
+    initTargets(workspace, workspaceObject, targetSettings);
 }
