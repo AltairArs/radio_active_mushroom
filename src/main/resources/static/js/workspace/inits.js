@@ -99,7 +99,7 @@ export function initTargets(workspace, workspaceObject, targetSettings) {
                  */
                 $.each(targetSettings, function (key, setValue){
                     if (key === menuTarget) {
-                        setValue(targetValue, value);
+                        setValue(targetValue, value, workspace);
                         return false; // break
                     }
                 });

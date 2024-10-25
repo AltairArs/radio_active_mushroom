@@ -85,7 +85,7 @@
       </dialog>
 
       <dialog class="container-1 dialog" id="editTableDialog">
-        <button class="btn-action-on-1">Отмена</button>
+        <h3>Редактировать таблицу</h3>
       </dialog>
 
       <dialog class="container-1 dialog" id="deleteTableDialog">
@@ -93,7 +93,7 @@
         <form method="dialog" th:object="${formDeleteTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/delete/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
           <div th:replace="~{fragments/forms :: csrfToken}"></div>
           <text>Название таблицы:</text>
-          <input th:field="*{tableName}" readonly>
+          <input th:field="*{tableName}" readonly class="info-field-1">
           <div class="row vertical-center">
             <button class="btn-action-on-1 cell">Отмена</button>
             <input class="btn-action-on-1 cell" type="submit" value="Подтвердить">

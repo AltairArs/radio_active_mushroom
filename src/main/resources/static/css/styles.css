@@ -1112,6 +1112,71 @@ body {
   color: var(--c-text);
 }
 
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.container-1, .error-on-2, .workspace-table {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-background);
+  color: var(--c-container-text);
+  width: fit-content;
+  margin: 12px;
+}
+.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
+  background-color: var(--c-container-info-field-background);
+  color: var(--c-container-info-field-text);
+  border-radius: 20px;
+  padding: 0 10px;
+  box-shadow: none;
+}
+
+.container-2, .error-on-1 {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-text);
+  color: var(--c-container-background);
+  width: fit-content;
+  margin: 12px;
+}
+.container-2 .info-field-2, .error-on-1 .info-field-2 {
+  background-color: var(--c-container-info-field-text);
+  color: var(--c-container-info-field-background);
+  border-radius: 20px;
+  padding: 0 10px;
+  box-shadow: none;
+}
+
+.row .cell {
+  display: inline-table;
+  margin: auto;
+}
+
+.help-text {
+  font-size: small;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-center {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.vertical-center, .btn-auth, .btn-action-on-1, .btn-action, .btn-nav, .nav {
+  display: flex;
+  align-items: center;
+}
+
 input, textarea, select {
   font-family: Vag;
   font-size: medium;
@@ -1132,7 +1197,6 @@ input[type=checkbox], textarea[type=checkbox], select[type=checkbox] {
   height: 20px;
   box-shadow: none;
 }
-
 body {
   font-family: Vag;
   background-color: var(--c-background);
@@ -1158,6 +1222,7 @@ body {
   color: var(--c-container-info-field-text);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .container-2, .error-on-1 {
@@ -1173,6 +1238,7 @@ body {
   color: var(--c-container-info-field-background);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .row .cell {
@@ -1223,69 +1289,6 @@ body {
   color: var(--c-text);
 }
 
-.container-1, .error-on-2, .workspace-table {
-  border-radius: 20px;
-  padding: 10px;
-  background-color: var(--c-container-background);
-  color: var(--c-container-text);
-  width: fit-content;
-  margin: 12px;
-}
-.container-1 .info-field-1, .error-on-2 .info-field-1, .workspace-table .info-field-1 {
-  background-color: var(--c-container-info-field-background);
-  color: var(--c-container-info-field-text);
-  border-radius: 20px;
-  padding: 0 10px;
-}
-
-.container-2, .error-on-1 {
-  border-radius: 20px;
-  padding: 10px;
-  background-color: var(--c-container-text);
-  color: var(--c-container-background);
-  width: fit-content;
-  margin: 12px;
-}
-.container-2 .info-field-2, .error-on-1 .info-field-2 {
-  background-color: var(--c-container-info-field-text);
-  color: var(--c-container-info-field-background);
-  border-radius: 20px;
-  padding: 0 10px;
-}
-
-.row .cell {
-  display: inline-table;
-  margin: auto;
-}
-
-.help-text {
-  font-size: small;
-}
-
-.container-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.btn-center {
-  text-align: center;
-}
-
-.w-full {
-  width: 100%;
-}
-
-.vertical-center, .btn-auth, .btn-action-on-1, .btn-action, .btn-nav, .nav {
-  display: flex;
-  align-items: center;
-}
-
-body {
-  font-family: Vag;
-  background-color: var(--c-background);
-  color: var(--c-text);
-}
-
 body {
   font-family: Vag;
   background-color: var(--c-background);
@@ -1305,6 +1308,7 @@ body {
   color: var(--c-container-info-field-text);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .container-2, .error-on-1 {
@@ -1320,6 +1324,7 @@ body {
   color: var(--c-container-info-field-background);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .row .cell {
@@ -1461,6 +1466,7 @@ body {
   color: var(--c-container-info-field-text);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .container-2, .error-on-1 {
@@ -1476,6 +1482,7 @@ body {
   color: var(--c-container-info-field-background);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .row .cell {
@@ -1552,6 +1559,7 @@ body {
   color: var(--c-container-info-field-text);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .container-2, .error-on-1 {
@@ -1567,6 +1575,7 @@ body {
   color: var(--c-container-info-field-background);
   border-radius: 20px;
   padding: 0 10px;
+  box-shadow: none;
 }
 
 .row .cell {
@@ -1623,4 +1632,69 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+body {
+  font-family: Vag;
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.container-1, .workspace-table, .error-on-2 {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-background);
+  color: var(--c-container-text);
+  width: fit-content;
+  margin: 12px;
+}
+.container-1 .info-field-1, .workspace-table .info-field-1, .error-on-2 .info-field-1 {
+  background-color: var(--c-container-info-field-background);
+  color: var(--c-container-info-field-text);
+  border-radius: 20px;
+  padding: 0 10px;
+  box-shadow: none;
+}
+
+.container-2, .error-on-1 {
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--c-container-text);
+  color: var(--c-container-background);
+  width: fit-content;
+  margin: 12px;
+}
+.container-2 .info-field-2, .error-on-1 .info-field-2 {
+  background-color: var(--c-container-info-field-text);
+  color: var(--c-container-info-field-background);
+  border-radius: 20px;
+  padding: 0 10px;
+  box-shadow: none;
+}
+
+.row .cell {
+  display: inline-table;
+  margin: auto;
+}
+
+.help-text {
+  font-size: small;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-center {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.vertical-center, .nav, .btn-nav, .btn-action, .btn-action-on-1, .btn-auth {
+  display: flex;
+  align-items: center;
 }

@@ -12,6 +12,7 @@
         color: var(--c-container-info-field-text);
         border-radius: $radius;
         padding: 0 $pad;
+        box-shadow: none;
     }
 }
 
@@ -27,6 +28,7 @@
         color: var(--c-container-info-field-background);
         border-radius: $radius;
         padding: 0 $pad;
+        box-shadow: none;
     }
 }
 
