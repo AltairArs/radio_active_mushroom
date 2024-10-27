@@ -1,27 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(pageTitle='Мои проекты')}"></head>
+<head th:replace="~{base :: head(pageTitle=${username + ' проекты'})}"></head>
 <body>
-<div th:replace="~{base :: bodyBlock(bodyTitle='Мои проекты', bodyContent=~{:: content})}"></div>
+<div th:replace="~{base :: bodyBlock(bodyTitle=${username + ' проекты'}, bodyContent=~{:: content})}"></div>
 <div th:remove="all">
     <div th:fragment="content">
         <div class="row">
-            <div class="cell">
-                <a th:href="@{/projects/create/}" class="btn-action">
-                    <img th:src="@{/img/editing/add.png/}" class="icon">
-                    <text>Новый проект</text>
-                </a>
-            </div>
-            <div class="cell">
-                <a class="btn-action" th:href="@{/projects/requests/send/}">
-                    <text>Сделать запрос на членство</text>
-                </a>
-            </div>
-        </div>
-        <br>
-        <div class="row">
             <div class="container-1 cell">
-                <h3>Мои проекты</h3>
+                <h3 th:text="${username + ' проекты'}"></h3>
                 <div class="row">
                     <div class="container-2 cell" th:each="project : ${projectsAsOwner}">
                         <h4 th:text="${project.getProjectName()}"></h4>
@@ -53,7 +39,7 @@
                 </div>
             </div>
             <div class="container-1 cell">
-                <h3>Проекты с моим участием</h3>
+                <h3>Проекты с участием</h3>
                 <div class="row">
                     <div class="container-2 cell" th:each="project : ${projectsAsMember}">
                         <h4 th:text="${project.getProjectName()}"></h4>
@@ -87,21 +73,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-1 cell">
-                <h3>Мои запросы на членство</h3>
-                <table>
-                    <table th:if="${membershipRequests.size()}">
-                        <thead>
-                        <th>Дата отправления</th>
-                        <th></th>
-                        </thead>
-                        <tr th:each="request : ${membershipRequests}">
-                            <td><text class="info-field-1" th:text="${#temporals.format(request.getSendedAt(), 'dd MM yyyy HH:mm')}"></text></td>
-                            <td><a class="btn-action-on-1" th:href="@{/projects/requests/details/{username}/{projectName}/{senderUsername}/(username=${request.getProject().getOwner().getUsername()}, projectName=${request.getProject().getName()}, senderUsername=${request.getSender().getUsername()})}">Подробнее</a></td>
-                        </tr>
-                    </table>
-                </table>
             </div>
         </div>
     </div>

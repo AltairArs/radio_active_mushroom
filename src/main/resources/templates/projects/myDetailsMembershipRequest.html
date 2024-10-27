@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(pageTitle=${'Запрос ' + request.getProject().getOwner().getUsername() + ' ' + request.getProject().getName()})}"></head>
+<body>
+<div th:replace="~{base :: bodyBlock(bodyTitle=${'Запрос ' + request.getProject().getOwner().getUsername() + ' ' + request.getProject().getName()}, bodyContent=~{:: content})}"></div>
+<div th:remove="all">
+  <div th:fragment="content">
+    <div class="container-1">
+      <table>
+        <tr>
+          <td><text>Проект</text></td>
+          <td><a class="btn-action-on-1" th:text="${request.getProject().getName()}" th:href="@{/projects/details/{username}/{projectName}/(username=${request.getProject().getOwner().getUsername()}, projectName=${request.getProject().getName()})}"></a></td>
+        </tr>
+        <tr>
+          <td><text>Дата отправки</text></td>
+          <td><text class="info-field-1" th:text="${#temporals.format(request.getSendedAt(), 'dd MM yyyy HH:mm')}"></text></td>
+        </tr>
+        <tr><td colspan="2"><text>Сообщение</text></td></tr>
+        <tr><td colspan="2"><text class="info-field-1" th:text="${request.getMessage()}"></text></td></tr>
+      </table>
+    </div>
+    <div class="row">
+      <a th:href="@{/projects/requests/delete/{username}/{projectName}/{senderUsername}/(username=${username}, projectName=${projectName}, senderUsername=${request.getSender().getUsername()})}" class="btn-action cell">Удалить</a>
+      <a th:href="@{/projects/requests/edit/{username}/{projectName}/{senderUsername}/(username=${username}, projectName=${projectName}, senderUsername=${request.getSender().getUsername()})}" class="btn-action cell">Редактировать</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(pageTitle=${'Запрос ' + request.getProject().getOwner().getUsername() + ' ' + request.getProject().getName()})})}"></head>
+<body>
+<div th:replace="~{base :: bodyBlock(bodyTitle=${'Запрос ' + request.getProject().getOwner().getUsername() + ' ' + request.getProject().getName()})}, bodyContent=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+        <div class="container-1 container-center">
+            <form method="post" th:object="${editMembershipRequestForm}">
+                <div th:replace="~{fragments/forms :: csrfToken}"></div>
+                <table>
+                    <div th:replace="~{fragments/forms :: colText(fieldLabel='Сообщение', fieldName='message', level=1, icon=@{/img/field_types/text.png})}"></div>
+
+                    <div th:replace="~{fragments/forms :: allErrors(level=1)}"></div>
+
+                    <div th:replace="~{fragments/forms :: formButtons(submitValue='Сохранить', level=1)}"></div>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

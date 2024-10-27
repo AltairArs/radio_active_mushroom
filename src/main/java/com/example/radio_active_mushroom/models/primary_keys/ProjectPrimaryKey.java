@@ -4,6 +4,7 @@ import com.example.radio_active_mushroom.models.entity.UserEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
+@EqualsAndHashCode
 public class ProjectPrimaryKey implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;

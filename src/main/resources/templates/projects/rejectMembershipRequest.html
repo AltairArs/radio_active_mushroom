@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(pageTitle=${'Запрос ' + request.getSender().getUsername() + ' ' + request.getProject().getName()})}"></head>
+<body>
+<div th:replace="~{base :: bodyBlock(bodyTitle=${'Запрос ' + request.getSender().getUsername() + ' ' + request.getProject().getName()}, bodyContent=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+        <div class="container-1">
+            <table>
+                <tr>
+                    <td><text>Отправил</text></td>
+                    <td><a class="btn-action-on-1" th:text="${request.getSender().getUsername()}" th:href="@{/projects/list/{username}/(username=${request.getSender().getUsername()})}"></a></td>
+                </tr>
+                <tr>
+                    <td><text>Проект</text></td>
+                    <td><a class="btn-action-on-1" th:text="${request.getProject().getName()}" th:href="@{/projects/details/{username}/{projectName}/(username=${request.getProject().getOwner().getUsername()}, projectName=${request.getProject().getName()})}"></a></td>
+                </tr>
+                <tr>
+                    <td><text>Дата отправки</text></td>
+                    <td><text class="info-field-1" th:text="${#temporals.format(request.getSendedAt(), 'dd MM yyyy HH:mm')}"></text></td>
+                </tr>
+                <tr><td colspan="2"><text>Сообщение</text></td></tr>
+                <tr><td colspan="2"><text class="info-field-1" th:text="${request.getMessage()}"></text></td></tr>
+            </table>
+        </div>
+        <div class="row">
+            <h3>Вы действительно хотите отклонить запрос?</h3>
+            <div th:replace="~{fragments/forms :: buttonForm(submitValue='Подтвердить')}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
