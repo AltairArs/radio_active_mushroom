@@ -21,6 +21,9 @@ public class ProjectSettingsDto implements Serializable {
     private String friendlyName;
     private String description;
     private ProjectPermissionsEnum canSee = ProjectPermissionsEnum.ONLY_OWNER;
-    private ProjectPermissionsEnum canEdit = ProjectPermissionsEnum.ONLY_OWNER;
-    private ProjectPermissionsEnum canDownload = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canEditWorkspace = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canExport = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canConvert = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canGenerate = ProjectPermissionsEnum.ONLY_OWNER;
+    private ProjectPermissionsEnum canSeeWorkspace = ProjectPermissionsEnum.ONLY_OWNER;
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1729990332251-1" author="Сергей">
+        <addColumn tableName="project_entity">
+            <column name="can_convert" type="VARCHAR(12)"/>
+            <column name="can_edit_workspace" type="VARCHAR(12)"/>
+            <column name="can_export" type="VARCHAR(12)"/>
+            <column name="can_generate" type="VARCHAR(12)"/>
+            <column name="can_see_workspace" type="VARCHAR(12)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1729990332251-2" author="Сергей">
+        <addNotNullConstraint columnName="can_convert" tableName="project_entity"/>
+    </changeSet>
+    <changeSet id="1729990332251-4" author="Сергей">
+        <addNotNullConstraint columnName="can_edit_workspace" tableName="project_entity"/>
+    </changeSet>
+    <changeSet id="1729990332251-6" author="Сергей">
+        <addNotNullConstraint columnName="can_export" tableName="project_entity"/>
+    </changeSet>
+    <changeSet id="1729990332251-8" author="Сергей">
+        <addNotNullConstraint columnName="can_generate" tableName="project_entity"/>
+    </changeSet>
+    <changeSet id="1729990332251-10" author="Сергей">
+        <addNotNullConstraint columnName="can_see_workspace" tableName="project_entity"/>
+    </changeSet>
+    <changeSet id="1729990332251-11" author="Сергей">
+        <dropColumn columnName="can_download" tableName="project_entity"/>
+
+        <dropColumn columnName="can_edit" tableName="project_entity"/>
+    </changeSet>
+
+</databaseChangeLog>

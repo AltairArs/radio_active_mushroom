@@ -44,12 +44,24 @@ public class ProjectEntity {
     private ProjectPermissionsEnum canSee = ProjectPermissionsEnum.ONLY_OWNER;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "canEdit", nullable = false, length = 12)
-    private ProjectPermissionsEnum canEdit = ProjectPermissionsEnum.ONLY_OWNER;
+    @Column(name = "canEditWorkspace", nullable = false, length = 12)
+    private ProjectPermissionsEnum canEditWorkspace = ProjectPermissionsEnum.ONLY_OWNER;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "canDownload", nullable = false, length = 12)
-    private ProjectPermissionsEnum canDownload = ProjectPermissionsEnum.ONLY_OWNER;
+    @Column(name = "canSeeWorkspace", nullable = false, length = 12)
+    private ProjectPermissionsEnum canSeeWorkspace = ProjectPermissionsEnum.ONLY_OWNER;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "canConvert", nullable = false, length = 12)
+    private ProjectPermissionsEnum canConvert = ProjectPermissionsEnum.ONLY_OWNER;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "canGenerate", nullable = false, length = 12)
+    private ProjectPermissionsEnum canGenerate = ProjectPermissionsEnum.ONLY_OWNER;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "canExport", nullable = false, length = 12)
+    private ProjectPermissionsEnum canExport = ProjectPermissionsEnum.ONLY_OWNER;
 
     @ToString.Exclude
     @ManyToMany(cascade = CascadeType.REFRESH)

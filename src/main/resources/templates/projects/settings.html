@@ -35,19 +35,37 @@
                         {'ALL', 'Любой пользователь'},
                         {'ONLY_MEMBERS', 'Только участники'},
                         {'ONLY_OWNER', 'Только владелец'}
-                        } }, helpText='Также дает право на генерацию таблиц и кода')}"></div>
+                        } })}"></div>
 
-                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут редактировать', fieldName='canEdit', level=1, options=${ {
+                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут редактировать', fieldName='canEditWorkspace', level=1, options=${ {
                         {'ALL', 'Любой пользователь'},
                         {'ONLY_MEMBERS', 'Только участники'},
                         {'ONLY_OWNER', 'Только владелец'}
                         } })}"></div>
 
-                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут скачивать', fieldName='canDownload', level=1, options=${ {
+                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут экспортировать', fieldName='canExport', level=1, options=${ {
                         {'ALL', 'Любой пользователь'},
                         {'ONLY_MEMBERS', 'Только участники'},
                         {'ONLY_OWNER', 'Только владелец'}
-                        } }, helpText='Также дает право на экспорт')}"></div>
+                        } })}"></div>
+
+                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут конвертировать', fieldName='canConvert', level=1, options=${ {
+                        {'ALL', 'Любой пользователь'},
+                        {'ONLY_MEMBERS', 'Только участники'},
+                        {'ONLY_OWNER', 'Только владелец'}
+                        } })}"></div>
+
+                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут генерировать код', fieldName='canGenerate', level=1, options=${ {
+                        {'ALL', 'Любой пользователь'},
+                        {'ONLY_MEMBERS', 'Только участники'},
+                        {'ONLY_OWNER', 'Только владелец'}
+                        } })}"></div>
+
+                        <div th:replace="~{fragments/forms :: rowSelect(fieldLabel='Могут видеть рабочую область', fieldName='canSeeWorkspace', level=1, options=${ {
+                        {'ALL', 'Любой пользователь'},
+                        {'ONLY_MEMBERS', 'Только участники'},
+                        {'ONLY_OWNER', 'Только владелец'}
+                        } })}"></div>
                     </table>
                 </div>
             </div>

@@ -32,16 +32,26 @@
                         <td>Могут видеть</td>
                         <td class="info-field-1" th:text="${project.getCanSee().getPermissionName()}"></td>
                     </tr>
-                    <tr><td colspan="2" class="help-text">Также генерация таблиц и кода</td></tr>
                     <tr>
                         <td>Могут редактировать</td>
-                        <td class="info-field-1" th:text="${project.getCanEdit().getPermissionName()}"></td>
+                        <td class="info-field-1" th:text="${project.getCanEditWorkspace().getPermissionName()}"></td>
                     </tr>
                     <tr>
-                        <td>Могут скачивать</td>
-                        <td class="info-field-1" th:text="${project.getCanDownload().getPermissionName()}"></td>
+                        <td>Могут экспортировать</td>
+                        <td class="info-field-1" th:text="${project.getCanExport().getPermissionName()}"></td>
                     </tr>
-                    <tr><td class="help-text" colspan="2">Также экпорт</td></tr>
+                    <tr>
+                        <td>Могут конвертировать</td>
+                        <td class="info-field-1" th:text="${project.getCanConvert().getPermissionName()}"></td>
+                    </tr>
+                    <tr>
+                        <td>Могут генерировать код</td>
+                        <td class="info-field-1" th:text="${project.getCanGenerate().getPermissionName()}"></td>
+                    </tr>
+                    <tr>
+                        <td>Могут видеть рабочую область</td>
+                        <td class="info-field-1" th:text="${project.getCanSeeWorkspace().getPermissionName()}"></td>
+                    </tr>
                 </table>
             </div>
             <div class="container-1 cell">

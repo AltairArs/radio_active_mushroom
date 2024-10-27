@@ -59,8 +59,11 @@ public class ProjectServiceImpl implements ProjectService {
         projectEntity.setLastUpdate(LocalDateTime.now());
         projectEntity.setDescription(projectSettingsDto.getDescription());
         projectEntity.setFriendlyName(projectSettingsDto.getFriendlyName());
-        projectEntity.setCanDownload(projectSettingsDto.getCanDownload());
-        projectEntity.setCanEdit(projectSettingsDto.getCanEdit());
+        projectEntity.setCanConvert(projectSettingsDto.getCanConvert());
+        projectEntity.setCanExport(projectSettingsDto.getCanExport());
+        projectEntity.setCanGenerate(projectSettingsDto.getCanGenerate());
+        projectEntity.setCanSeeWorkspace(projectSettingsDto.getCanSeeWorkspace());
+        projectEntity.setCanEditWorkspace(projectSettingsDto.getCanEditWorkspace());
         projectEntity.setCanSee(projectSettingsDto.getCanSee());
         projectRepository.save(projectEntity);
     }
