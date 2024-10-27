@@ -75,4 +75,9 @@ public class UserProfileServiceImpl implements UserProfileService {
         userSettings.setLastName(user.getLastName());
         return userSettings;
     }
+
+    @Override
+    public UserEntity getUserEntity(String username) {
+        return userRepository.findByUsername(username).get();
+    }
 }

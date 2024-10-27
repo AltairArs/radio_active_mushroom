@@ -9,6 +9,7 @@ import com.example.radio_active_mushroom.dto.entity.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.entity.ProjectSettingsDto;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.services.ProjectService;
+import com.example.radio_active_mushroom.services.UserProfileService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,9 +29,12 @@ public class ProjectsController {
     @Autowired
     private ProjectService projectService;
 
-    @GetMapping("list/my/")
-    public String listMyProjects(Model model) {
-        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+    @Autowired
+    private UserProfileService userProfileService;
+
+    @GetMapping("list/{username}/")
+    public String listMyProjects(Model model, @PathVariable String username) {
+        UserEntity user = userProfileService.getUserEntity(username);
         model.addAttribute("projectsAsOwner", user.getProjectsAsOwner());
         model.addAttribute("projectsAsMember", user.getProjectsAsMember());
         return "projects/myList";
@@ -52,49 +56,50 @@ public class ProjectsController {
                 bindingResult.addError(new ObjectError("form", "У вас уже есть проект с таким названием"));
                 return "projects/create";
             } else {
-                return "redirect:/projects/list/my/";
+                return "redirect:/projects/list/" + user.getUsername() + "/";
             }
         }
     }
 
-    @GetMapping("details/my/{projectName}/")
-    public String detailsMyProject(@PathVariable String projectName, Model model) {
-        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+    @GetMapping("details/{username}/{projectName}/")
+    public String detailsMyProject(@PathVariable String projectName, Model model, @PathVariable String username) {
+        UserEntity user = userProfileService.getUserEntity(username);
         model.addAttribute("project", projectService.getProject(user, projectName));
         return "projects/myDetails";
     }
 
-    @GetMapping("delete/my/{projectName}/")
-    public String deleteMyProject(@PathVariable String projectName, Model model) {
+    @GetMapping("delete/{username}/{projectName}/")
+    public String deleteMyProject(@PathVariable String projectName, Model model, @PathVariable String username) {
+        model.addAttribute("project", projectService.getProject(userProfileService.getUserEntity(username), projectName));
         return "projects/delete";
     }
 
-    @PostMapping("delete/my/{projectName}/")
-    public String deleteMyProjectPost(@PathVariable String projectName, Model model) {
-        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+    @PostMapping("delete/{username}/{projectName}/")
+    public String deleteMyProjectPost(@PathVariable String projectName, Model model, @PathVariable String username) {
+        UserEntity user = userProfileService.getUserEntity(username);
         projectService.deleteProject(user, projectName);
-        return "redirect:/projects/list/my/";
+        return "redirect:/projects/list/" + user.getUsername() + "/";
     }
 
-    @GetMapping("settings/my/{projectName}/")
-    public String settingsMyProject(@PathVariable String projectName, Model model) {
-        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+    @GetMapping("settings/{username}/{projectName}/")
+    public String settingsMyProject(@PathVariable String projectName, Model model, @PathVariable String username) {
+        UserEntity user = userProfileService.getUserEntity(username);
         model.addAttribute("form", projectService.getProjectSettings(user, projectName));
+        model.addAttribute("project", projectService.getProject(user, projectName));
         return "projects/settings";
     }
 
-    @PostMapping("settings/my/{projectName}/")
-    public String settingsMyProjectPost(@PathVariable String projectName, @Valid @ModelAttribute("form") ProjectSettingsDto form, BindingResult bindingResult, Model model) {
-        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+    @PostMapping("settings/{username}/{projectName}/")
+    public String settingsMyProjectPost(@PathVariable String projectName, @Valid @ModelAttribute("form") ProjectSettingsDto form, BindingResult bindingResult, Model model, @PathVariable String username) {
+        UserEntity user = userProfileService.getUserEntity(username);
         projectService.updateProjectSettings(user, projectName, form);
-        return "redirect:/projects/details/my/" + projectName + "/";
+        return "redirect:/projects/details/" + user.getUsername() + "/" + projectName + "/";
     }
 
-    @GetMapping("workspace/my/{projectName}/")
-    public String workspaceMyProject(@PathVariable String projectName, Model model) {
-        UserEntity user = authenticationService.getCurrentUser(SecurityContextHolder.getContext().getAuthentication());
+    @GetMapping("workspace/{username}/{projectName}/")
+    public String workspaceMyProject(@PathVariable String projectName, Model model, @PathVariable String username) {
+        UserEntity user = userProfileService.getUserEntity(username);
         model.addAttribute("project", projectService.getProject(user, projectName));
-        model.addAttribute("ownerUsername", user.getUsername());
         model.addAttribute("formCreateTable", new CreateTableDto());
         model.addAttribute("formChangeTablePosition", new ChangeTablePositionDto());
         model.addAttribute("formEditTable", new EditTableDto());

@@ -12,7 +12,7 @@
     </li>
     <th:block th:if="${#authentication != null && #authentication.getPrincipal() != 'anonymousUser'}">
         <li class="nav-item">
-            <a class="btn-nav" th:href="@{/projects/list/my/}">
+            <a class="btn-nav" th:href="@{/projects/list/{username}/(username=${#authentication.getPrincipal().getUsername()})}">
                 <img th:src="@{/img/project/project.png/}" class="icon">
                 <text>Проекты</text>
             </a>

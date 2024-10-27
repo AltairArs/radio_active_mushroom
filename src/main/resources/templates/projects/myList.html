@@ -38,7 +38,7 @@
                         </table>
                         <div class="row">
                             <div class="cell">
-                                <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${project.getName()})}">
+                                <a class="btn-action" th:href="@{/projects/details/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
                                     <img th:src="@{/img/editing/details.png}" class="icon">
                                     <text>Подробнее</text>
                                 </a>

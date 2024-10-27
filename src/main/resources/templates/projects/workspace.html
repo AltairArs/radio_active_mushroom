@@ -5,9 +5,9 @@
 <div th:replace="~{base :: bodyBlock(bodyTitle='Рабочая область', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
   <div th:fragment="content">
-    <input id="workspaceGetAllTables" type="hidden" th:value="@{/projects/edit/{ownerUsername}/{projectName}/table/get/all/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+    <input id="workspaceGetAllTables" type="hidden" th:value="@{/projects/edit/{username}/{projectName}/table/get/all/(username=${username}, projectName=${projectName})}">
 
-    <form id="workspaceChangeTablePosition" th:object="${formChangeTablePosition}" style="display: none;" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/edit/position/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+    <form id="workspaceChangeTablePosition" th:object="${formChangeTablePosition}" style="display: none;" th:action="@{/projects/edit/{username}/{projectName}/table/edit/position/(username=${username}, projectName=${projectName})}">
       <div th:replace="~{fragments/forms :: csrfToken}"></div>
       <input th:field="*{x}">
       <input th:field="*{y}">
@@ -16,7 +16,7 @@
 
     <div class="row">
       <div class="cell">
-        <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${projectName})}">
+        <a class="btn-action" th:href="@{/projects/details/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
           <img th:src="@{/img/editing/back.png}" class="icon">
           <text>Назад</text>
         </a>
@@ -58,7 +58,7 @@
       </ul>
 
       <dialog class="container-1 dialog" id="addTableDialog">
-        <form method="dialog" th:object="${formCreateTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/add/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+        <form method="dialog" th:object="${formCreateTable}" th:action="@{/projects/edit/{username}/{projectName}/table/add/(username=${username}, projectName=${projectName})}">
           <div th:replace="~{fragments/forms :: csrfToken}"></div>
 
           <h3 class="header-m-o">Новая сущность</h3>
@@ -86,7 +86,7 @@
 
       <dialog class="container-1 dialog" id="editTableDialog">
         <h3>Редактировать таблицу</h3>
-        <form method="post" th:object="${formEditTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/edit/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+        <form method="post" th:object="${formEditTable}" th:action="@{/projects/edit/{username}/{projectName}/table/edit/(username=${username}, projectName=${projectName})}">
           <div th:replace="~{fragments/forms :: csrfToken}"></div>
 
           <table>
@@ -105,7 +105,7 @@
 
       <dialog class="container-1 dialog" id="deleteTableDialog">
         <h3 class="header-m-o">Вы точно хотите удалить таблицу?</h3>
-        <form method="dialog" th:object="${formDeleteTable}" th:action="@{/projects/edit/{ownerUsername}/{projectName}/table/delete/(ownerUsername=${ownerUsername}, projectName=${projectName})}">
+        <form method="dialog" th:object="${formDeleteTable}" th:action="@{/projects/edit/{username}/{projectName}/table/delete/(username=${username}, projectName=${projectName})}">
           <div th:replace="~{fragments/forms :: csrfToken}"></div>
           <text>Название таблицы:</text>
           <input th:field="*{tableName}" readonly class="info-field-1">

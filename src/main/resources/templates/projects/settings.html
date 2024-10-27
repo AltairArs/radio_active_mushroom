@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{base :: head(pageTitle='Новый проект')}"></head>
+<head th:replace="~{base :: head(pageTitle='Настройки')}"></head>
 <body>
-<div th:replace="~{base :: bodyBlock(bodyTitle='Новый проект', bodyContent=~{:: content})}"></div>
+<div th:replace="~{base :: bodyBlock(bodyTitle='Настройки', bodyContent=~{:: content})}"></div>
 <div th:remove="all">
     <div th:fragment="content">
         <div class="row">
             <div class="cell">
-                <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${projectName})}">
+                <a class="btn-action" th:href="@{/projects/details/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
                     <img th:src="@{/img/editing/back.png}" class="icon">
                     <text>Назад</text>
                 </a>

@@ -7,13 +7,13 @@
   <div th:fragment="content">
     <div class="row">
       <div class="cell">
-        <a class="btn-action" th:href="@{/projects/details/my/{projectName}/(projectName=${projectName})}">
+        <a class="btn-action" th:href="@{/projects/details/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
           <img th:src="@{/img/editing/back.png}" class="icon">
           <text>Назад</text>
         </a>
       </div>
     </div>
-    <h3>Вы действительно хотите удалить проект <big>[[${projectName}]]</big></h3>
+    <h3>Вы действительно хотите удалить проект <big>[[${projectName}]]</big>?</h3>
     <div th:replace="~{fragments/forms :: buttonForm(submitValue='Подтвердить')}"></div>
   </div>
 </div>

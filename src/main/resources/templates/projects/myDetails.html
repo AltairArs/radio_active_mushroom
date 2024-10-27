@@ -44,23 +44,37 @@
                     <tr><td class="help-text" colspan="2">Также экпорт</td></tr>
                 </table>
             </div>
+            <div class="container-1 cell">
+                <h3>Участники</h3>
+                <table>
+                    <tr th:each="member : ${project.members}">
+                        <td><text class="info-field-1" th:text="${member.getUsername()}"></text></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="container-1 cell">
+                <h3>Запросы на доступ</h3>
+                <table>
+
+                </table>
+            </div>
         </div>
         <br>
         <div class="row">
             <div class="cell">
-                <a class="btn-action" th:href="@{/projects/settings/my/{projectName}/(projectName=${project.getName()})}">
+                <a class="btn-action" th:href="@{/projects/settings/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
                     <img th:src="@{/img/editing/settings.png/}" class="icon">
                     <text>Настройки</text>
                 </a>
             </div>
             <div class="cell">
-                <a class="btn-action" th:href="@{/projects/delete/my/{projectName}/(projectName=${project.getName()})}">
+                <a class="btn-action" th:href="@{/projects/delete/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
                     <img th:src="@{/img/editing/delete.png/}" class="icon">
                     <text>Удалить</text>
                 </a>
             </div>
             <div class="cell">
-                <a class="btn-action" th:href="@{/projects/workspace/my/{projectName}/(projectName=${project.getName()})}">
+                <a class="btn-action" th:href="@{/projects/workspace/{username}/{projectName}/(username=${username}, projectName=${project.getName()})}">
                     <img th:src="@{/img/project/workspace.png/}" class="icon">
                     <text>В рабочую среду</text>
                 </a>
