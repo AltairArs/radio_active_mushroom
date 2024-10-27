@@ -2,6 +2,8 @@ package com.example.radio_active_mushroom.services.impl;
 
 import com.example.radio_active_mushroom.dto.entity.ProjectCreateDto;
 import com.example.radio_active_mushroom.dto.entity.ProjectSettingsDto;
+import com.example.radio_active_mushroom.enums.ProjectKindPermissionsEnum;
+import com.example.radio_active_mushroom.enums.ProjectPermissionsEnum;
 import com.example.radio_active_mushroom.models.entity.ProjectEntity;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.repo.entity.ProjectRepository;
@@ -11,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -66,5 +68,47 @@ public class ProjectServiceImpl implements ProjectService {
         projectEntity.setCanEditWorkspace(projectSettingsDto.getCanEditWorkspace());
         projectEntity.setCanSee(projectSettingsDto.getCanSee());
         projectRepository.save(projectEntity);
+    }
+
+    @Override
+    public boolean determineCanActionBeTaken(UserEntity owner, String projectName, UserEntity asker, ProjectKindPermissionsEnum action) {
+        return getAskerPermissions(owner, projectName, asker).contains(action);
+    }
+
+    @Override
+    public Set<ProjectKindPermissionsEnum> getAskerPermissions(UserEntity owner, String projectName, UserEntity asker) {
+        Set<ProjectKindPermissionsEnum> permissions = new HashSet<ProjectKindPermissionsEnum>();
+        Optional<ProjectEntity> optionalProjectEntity = projectRepository.findByOwnerAndName(owner, projectName);
+        if (optionalProjectEntity.isPresent() && owner != null) {
+            ProjectEntity projectEntity = optionalProjectEntity.get();
+            if (isEqualAskerMembership(asker, projectEntity, projectEntity.getCanSee())){
+                permissions.add(ProjectKindPermissionsEnum.CAN_SEE);
+                if (isEqualAskerMembership(asker, projectEntity, projectEntity.getCanSeeWorkspace())){
+                    permissions.add(ProjectKindPermissionsEnum.CAN_SEE_WORKSPACE);
+                    if (isEqualAskerMembership(asker, projectEntity, projectEntity.getCanGenerate())){
+                        permissions.add(ProjectKindPermissionsEnum.CAN_GENERATE);
+                    }
+                    if (isEqualAskerMembership(asker, projectEntity, projectEntity.getCanConvert())){
+                        permissions.add(ProjectKindPermissionsEnum.CAN_CONVERT);
+                    }
+                    if (isEqualAskerMembership(asker, projectEntity, projectEntity.getCanExport())){
+                        permissions.add(ProjectKindPermissionsEnum.CAN_EXPORT);
+                    }
+                    if (isEqualAskerMembership(asker, projectEntity, projectEntity.getCanEditWorkspace())){
+                        permissions.add(ProjectKindPermissionsEnum.CAN_EDIT_WORKSPACE);
+                    }
+                }
+            }
+        }
+        return permissions;
+    }
+
+    @Override
+    public boolean isEqualAskerMembership(UserEntity asker, ProjectEntity project, ProjectPermissionsEnum permission) {
+        return switch (permission){
+            case ALL -> true;
+            case ONLY_MEMBERS -> project.getMembers().contains(asker) || project.getOwner().equals(asker);
+            case ONLY_OWNER -> project.getOwner().equals(asker);
+        };
     }
 }
