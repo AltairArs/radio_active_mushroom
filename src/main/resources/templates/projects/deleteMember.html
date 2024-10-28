@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head(pageTitle='Удалить члена')}"></head>
+<body>
+<div th:replace="~{base :: bodyBlock(bodyTitle=${'Удаление ' + memberUsername + ' из ' + projectName}, bodyContent=~{:: content})}"></div>
+<div th:remove="all">
+    <div th:fragment="content">
+        <h3>Вы действительно хотите удалить <big>[[${memberUsername}]]</big> из проекта <big>[[${projectName}]]</big>?</h3>
+        <div th:replace="~{fragments/forms :: buttonForm(submitValue='Подтвердить')}"></div>
+    </div>
+</div>
+</body>
+</html>

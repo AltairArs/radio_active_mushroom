@@ -18,4 +18,6 @@ public interface ProjectService {
     public abstract boolean determineCanActionBeTaken(UserEntity owner, String projectName, UserEntity asker, ProjectKindPermissionsEnum action);
     public abstract Set<ProjectKindPermissionsEnum> getAskerPermissions(UserEntity owner, String projectName, UserEntity asker);
     public abstract boolean isEqualAskerMembership(UserEntity asker, ProjectEntity project, ProjectPermissionsEnum permission);
+    public abstract boolean addMember(ProjectEntity project, String memberUsername);
+    public abstract void removeMember(ProjectEntity project, String memberUsername);
 }

@@ -111,4 +111,14 @@ public class ProjectServiceImpl implements ProjectService {
             case ONLY_OWNER -> project.getOwner().equals(asker);
         };
     }
+
+    @Override
+    public boolean addMember(ProjectEntity project, String memberUsername) {
+        return false;
+    }
+
+    @Override
+    public void removeMember(ProjectEntity project, String memberUsername) {
+
+    }
 }
