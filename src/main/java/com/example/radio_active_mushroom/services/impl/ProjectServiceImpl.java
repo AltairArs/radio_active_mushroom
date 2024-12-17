@@ -8,6 +8,7 @@ import com.example.radio_active_mushroom.models.entity.ProjectEntity;
 import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.repo.entity.ProjectRepository;
 import com.example.radio_active_mushroom.services.ProjectService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,13 +17,12 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService {
 
-    @Autowired
-    private ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public boolean createNewProject(ProjectCreateDto projectCreateDto, UserEntity owner) {

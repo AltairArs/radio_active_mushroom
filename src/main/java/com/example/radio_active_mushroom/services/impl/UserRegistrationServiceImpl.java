@@ -5,6 +5,7 @@ import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.repo.entity.UserRepository;
 import com.example.radio_active_mushroom.services.MailService;
 import com.example.radio_active_mushroom.services.UserRegistrationService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,16 +15,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class UserRegistrationServiceImpl implements UserRegistrationService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private MailService mailService;
+    private final MailService mailService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public void registerNewUser(UserRegistrationDto userRegistrationDto) {

@@ -12,6 +12,7 @@ import com.example.radio_active_mushroom.models.documents.objects.Position;
 import com.example.radio_active_mushroom.repo.documents.FieldSetDocumentRepository;
 import com.example.radio_active_mushroom.repo.documents.TableDocumentRepository;
 import com.example.radio_active_mushroom.services.DB_DrawerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class DB_DrawerServiceImpl implements DB_DrawerService {
 
-    @Autowired
-    private FieldSetDocumentRepository fieldSetDocumentRepository;
+    private final FieldSetDocumentRepository fieldSetDocumentRepository;
 
-    @Autowired
-    private TableDocumentRepository tableDocumentRepository;
+    private final TableDocumentRepository tableDocumentRepository;
 
     @Override
     public List<JS_Table> generateTables(List<TableDocument> tableDocuments) {

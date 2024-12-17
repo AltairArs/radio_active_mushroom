@@ -1,0 +1,22 @@
+services:
+  service:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - mongodb
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=radio_active_mushroom'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5432'
+  mongodb:
+    image: "mongo:6-jammy"
+    environment:
+      - "MONGODB_DB=radio_active_mushroom"
+    ports:
+      - "27017"

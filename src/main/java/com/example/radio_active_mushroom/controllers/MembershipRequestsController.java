@@ -8,6 +8,7 @@ import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.services.MembershipRequestsService;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -19,17 +20,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("projects/requests/")
 public class MembershipRequestsController {
 
-    @Autowired
-    private CustomAuthenticationService authenticationService;
+    private final CustomAuthenticationService authenticationService;
 
-    @Autowired
-    private UserProfileService userProfileService;
+    private final UserProfileService userProfileService;
 
-    @Autowired
-    private MembershipRequestsService membershipRequestsService;
+    private final MembershipRequestsService membershipRequestsService;
 
     @GetMapping("send/")
     public String membershipRequestSend(Model model) {

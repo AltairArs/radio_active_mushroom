@@ -9,6 +9,7 @@ import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.repo.documents.ThemeDocumentRepository;
 import com.example.radio_active_mushroom.repo.entity.UserRepository;
 import com.example.radio_active_mushroom.services.UserProfileService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserProfileServiceImpl implements UserProfileService {
 
-    @Autowired
-    private ThemeDocumentRepository themeDocumentRepository;
+    private final ThemeDocumentRepository themeDocumentRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public ThemeDocument getUserTheme(String username) {

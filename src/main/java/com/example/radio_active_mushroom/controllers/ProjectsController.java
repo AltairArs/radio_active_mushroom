@@ -13,6 +13,7 @@ import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.services.ProjectService;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -28,17 +29,15 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("projects/")
 public class ProjectsController {
 
-    @Autowired
-    private CustomAuthenticationService authenticationService;
+    private final CustomAuthenticationService authenticationService;
 
-    @Autowired
-    private ProjectService projectService;
+    private final ProjectService projectService;
 
-    @Autowired
-    private UserProfileService userProfileService;
+    private final UserProfileService userProfileService;
 
     @GetMapping("list/{username}/")
     public String listProjects(Authentication authentication, Model model, @PathVariable String username) {

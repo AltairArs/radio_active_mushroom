@@ -9,6 +9,7 @@ import com.example.radio_active_mushroom.repo.entity.MembershipRequestRepository
 import com.example.radio_active_mushroom.repo.entity.ProjectRepository;
 import com.example.radio_active_mushroom.repo.entity.UserRepository;
 import com.example.radio_active_mushroom.services.MembershipRequestsService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,19 +17,16 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MembershipRequestsServiceImpl implements MembershipRequestsService {
 
-    @Autowired
-    private MembershipRequestRepository membershipRequestRepository;
+    private final MembershipRequestRepository membershipRequestRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private ProjectRepository projectRepository;
+    private final ProjectRepository projectRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Override
     public boolean createMembershipRequest(SendMembershipRequestDto sendMembershipRequestDto, UserEntity sender) {

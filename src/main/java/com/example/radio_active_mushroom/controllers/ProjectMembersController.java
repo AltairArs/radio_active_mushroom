@@ -6,6 +6,7 @@ import com.example.radio_active_mushroom.models.entity.UserEntity;
 import com.example.radio_active_mushroom.services.ProjectService;
 import com.example.radio_active_mushroom.services.UserProfileService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -17,17 +18,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("projects/members/{username}/{projectName}/")
 public class ProjectMembersController {
 
-    @Autowired
-    private CustomAuthenticationService authenticationService;
+    private final CustomAuthenticationService authenticationService;
 
-    @Autowired
-    private UserProfileService userProfileService;
+    private final UserProfileService userProfileService;
 
-    @Autowired
-    private ProjectService projectService;
+    private final ProjectService projectService;
 
     @GetMapping("delete/{memberUsername}/")
     public String deleteMember(Authentication authentication, @PathVariable String projectName, @PathVariable String username, @PathVariable String memberUsername) {
@@ -60,7 +59,7 @@ public class ProjectMembersController {
         }
     }
 
-    @GetMapping("add/{memberUsername}/")
+    @PostMapping("add/{memberUsername}/")
     public String addMemberPost(Authentication authentication, @PathVariable String projectName, @PathVariable String memberUsername, @PathVariable String username, Model model, @Valid @ModelAttribute("addMemberForm") AddUserToProjectMembersDto addMemberForm, BindingResult bindingResult) {
         UserEntity user = authenticationService.getCurrentUser(authentication);
         if (!projectService.getProject(userProfileService.getUserEntity(username), projectName).getOwner().equals(user)) {

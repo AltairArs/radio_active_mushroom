@@ -3,6 +3,7 @@ package com.example.radio_active_mushroom.controllers;
 import com.example.radio_active_mushroom.dto.entity.UserRegistrationDto;
 import com.example.radio_active_mushroom.services.UserRegistrationService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +11,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("accounts/")
 public class RegistrationController {
-    @Autowired
-    UserRegistrationService userRegistrationService;
+
+    private final UserRegistrationService userRegistrationService;
 
     @GetMapping("registration/")
     public String registrationForm(Model model) {
